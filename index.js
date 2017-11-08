@@ -1,0 +1,1 @@
+import tq-anz-button from './tq-anz-button';
