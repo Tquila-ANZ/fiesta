@@ -2,4 +2,4 @@
 
 Tquila ANZ Button
 
-import FestaTqBtn from 'fiesta/tq-anz-button';
+import FiestaTqBtn from 'fiesta/tq-anz-button';
