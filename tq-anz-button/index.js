@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, View, TouchableHighlight, Text } from "react-native";
 import styles from './styles';
 
-class Tqanzbutton extends Component {
+class TqanzButton extends Component {
   render() {
     return (
       <View style={styles.inputsContainer}>
@@ -17,4 +17,4 @@ class Tqanzbutton extends Component {
   }
 }
 
-export default Tqanzbutton;
+export default TqanzButton;
