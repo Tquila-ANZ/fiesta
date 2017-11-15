@@ -1,37 +1,36 @@
-import React, { Component } from "react";
-import { View, TextInput } from "react-native";
-import styles from "./styles";
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
+import styles from './styles';
 
 class TqanzCustomerDetails extends Component {
-
-  constructor(props) {
+	constructor(props) {
 		super(props);
 	}
+	render() {
+		// Based off a object only
+		const dataLoopObj = (data, keyName, uiName = null) => {
+			return (
+				<View style={{ flexDirection: 'row', flex: 1 }}>
+					<View style={styles.wordContainer}>
+						<Text>
+							{uiName ? uiName : keyName}:{' '}
+						</Text>
+					</View>
+					<View style={styles.item2}>
+						<Text>
+							{data[keyName]}
+						</Text>
+					</View>
+				</View>
+			);
+		};
 
-  const dataLoopObj = (data, keyName) => {
-    return (
-      <View style={{ flexDirection: 'row', flex: 1 }}>
-        <View style={styles.wordContainer}>
-          <Text>
-            {keyName}:{' '}
-          </Text>
-        </View>
-        <View style={styles.item2}>
-          <Text>
-            {data[keyName]}
-          </Text>
-        </View>
-      </View>
-    );
-  };
-
-  render() {
-    return (
-      <View style={styles.inputsContainer}>
-	      {dataLoopObj(this.props.data, this.props.keyName)}
-      </View>
-    );
-  }
+		return (
+			<View style={styles.inputsContainer}>
+				{dataLoopObj(this.props.data, this.props.keyName, this.props.uiName)}
+			</View>
+		);
+	}
 }
 
 export default TqanzCustomerDetails;
