@@ -10,17 +10,10 @@ class TqanzCustomerDetails extends Component {
 		// Based off a object only
 		const dataLoopObj = (data, keyName, uiName = null) => {
 			return (
-				<View style={{ flexDirection: 'row', flex: 1 }}>
-					<View style={styles.wordContainer}>
-						<Text>
-							{uiName ? uiName : keyName}:{' '}
-						</Text>
-					</View>
-					<View style={styles.item2}>
-						<Text>
-							{data[keyName]}
-						</Text>
-					</View>
+				<View>
+					<Text style={{ fontSize: 22 }}>
+						{uiName ? uiName : keyName}:  {data[keyName]}
+					</Text>
 				</View>
 			);
 		};
@@ -28,6 +21,7 @@ class TqanzCustomerDetails extends Component {
 		return (
 			<View style={styles.inputsContainer}>
 				{dataLoopObj(this.props.data, this.props.keyName, this.props.uiName)}
+				<View style={{ height: 8 }} />
 			</View>
 		);
 	}

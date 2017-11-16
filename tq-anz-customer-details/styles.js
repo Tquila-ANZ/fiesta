@@ -24,9 +24,9 @@ const styleTypes = StyleSheet.create({
 		flex: 1
 	},
 	inputsContainer: {
-		flex: 1,
-		marginLeft: 6,
-		marginRight: 6
+		justifyContent: 'center',
+		alignItems: 'center',
+		alignSelf: 'center'
 	},
 	fullWidthButton: {
 		backgroundColor: '#00aec7',
