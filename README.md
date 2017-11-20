@@ -4,6 +4,8 @@
 # fiesta
 ---
 #### This is Tquila ANZ UI library page, for some of these components they are data driven from Salesforce and there are some assumptions that will considered.
+
+![Alt text](/fiesta/assets/fiestaflow2.png?raw=true "Fiesta Flow")
 ---
 ## Tquila ANZ Button
 ```javascript
