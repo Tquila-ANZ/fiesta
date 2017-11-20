@@ -1,6 +1,6 @@
 {
   "name": "fiesta",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/Tquila-ANZ/fiesta.git"
@@ -11,5 +11,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "tquilamobile@tquilaanz.com",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "react-native-loading-spinner-overlay": "^0.5.2"
+  }
 }
