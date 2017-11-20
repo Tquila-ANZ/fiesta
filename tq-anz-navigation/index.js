@@ -1,10 +1,5 @@
-import React from 'react';
+
+import React, { Component } from "react";
 import { StackNavigator } from 'react-navigation';
 
-class TqanzNavigator extends StackNavigator{
-    constructor() {
-        super();
-    }
-} 
-
-export default TqanzNavigator;
+export default StackNavigator;
