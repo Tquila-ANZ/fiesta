@@ -6,3 +6,5 @@ class TqanzNavigator extends StackNavigator{
         super();
     }
 } 
+
+export default TqanzNavigator;
