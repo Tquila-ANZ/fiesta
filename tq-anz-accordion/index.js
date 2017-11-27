@@ -7,23 +7,11 @@ import {
 
 import Accordion from './Accordion';
 
-const items = [
-  {
-    name: 'Job Address',
-    description: "job"
-  },
-  {
-    name: 'Risks',
-    description: "risk"
-  },
-  {
-    name: 'Key contact',
-    description: "key"
-  }
-];
-
 class TqanzAccordion extends Component {
 
+  constructor(props) {
+    super(props);
+  }
   renderHeader(info) {
     return (
       <View style={styles.header}>
@@ -31,7 +19,6 @@ class TqanzAccordion extends Component {
       </View>
     );
   }
-
   renderContent(info) {
     debugger;
     return (
@@ -45,7 +32,7 @@ class TqanzAccordion extends Component {
       <View style={styles.example}>
         <Accordion
           style={styles.accordion}
-          items = {items}
+          items = {this.props.items}
           headerRender = {this.renderHeader}
           contentRender = {this.renderContent}
           headerName = "name"
