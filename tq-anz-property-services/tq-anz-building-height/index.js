@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, Picker } from 'react-native';
+import { View, Text, Picker, TouchableWithoutFeedback } from 'react-native';
 import { RadioButtons } from 'react-native-radio-buttons';
+import { SegmentedControls } from 'react-native-radio-buttons';
 //import styles from './styles';
 
 class TqanzPropertyServicesBuildingHeight extends Component {
 	constructor(props) {
 		super(props);
+		this.state = { selectedOption: 'none' };
 	}
 	render() {
 		const options = ['Option 1', 'Option 2'];
@@ -21,9 +23,11 @@ class TqanzPropertyServicesBuildingHeight extends Component {
 
 			return (
 				<TouchableWithoutFeedback onPress={onSelect} key={index}>
-					<Text style={style}>
-						{option}
-					</Text>
+					<View>
+						<Text style={style}>
+							{option}
+						</Text>
+					</View>
 				</TouchableWithoutFeedback>
 			);
 		}
@@ -37,7 +41,7 @@ class TqanzPropertyServicesBuildingHeight extends Component {
 		}
 		return (
 			<View style={{ margin: 20 }}>
-				<RadioButtons
+				{/* <RadioButtons
 					options={options}
 					onSelection={setSelectedOption.bind(this)}
 					selectedOption={this.state.selectedOption}
@@ -46,7 +50,15 @@ class TqanzPropertyServicesBuildingHeight extends Component {
 				/>
 				<Text>
 					Selected option: {this.state.selectedOption || 'none'}
-				</Text>
+				</Text> */}
+				<Text>
+					Building Height
+				</Text> 
+				<SegmentedControls
+					options={options}
+					onSelection={setSelectedOption.bind(this)}
+					selectedOption={this.state.selectedOption}
+				/>
 			</View>
 		);
 	}
