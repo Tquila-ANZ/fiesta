@@ -10,7 +10,7 @@ import Accordion from './Accordion';
 // Possible Subitems for an accordion
 // PROPERTY SERVICES
 import FiestaCause from '../tq-anz-property-services/tq-anz-cause';
-import FiestaBuildingHeight from '../tq-anz-property-services/';
+import FiestaBuildingHeight from '../tq-anz-property-services/tq-anz-building-height';
 
 
 class TqanzAccordion extends Component {
