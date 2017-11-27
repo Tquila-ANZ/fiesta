@@ -7,6 +7,12 @@ import {
 
 import Accordion from './Accordion';
 
+// Possible Subitems for an accordion
+// PROPERTY SERVICES
+import FiestaCause from '../tq-anz-property-services/tq-anz-cause';
+import FiestaBuildingHeight from '../tq-anz-property-services/';
+
+
 class TqanzAccordion extends Component {
 
   constructor(props) {
@@ -21,9 +27,16 @@ class TqanzAccordion extends Component {
   }
   renderContent(info) {
     debugger;
+    // For Report Order Details
+    let cause = undefined;
+    let buildingHeight = undefined;
+    if(info === 'reportorderdetails') {
+      cause = <FiestaCause />;
+      buildingHeight = <FiestaBuildingHeight />
+    }
     return (
       <View style={styles.content}>
-        <Text style={styles.contentText}>{info}</Text>
+        {(cause)?cause:undefined}    
       </View>
     );
   }
@@ -37,7 +50,7 @@ class TqanzAccordion extends Component {
           contentRender = {this.renderContent}
           headerName = "name"
           contentName = "description"
-          maxHeight = {90}
+          maxHeight = {490}
           duration = {200}
           backgroundColor = {'#fff'}
         />
