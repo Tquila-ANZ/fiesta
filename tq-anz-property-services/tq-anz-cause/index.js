@@ -4,7 +4,8 @@ import { View, Text, Picker } from 'react-native';
 
 class TqanzPropertyServicesCause extends Component {
 	constructor(props) {
-		super(props);
+        super(props);
+        this.state = {cause: 'RoofWaterDamage'};
 	}
 	render() {
 		return (
