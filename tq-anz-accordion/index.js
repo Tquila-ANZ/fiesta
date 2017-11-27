@@ -36,7 +36,8 @@ class TqanzAccordion extends Component {
     }
     return (
       <View style={styles.content}>
-        {(cause)?cause:undefined}    
+        {(cause)?cause:undefined}   
+        {(buildingHeight)?buildingHeight:undefined} 
       </View>
     );
   }
