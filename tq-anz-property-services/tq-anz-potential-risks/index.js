@@ -14,4 +14,4 @@ class TqanzPropertyServicesPotentialRisks extends Component {
 	}
 }
 
-export default TqanzPropertyServicesPontentialRisks;
+export default TqanzPropertyServicesPotentialRisks;
