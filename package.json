@@ -1,6 +1,6 @@
 {
   "name": "fiesta",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/Tquila-ANZ/fiesta.git"
@@ -14,6 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "react-native-loading-spinner-overlay": "^0.5.2",
+    "react-native-maps": "^0.18.0",
     "react-native-radio-buttons": "^1.0.0"
   }
 }

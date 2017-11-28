@@ -114,10 +114,10 @@ const styles = StyleSheet.create({
 	header: {
 		padding: 10,
     backgroundColor: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
 	},
 	headerText: {
+    fontSize: 20,
+    fontWeight: 'bold',
   },
 	contentText: {}
 });
