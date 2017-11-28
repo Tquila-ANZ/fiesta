@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-
 import Accordion from './Accordion';
 
 // Possible Subitems for an accordion
@@ -102,7 +101,6 @@ const styles = StyleSheet.create({
 	example: {
 		flex: 1,
 		justifyContent: 'center',
-		paddingTop: 40,
 		backgroundColor: '#f1f1f1'
 	},
 	accordion: {
@@ -115,9 +113,12 @@ const styles = StyleSheet.create({
 	},
 	header: {
 		padding: 10,
-		backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    fontSize: 20,
+    fontWeight: 'bold',
 	},
-	headerText: {},
+	headerText: {
+  },
 	contentText: {}
 });
 
