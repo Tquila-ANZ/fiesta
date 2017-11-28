@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
-class TqanzPropertyServicesRoomnumber extends Component {
+class TqanzPropertyServicesRoomNumber extends Component {
 	constructor(props) {
 		super(props);
 	}
@@ -14,4 +14,4 @@ class TqanzPropertyServicesRoomnumber extends Component {
 	}
 }
 
-export default TqanzPropertyServicesRoomnumber;
+export default TqanzPropertyServicesRoomNumber;
