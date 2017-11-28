@@ -67,8 +67,6 @@ class TqanzAccordion extends Component {
 			<View style={styles.content}>
 				{cause ? cause : undefined}
 				{buildingHeight ? buildingHeight : undefined}
-				{cause ? cause : undefined}
-				{buildingHeight ? buildingHeight : undefined}
 				{roomNumber ? roomNumber : undefined}
 				{construction ? construction : undefined}
 				{roofType ? roofType : undefined}
