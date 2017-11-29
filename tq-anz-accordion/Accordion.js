@@ -48,7 +48,7 @@ export default class Accordion extends Component {
               <Collapse
                 maxHeight = {maxHeight}
                 collapse = {this.state.activeItem !== index}
-                content = {contentRender(item[contentName])}
+                content = {item[contentName]}
                 duration = {duration}
                 backgroundColor = {backgroundColor}
               />

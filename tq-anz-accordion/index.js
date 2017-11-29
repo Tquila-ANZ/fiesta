@@ -2,24 +2,6 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Accordion from './Accordion';
 
-// Possible Subitems for an accordion
-// Customer Detials
-import FiestaCustomerDetails from '../tq-anz-customer-details';
-// Address
-import FiestaAddress from '../tq-anz-address';
-// PROPERTY SERVICES
-import FiestaCause from '../tq-anz-property-services/tq-anz-cause';
-import FiestaBuildingHeight from '../tq-anz-property-services/tq-anz-building-height';
-import FiestaRoomNumber from '../tq-anz-property-services/tq-anz-room-number';
-import FiestaConstruction from '../tq-anz-property-services/tq-anz-construction';
-import FiestaRoofType from '../tq-anz-property-services/tq-anz-roof-types';
-import FiestaSubFloor from '../tq-anz-property-services/tq-anz-sub-floor';
-import FiestaBuildingAge from '../tq-anz-property-services/tq-anz-building-age';
-import FiestaSafeRepairWorkingHeights from '../tq-anz-property-services/tq-anz-safe-repair-working-heights';
-import FiestaPotentialRisks from '../tq-anz-property-services/tq-anz-potential-risks';
-import FiestaProceeding from '../tq-anz-property-services/tq-anz-proceeding';
-import FiestaNotProceeding from '../tq-anz-property-services/tq-anz-not-proceeding';
-
 class TqanzAccordion extends Component {
 	constructor(props) {
 		super(props);
@@ -33,60 +15,7 @@ class TqanzAccordion extends Component {
 			</View>
 		);
 	}
-	renderContent(info) {
-    // Customer Address
-    let customerDetails = undefined;
-    // Address
-    let address = undefined;
-		// For Report Order Details
-		let cause = undefined;
-		let buildingHeight = undefined;
-		let roomNumber = undefined;
-		let construction = undefined;
-		let roofType = undefined;
-		let subFloor = undefined;
-		let buildingAge = undefined;
-		let safeRepairWorkingHeights = undefined;
-		let potentialRisks = undefined;
-		let proceeding = undefined;
-    let notProcessing = undefined;
-    
-    if(info === 'customerdetails') {
-      customerDetails = <FiestaCustomerDetails />
-    } else if (info === 'address') {
-      address = <FiestaAddress />
-    } else if (info === 'reportorderdetails') {
-			cause = <FiestaCause />;
-			buildingHeight = <FiestaBuildingHeight />;
-			roomNumber = <FiestaRoomNumber />;
-			construction = <FiestaConstruction />;
-			roofType = <FiestaRoofType />;
-			subFloor = <FiestaSubFloor />;
-			buildingAge = <FiestaBuildingAge />;
-			safeRepairWorkingHeights = <FiestaSafeRepairWorkingHeights />;
-			potentialRisks = <FiestaPotentialRisks />;
-			proceeding = <FiestaProceeding />;
-			notProcessing = <FiestaNotProceeding />;
-		}
 
-		return (
-			<View style={styles.content}>
-        {customerDetails ? customerDetails : undefined}
-        {address ? address : undefined}
-				{cause ? cause : undefined}
-				{buildingHeight ? buildingHeight : undefined}
-				{roomNumber ? roomNumber : undefined}
-				{construction ? construction : undefined}
-				{roofType ? roofType : undefined}
-				{subFloor ? subFloor : undefined}
-				{buildingAge ? buildingAge : undefined}
-				{safeRepairWorkingHeights ? safeRepairWorkingHeights : undefined}
-				{potentialRisks ? potentialRisks : undefined}
-				{proceeding ? proceeding : undefined}
-				{notProcessing ? notProcessing : undefined}
-			</View>
-		);
-	}
 	render() {
 		return (
 			<View style={styles.example}>
