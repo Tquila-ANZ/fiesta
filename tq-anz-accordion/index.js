@@ -71,6 +71,8 @@ class TqanzAccordion extends Component {
 
 		return (
 			<View style={styles.content}>
+        {customerDetails ? customerDetails : undefined}
+        {address ? address : undefined}
 				{cause ? cause : undefined}
 				{buildingHeight ? buildingHeight : undefined}
 				{roomNumber ? roomNumber : undefined}
