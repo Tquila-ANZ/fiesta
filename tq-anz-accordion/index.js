@@ -3,6 +3,10 @@ import { StyleSheet, View, Text } from 'react-native';
 import Accordion from './Accordion';
 
 // Possible Subitems for an accordion
+// Customer Detials
+import FiestaCustomerDetails from '../tq-anz-customer-details';
+// Address
+import FiestaAddress from '../tq-anz-address';
 // PROPERTY SERVICES
 import FiestaCause from '../tq-anz-property-services/tq-anz-cause';
 import FiestaBuildingHeight from '../tq-anz-property-services/tq-anz-building-height';
@@ -30,10 +34,11 @@ class TqanzAccordion extends Component {
 		);
 	}
 	renderContent(info) {
-		// ------------------------------
+    // Customer Address
+    let customerDetails = undefined;
+    // Address
+    let address = undefined;
 		// For Report Order Details
-		// ------------------------------
-
 		let cause = undefined;
 		let buildingHeight = undefined;
 		let roomNumber = undefined;
@@ -44,9 +49,13 @@ class TqanzAccordion extends Component {
 		let safeRepairWorkingHeights = undefined;
 		let potentialRisks = undefined;
 		let proceeding = undefined;
-		let notProcessing = undefined;
-
-		if (info === 'reportorderdetails') {
+    let notProcessing = undefined;
+    
+    if(info === 'customerdetails') {
+      customerDetails = <FiestaCustomerDetails />
+    } else if (info === 'address') {
+      address = <FiestaAddress />
+    } else if (info === 'reportorderdetails') {
 			cause = <FiestaCause />;
 			buildingHeight = <FiestaBuildingHeight />;
 			roomNumber = <FiestaRoomNumber />;
@@ -59,8 +68,6 @@ class TqanzAccordion extends Component {
 			proceeding = <FiestaProceeding />;
 			notProcessing = <FiestaNotProceeding />;
 		}
-
-		// ------------------------------
 
 		return (
 			<View style={styles.content}>

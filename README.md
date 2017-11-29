@@ -12,6 +12,15 @@
 </p>
 
 ---
+## Tquila ANZ Accordion
+```javascript
+import FiestaAccordion from 'fiesta/tq-anz-accordion';
+```
+### This is the main component that allows the render of child items. This is in early stages for version 1.x.x this is the most important structure to any application.
+#### Dependencies: React Native, Salesforce, Fiesta
+---
+
+---
 ## Tquila ANZ Button
 ```javascript
 import FiestaTqBtn from 'fiesta/tq-anz-button';
