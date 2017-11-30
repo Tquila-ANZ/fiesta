@@ -1,67 +1,32 @@
 import React, { Component } from 'react';
-import { View, Text, Picker, TouchableWithoutFeedback } from 'react-native';
-import { RadioButtons } from 'react-native-radio-buttons';
-import { SegmentedControls } from 'react-native-radio-buttons';
-//import styles from './styles';
+import { View, Text, styles } from 'react-native';
+import FiestaPicker from '../../tq-anz-picker';
 
 class TqanzPropertyServicesBuildingHeight extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { selectedOption: 'none' };
+		this.state = { selectedOption: 'none', options: [], title: '' };
 	}
 	render() {
-		const options = ['Option 1', 'Option 2'];
+		const options = ['Single', 'Double', 'Triple', 'Split', 'High Set'];
 
-		function setSelectedOption(selectedOption) {
-			this.setState({
-				selectedOption
-			});
-		}
-
-		function renderOption(option, selected, onSelect, index) {
-			const style = selected ? { fontWeight: 'bold' } : {};
-
-			return (
-				<TouchableWithoutFeedback onPress={onSelect} key={index}>
-					<View>
-						<Text style={style}>
-							{option}
-						</Text>
-					</View>
-				</TouchableWithoutFeedback>
-			);
-		}
-
-		function renderContainer(optionNodes) {
-			return (
-				<View>
-					{optionNodes}
-				</View>
-			);
-		}
 		return (
-			<View style={{ margin: 20 }}>
-				{/* <RadioButtons
-					options={options}
-					onSelection={setSelectedOption.bind(this)}
-					selectedOption={this.state.selectedOption}
-					renderOption={renderOption}
-					renderContainer={renderContainer}
-				/>
-				<Text>
-					Selected option: {this.state.selectedOption || 'none'}
-				</Text> */}
-				<Text>
-					Building Height
-				</Text> 
-				<SegmentedControls
-					options={options}
-					onSelection={setSelectedOption.bind(this)}
-					selectedOption={this.state.selectedOption}
-				/>
+			<View style={styles.container}>
+				<FiestaPicker options={this.props.options} title={this.props.title} />
 			</View>
 		);
 	}
 }
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: 'white',
+		padding: 6
+	},
+	title: {
+		fontWeight: 'bold',
+		fontSize: 14
+	}
+});
 
 export default TqanzPropertyServicesBuildingHeight;
