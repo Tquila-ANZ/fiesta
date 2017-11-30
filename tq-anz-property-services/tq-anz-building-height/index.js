@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, styles } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import FiestaPicker from '../../tq-anz-picker';
 
 class TqanzPropertyServicesBuildingHeight extends Component {
