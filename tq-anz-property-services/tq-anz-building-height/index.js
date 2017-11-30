@@ -23,8 +23,9 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		fontWeight: 'bold',
-		fontSize: 14
-	}
+		fontSize: 18,
+		paddingBottom: 2
+	},
 });
 
 export default TqanzPropertyServicesBuildingHeight;
