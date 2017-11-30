@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Picker, TouchableWithoutFeedback, styles } from 'react-native';
+import { View, Text, Picker, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 import { RadioButtons } from 'react-native-radio-buttons';
 import { SegmentedControls } from 'react-native-radio-buttons';
 
