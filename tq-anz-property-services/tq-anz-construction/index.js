@@ -1,6 +1,6 @@
-import React, { Component, StyleSheet } from 'react';
-import { View, Text } from 'react-native';
-
+import React, { Component } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import FiestaPicker from '../../tq-anz-picker';
 class TqanzPropertyServicesConstruction extends Component {
 	constructor(props) {
 		super(props);
@@ -20,12 +20,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: 'white',
 		padding: 6
-	},
-	title: {
-		fontWeight: 'bold',
-		fontSize: 18,
-		paddingBottom: 2
-	},
+	}
 });
 
 export default TqanzPropertyServicesConstruction;

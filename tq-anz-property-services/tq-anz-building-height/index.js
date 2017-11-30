@@ -20,12 +20,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: 'white',
 		padding: 6
-	},
-	title: {
-		fontWeight: 'bold',
-		fontSize: 18,
-		paddingBottom: 2
-	},
+	}
 });
 
 export default TqanzPropertyServicesBuildingHeight;
