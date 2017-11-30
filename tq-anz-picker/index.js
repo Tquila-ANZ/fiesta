@@ -36,9 +36,9 @@ class TqanzPicker extends Component {
 		}
 		return (
 			<View style={styles.container}>
-				<Text style={styles.title}>{this.state.title}</Text>
+				<Text style={styles.title}>{this.props.title}</Text>
 				<SegmentedControls
-					options={this.state.options}
+					options={this.props.options}
 					onSelection={setSelectedOption.bind(this)}
 					selectedOption={this.state.selectedOption}
 				/>

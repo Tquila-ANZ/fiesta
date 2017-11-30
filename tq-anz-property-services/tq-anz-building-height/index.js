@@ -8,8 +8,6 @@ class TqanzPropertyServicesBuildingHeight extends Component {
 		this.state = { selectedOption: 'none', options: [], title: '' };
 	}
 	render() {
-		const options = ['Single', 'Double', 'Triple', 'Split', 'High Set'];
-
 		return (
 			<View style={styles.container}>
 				<FiestaPicker options={this.props.options} title={this.props.title} />
