@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import FiestaMap from '../tq-anz-map';
 
 class TqanzAddress extends Component {
 	constructor(props) {
@@ -8,6 +9,7 @@ class TqanzAddress extends Component {
 	render() {
 		return (
 			<View>
+				<FiestaMap />
 				<Text>Address</Text>
 			</View>
 		);
