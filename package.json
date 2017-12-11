@@ -1,6 +1,6 @@
 {
   "name": "fiesta",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/Tquila-ANZ/fiesta.git"
@@ -8,7 +8,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm version patch --force | npm publish"
   },
   "author": "tquilamobile@tquilaanz.com",
   "license": "MIT",
