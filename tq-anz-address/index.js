@@ -4,13 +4,14 @@ import FiestaMap from '../tq-anz-map';
 
 class TqanzAddress extends Component {
 	constructor(props) {
-        super(props);
+		super(props);
+		this.state = { address: this.props.address, showMap: true};
 	}
 	render() {
 		return (
 			<View>
 				<FiestaMap />
-				<Text>Address</Text>
+				<Text>{this.props.address}</Text>
 			</View>
 		);
 	}

@@ -5,6 +5,7 @@ import styles from './styles';
 class TqanzCustomerDetails extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {data: this.props.data};
 	}
 	render() {
 		// Based off a object only
