@@ -19,16 +19,12 @@ import FiestaMap from 'fiesta/tq-anz-accordion';
 ### This is the main component for maps, manually need to install google maps and registered a key with Google for iOS and Android.
 #### Dependencies: React Native, react-native-maps please review https://codeburst.io/react-native-google-map-with-react-native-maps-572e3d3eee14
 ---
-
----
 ## Tquila ANZ Accordion
 ```javascript
 import FiestaAccordion from 'fiesta/tq-anz-accordion';
 ```
 ### This is the main component that allows the render of child items. This is in early stages for version 1.x.x this is the most important structure to any application.
 #### Dependencies: React Native, Salesforce, Fiesta
----
-
 ---
 ## Tquila ANZ Button
 ```javascript
