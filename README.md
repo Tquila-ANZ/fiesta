@@ -12,6 +12,15 @@
 </p>
 
 ---
+## Tquila ANZ Map
+```javascript
+import FiestaMap from 'fiesta/tq-anz-accordion';
+```
+### This is the main component for maps, manually need to install google maps and registered a key with Google for iOS and Android.
+#### Dependencies: React Native, react-native-maps
+---
+
+---
 ## Tquila ANZ Accordion
 ```javascript
 import FiestaAccordion from 'fiesta/tq-anz-accordion';
