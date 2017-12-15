@@ -17,7 +17,7 @@
 import FiestaMap from 'fiesta/tq-anz-accordion';
 ```
 ### This is the main component for maps, manually need to install google maps and registered a key with Google for iOS and Android.
-#### Dependencies: React Native, react-native-maps
+#### Dependencies: React Native, react-native-maps please review https://codeburst.io/react-native-google-map-with-react-native-maps-572e3d3eee14
 ---
 
 ---
