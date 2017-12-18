@@ -8,14 +8,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "npm version patch --force | npm publish | git push"
+  },
+  "jest": {
+    "preset": "react-native",
+    "verbose": true
   },
   "author": "tquilamobile@tquilaanz.com",
   "license": "MIT",
   "dependencies": {
+    "jest-react-native": "^18.0.0",
     "react-native-loading-spinner-overlay": "^0.5.2",
     "react-native-maps": "^0.18.0",
     "react-native-radio-buttons": "^1.0.0"
+  },
+  "devDependencies": {
+    "jest": "^21.2.1"
   }
 }
