@@ -27,7 +27,8 @@ const styleTypes = StyleSheet.create({
       height: 70,
       flexDirection: "row",
       justifyContent: "center",
-      alignItems: "center"
+      alignItems: "center",
+      borderRadius:10,
     },
     fullWidthButtonText: {
       fontSize: 24,

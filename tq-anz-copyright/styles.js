@@ -5,7 +5,6 @@ import { StyleSheet } from "react-native";
 const styleTypes = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: "white",
     },
     copyright: {
       justifyContent: 'center',
