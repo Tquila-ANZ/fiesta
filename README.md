@@ -14,7 +14,7 @@ This is Tquila ANZ UI library page, for some of these components they are data d
 ---
 ## Tquila ANZ Map
 ```javascript
-import FiestaMap from 'fiesta/tq-anz-accordion';
+import FiestaMap from 'fiesta/tq-anz-map';
 ```
 This is the main component for maps, manually need to install google maps and registered a key with Google for iOS and Android.
 #### Dependencies: React Native, react-native-maps please review https://codeburst.io/react-native-google-map-with-react-native-maps-572e3d3eee14
