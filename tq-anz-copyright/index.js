@@ -9,12 +9,10 @@ class TqanzCopyright extends Component {
 	}
 	render() {
 		return (
-			<View style={styles.container}>
-				<View style={styles.copyright}>
-					<Text>
-						© Copyright {this.props.name} {getCopyrightYear()} - Version {this.props.version}
-					</Text>
-				</View>
+			<View style={styles.copyright}>
+				<Text>
+					© Copyright {this.props.name} {getCopyrightYear()} - Version {this.props.version}
+				</Text>
 			</View>
 		);
 	}
