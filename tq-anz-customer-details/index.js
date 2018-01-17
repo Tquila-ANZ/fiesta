@@ -17,39 +17,39 @@ class TqanzCustomerDetails extends Component {
     return (
       <View style={styles.inputsContainer}>
         <View style={{ flexDirection: 'row', flex: 1 }}>
-          <View>
+          <View style={{flex: 1}}>
             <Text>First name</Text>
           </View>
-          <View>
-            <Text>{(this.props.data.length>0)?this.props.data['FirstName']:""}</Text>
+          <View style={{flex: 1}}>
+            <Text>{this.props.data['FirstName']}</Text>
           </View>
-          <View>
+          <View style={{flex: 1}}>
             <Text>Surname</Text>
           </View>
-          <View>
-            <Text>{(this.props.data.length>0)?this.props.data['LastName']:""}</Text>
+          <View style={{flex: 1}}>
+            <Text>{this.props.data['LastName']}</Text>
           </View>
         </View>
         <Hr />
         <View style={{ flexDirection: 'row', flex: 1 }}>
-          <View>
+          <View style={{flex: 1}}>
             <Text>Gender</Text>
           </View>
-          <View>
-            <Text>{(this.props.data.length>0)?this.props.data['Gender__c']:""}</Text>
+          <View style={{flex: 1}}>
+            <Text>{this.props.data['Gender__c']}</Text>
           </View>
-          <View>
+          <View style={{flex: 1}}>
             <Text>Date of Birth</Text>
           </View>
-          <View>
-            <Text>{(this.props.data.length>0)?this.props.data['Date_of_Birth__c']:""}</Text>
+          <View style={{flex: 1}}>
+            <Text>{this.props.data['Date_of_Birth__c']}</Text>
           </View>
         </View>
         <Hr />
-        <View>
+        <View style={{flex: 1}}>
           <Text>mobile</Text>
         </View>
-        <View>
+        <View style={{flex: 1}}>
           <Text>{(this.props.data.length>0)?this.props.data['MobilePhone']:""}</Text>
         </View>
       </View>
