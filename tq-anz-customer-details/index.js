@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { Hr } from 'react-native-hr';
+import Hr from 'react-native-hr';
 import styles from './styles';
 
 class TqanzCustomerDetails extends Component {
