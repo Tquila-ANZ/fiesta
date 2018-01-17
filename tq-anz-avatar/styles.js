@@ -35,10 +35,9 @@ const styleTypes = StyleSheet.create({
     },
     avatarContainer: {
       flex: 1,
-      marginLeft: 6,
+      marginLeft: 22,
       marginRight: 6,
       justifyContent: 'center',
-      alignItems: 'center',
     },
     avatar: {
       width: 100,

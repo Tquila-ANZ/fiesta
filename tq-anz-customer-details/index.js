@@ -17,40 +17,30 @@ class TqanzCustomerDetails extends Component {
     return (
       <View style={styles.inputsContainer}>
         <View style={{ flexDirection: 'row', flex: 1 }}>
-          <View style={{flex: 1}}>
-            <Text>First name</Text>
+          <View style={{flex: 1, padding: 18}}>
+            <Text style={{color: this.props.titleColor}}>First name</Text>
+			<Text style={{color: this.props.valueColor}}>{this.props.data['FirstName']}</Text>
           </View>
-          <View style={{flex: 1}}>
-            <Text>{this.props.data['FirstName']}</Text>
-          </View>
-          <View style={{flex: 1}}>
-            <Text>Surname</Text>
-          </View>
-          <View style={{flex: 1}}>
-            <Text>{this.props.data['LastName']}</Text>
+          <View style={{flex: 1, padding: 18}}>
+            <Text style={{color: this.props.titleColor}}>Surname</Text>
+			<Text style={{color: this.props.valueColor}}>{this.props.data['LastName']}</Text>
           </View>
         </View>
         <Hr />
         <View style={{ flexDirection: 'row', flex: 1 }}>
-          <View style={{flex: 1}}>
-            <Text>Gender</Text>
+          <View style={{flex: 1, padding: 18}}>
+            <Text style={{color: this.props.titleColor}}>Gender</Text>
+			<Text style={{color: this.props.valueColor}}>{this.props.data['Gender__c']}</Text>
           </View>
-          <View style={{flex: 1}}>
-            <Text>{this.props.data['Gender__c']}</Text>
-          </View>
-          <View style={{flex: 1}}>
-            <Text>Date of Birth</Text>
-          </View>
-          <View style={{flex: 1}}>
-            <Text>{this.props.data['Date_of_Birth__c']}</Text>
+          <View style={{flex: 1, padding: 18}}>
+            <Text style={{color: this.props.titleColor}}>Date of Birth</Text>
+			<Text style={{color: this.props.valueColor}}>{this.props.data['Date_of_Birth__c']}</Text>
           </View>
         </View>
         <Hr />
-        <View style={{flex: 1}}>
-          <Text>mobile</Text>
-        </View>
-        <View style={{flex: 1}}>
-          <Text>{(this.props.data.length>0)?this.props.data['MobilePhone']:""}</Text>
+        <View style={{flex: 1, padding: 18}}>
+          <Text style={{color: this.props.titleColor}}>mobile</Text>
+          <Text style={{color: this.props.valueColor}}>{(this.props.data.length>0)?this.props.data['MobilePhone']:""}</Text>
         </View>
       </View>
     );
