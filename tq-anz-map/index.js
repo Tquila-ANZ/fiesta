@@ -51,6 +51,7 @@ export default class TqanzMap extends Component {
 	}
 	render() {
 		return (
+			<View>
 			<MapView
 				provider={PROVIDER_GOOGLE}
 				style={styles.container}
@@ -61,6 +62,7 @@ export default class TqanzMap extends Component {
 			>
 				<MapView.Marker coordinate={this.state.region} />
 			</MapView>
+			</View>
 		);
 	}
 }
