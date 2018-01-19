@@ -10,7 +10,7 @@ class TqanzCopyright extends Component {
 	render() {
 		return (
 			<View style={styles.copyright}>
-				<Text>
+				<Text style={{fontSize: 9, color: '#1db1c8'}}>
 					© Copyright {this.props.name} {getCopyrightYear()} - Version {this.props.version}
 				</Text>
 			</View>
