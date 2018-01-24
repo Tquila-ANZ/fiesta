@@ -9,9 +9,11 @@ const LONGITUDE = 0;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 export default class TqanzMap extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
+			long: this.props.long,
+			lat: this.props.lat,
 			region: {
 				latitude: LATITUDE,
 				longitude: LONGITUDE,
@@ -20,13 +22,15 @@ export default class TqanzMap extends Component {
 			}
 		};
 	}
+	//latitude: position.coords.latitude,
+				//		longitude: position.coords.longitude,
 	componentDidMount() {
 		navigator.geolocation.getCurrentPosition(
 			position => {
 				this.setState({
 					region: {
-						latitude: position.coords.latitude,
-						longitude: position.coords.longitude,
+						latitude: this.props.lat,
+						longitude: this.props.long,
 						latitudeDelta: LATITUDE_DELTA,
 						longitudeDelta: LONGITUDE_DELTA
 					}
@@ -38,8 +42,8 @@ export default class TqanzMap extends Component {
 		this.watchID = navigator.geolocation.watchPosition(position => {
 			this.setState({
 				region: {
-					latitude: position.coords.latitude,
-					longitude: position.coords.longitude,
+					latitude: this.props.lat,
+					longitude: this.props.long,
 					latitudeDelta: LATITUDE_DELTA,
 					longitudeDelta: LONGITUDE_DELTA
 				}
