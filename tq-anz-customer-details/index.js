@@ -40,7 +40,7 @@ class TqanzCustomerDetails extends Component {
         <Hr />
         <View style={{flex: 1, padding: 18}}>
           <Text style={{color: this.props.titleColor}}>mobile</Text>
-          <Text style={{color: this.props.valueColor}}>{(this.props.data.length>0)?this.props.data['MobilePhone']:""}</Text>
+          <Text style={{color: this.props.valueColor}}>{this.props.data['MobilePhone']}</Text>
         </View>
       </View>
     );
