@@ -17,9 +17,7 @@ const initialRegion = {
 }
 
 class TqanzMap extends React.Component {
-
-    //map = null;
-
+    
     state = {
         region: {
             latitude: -37.78825,
