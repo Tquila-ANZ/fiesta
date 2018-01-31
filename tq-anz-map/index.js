@@ -1,78 +1,121 @@
-import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, View, Dimensions } from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import React from 'react';
+import {
+    Alert,
+    Platform,
+    StyleSheet
+} from 'react-native';
+import MapView from 'react-native-maps'
 
-let { width, height } = Dimensions.get('window');
-const ASPECT_RATIO = width / height;
-const LATITUDE = 0;
-const LONGITUDE = 0;
-const LATITUDE_DELTA = 0.0922;
-const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
-export default class TqanzMap extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            long: this.props.long,
-            lat: this.props.lat,
-            region: {
-                latitude: LATITUDE,
-                longitude: LONGITUDE,
-                latitudeDelta: LATITUDE_DELTA,
-                longitudeDelta: LONGITUDE_DELTA
+const LATITUDE_DELTA = 0.01;
+const LONGITUDE_DELTA = 0.01;
+
+const initialRegion = {
+    latitude: -37.78825,
+    longitude: -122.4324,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+}
+
+class TqanzMap extends React.Component {
+
+    //map = null;
+
+    state = {
+        region: {
+            latitude: -37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+        },
+        ready: true,
+        filteredMarkers: []
+    };
+
+    setRegion(region, mapper) {
+        if(this.state.ready) {
+            if(this.props.lat !== null && this.props.long !== null){
+                region.latitude = this.props.lat;
+                region.longitude = this.props.long;
             }
-        };
+
+            setTimeout(() => mapper.animateToRegion(region), 5);
+
+        }
+        this.setState({ region });
     }
-    //latitude: position.coords.latitude,
-    //		longitude: position.coords.longitude,
+
     componentDidMount() {
-        navigator.geolocation.getCurrentPosition(
-            position => {
-                this.setState({
-                    region: {
-                        latitude: this.props.lat,
-                        longitude: this.props.long,
+        console.log('Component did mount');
+        this.getCurrentPosition();
+    }
+
+    getCurrentPosition() {
+        try {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const region = {
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude,
                         latitudeDelta: LATITUDE_DELTA,
-                        longitudeDelta: LONGITUDE_DELTA
-                    }
-                });
-            },
-            error => console.log(error.message),
-            { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-        );
-        this.watchID = navigator.geolocation.watchPosition(position => {
-            this.setState({
-                region: {
-                    latitude: this.props.lat,
-                    longitude: this.props.long,
-                    latitudeDelta: LATITUDE_DELTA,
-                    longitudeDelta: LONGITUDE_DELTA
+                        longitudeDelta: LONGITUDE_DELTA,
+                    };
+                    this.setRegion(region, this.map);
+                },
+                (error) => {
+                    //TODO: better design
                 }
-            });
-        });
-    }
-    componentWillUnmount() {
-        navigator.geolocation.clearWatch(this.watchID);
-    }
+            );
+        } catch(e) {
+            alert(e.message || "");
+        }
+    };
+
+    onMapReady = (e) => {
+        if(!this.state.ready) {
+            this.setState({ready: true});
+        }
+    };
+
+    onRegionChange = (region) => {
+        console.log('onRegionChange', region);
+    };
+
+    onRegionChangeComplete = (region) => {
+        console.log('onRegionChangeComplete', region);
+    };
+
     render() {
+
+        const { region } = this.state;
+        const { children, renderMarker, markers } = this.props;
+
         return (
-            <View style={{borderRadius: 10, top: 0, left: 0, right: 0, bottom: -25}}>
-                <MapView
-                    provider={PROVIDER_GOOGLE}
-                    style={styles.container}
-                    showsUserLocation={true}
-                    region={this.state.region}
-                    onRegionChange={region => this.setState({ region })}
-                    onRegionChangeComplete={region => this.setState({ region })}
-                >
-                    <MapView.Marker coordinate={this.state.region} />
-                </MapView>
-            </View>
+            <MapView
+                showsUserLocation
+                ref={ map => { this.map = map }}
+                data={markers}
+                initialRegion={initialRegion}
+                renderMarker={renderMarker}
+                onMapReady={this.onMapReady}
+                showsMyLocationButton={false}
+                onRegionChange={this.onRegionChange}
+                onRegionChangeComplete={this.onRegionChangeComplete}
+                style={styles.container}
+                textStyle={{ color: '#bc8b00' }}
+                containerStyle={{backgroundColor: 'white', borderColor: '#BC8B00'}}>
+
+                <MapView.Marker coordinate={this.state.region} />
+
+            </MapView>
         );
     }
 }
+
 const styles = StyleSheet.create({
     container: {
         height: '120%',
         width: '100%'
     }
 });
+
+export default TqanzMap;
