@@ -19,7 +19,10 @@
   "license": "MIT",
   "dependencies": {
     "jest-react-native": "^18.0.0",
+    "react-native-elements": "^0.19.0",
+    "react-native-fetch-blob": "^0.10.8",
     "react-native-hr": "^1.1.4",
+    "react-native-image-picker": "^0.26.7",
     "react-native-loading-spinner-overlay": "^0.5.2",
     "react-native-maps": "^0.18.0",
     "react-native-radio-buttons": "^1.0.0"
