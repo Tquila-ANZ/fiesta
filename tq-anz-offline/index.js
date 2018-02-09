@@ -6,9 +6,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { smartsync } from 'react-native-force';
+import { smartstore, smartsync } from 'react-native-force';
 export default class TqanzOffline {
     constructor() {
+    }
+    init(soupName, indexSpecs, successCallback, errorCallback) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return smartstore.registerSoup(soupName, indexSpecs, successCallback, errorCallback);
+        });
+    }
+    soupExists(soupName, successCallback, errorCallback) {
+        return __awaiter(this, void 0, void 0, function* () {
+            smartstore.soupExists(soupName, successCallback, errorCallback);
+        });
     }
     syncDown(callback) {
         return __awaiter(this, void 0, void 0, function* () {

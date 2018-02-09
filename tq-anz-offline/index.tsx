@@ -1,7 +1,15 @@
-import {smartsync} from 'react-native-force';
+import {smartstore, smartsync} from 'react-native-force';
 
 export default class TqanzOffline {
     constructor() {
+    }
+
+    public async init(soupName, indexSpecs, successCallback, errorCallback) {
+        return smartstore.registerSoup(soupName, indexSpecs, successCallback, errorCallback);
+    }
+
+    public async soupExists(soupName, successCallback, errorCallback) {
+        smartstore.soupExists(soupName, successCallback, errorCallback);
     }
 
     public async syncDown(callback): Promise<Object> {
