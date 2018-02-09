@@ -9,10 +9,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "npm version patch --force | npm publish | git push",
+    "build": "npm run clean && npm run tsc --",
     "tsc": "tsc",
     "clean": "rimraf artifacts",
-    "build": "npm run clean && npm run tsc --"
+    "buildNPM": "npm version patch --force | npm publish | git push"
   },
   "jest": {
     "preset": "react-native",
@@ -32,7 +32,8 @@
     "react-native-loading-spinner-overlay": "^0.5.2",
     "react-native-maps": "^0.18.0",
     "react-native-radio-buttons": "^1.0.0",
-    "react-native-sortable-list": "0.0.20"
+    "react-native-sortable-list": "0.0.20",
+    "react-native-force": "git+https://github.com/forcedotcom/SalesforceMobileSDK-ReactNative.git#v5.3.0"
   },
   "devDependencies": {
     "@types/jest": "^22.1.1",
