@@ -1,6 +1,6 @@
 {
   "name": "fiesta",
-  "version": "1.5.37",
+  "version": "1.5.38",
   "repository": {
     "type": "git",
     "url": "https://github.com/Tquila-ANZ/fiesta.git"
@@ -12,7 +12,7 @@
     "build": "npm run clean && npm run tsc --",
     "tsc": "tsc",
     "clean": "rimraf artifacts",
-    "buildNPM": "npm version patch --force | npm publish | git push"
+    "buildNPM": "npm run build && npm version patch --force && npm publish && git push"
   },
   "jest": {
     "preset": "react-native",
