@@ -23,6 +23,18 @@ For Android you need to add permission in the Java.
   <img width="633" height="345" src="https://raw.githubusercontent.com/Tquila-ANZ/fiesta/master/assets/AddPermission.png">
 </p>
 
+For iOS you need to add permission to plist.
+  <key>NSLocationUsageDescription</key>
+  <string>My description about why I need this capability</string>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>My description about why I need this capability</string>
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>My description about why I need this capability</string>
+  
+  Review this article for installion:
+  https://github.com/react-community/react-native-maps/blob/master/docs/installation.md
+
+
 #### Dependencies: React Native, react-native-maps please review https://codeburst.io/react-native-google-map-with-react-native-maps-572e3d3eee14
 ---
 ## Tquila ANZ Accordion
