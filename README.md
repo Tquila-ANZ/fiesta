@@ -39,6 +39,17 @@ For iOS you need to add permission to plist.
 
 #### Dependencies: React Native, react-native-maps please review https://codeburst.io/react-native-google-map-with-react-native-maps-572e3d3eee14
 ---
+## Tquila ANZ Offline
+```javascript
+import FiestaTqOffline from 'fiesta/tq-anz-offline';
+
+<p align="center">
+  <img width="633" height="345" src="https://raw.githubusercontent.com/Tquila-ANZ/fiesta/master/assets/Offline_SmartStore_Figure1.jpg">
+  <img width="633" height="345" src="https://raw.githubusercontent.com/Tquila-ANZ/fiesta/master/assets/Offline_SmartStore_Figure2.jpg">
+</p>
+```
+#### Dependencies: React Native, Salesforce
+---
 ## Tquila ANZ Accordion
 ```javascript
 import FiestaAccordion from 'fiesta/tq-anz-accordion';
