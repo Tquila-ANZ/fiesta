@@ -24,12 +24,14 @@ For Android you need to add permission in the Java.
 </p>
 
 For iOS you need to add permission to plist.
-  ```<key>NSLocationUsageDescription</key>
+  ```xml
+  <key>NSLocationUsageDescription</key>
   <string>My description about why I need this capability</string>
   <key>NSLocationAlwaysUsageDescription</key>
   <string>My description about why I need this capability</string>
   <key>NSLocationWhenInUseUsageDescription</key>
-  <string>My description about why I need this capability</string>```
+  <string>My description about why I need this capability</string>
+```
   
   Review this article for installion:
   https://github.com/react-community/react-native-maps/blob/master/docs/installation.md
