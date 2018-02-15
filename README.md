@@ -7,6 +7,17 @@
 
 This is Tquila ANZ UI library page, for some of these components they are data driven from Salesforce and there are some assumptions that will considered.
 
+Fiesta has both es6 Javascript and you can also implement Typescript.
+
+Some important items in package are under scripts, note for building Typescript:
+```xml
+    "test": "jest",
+    "build": "npm run clean && npm run tsc --",
+    "tsc": "tsc",
+    "clean": "rimraf artifacts",
+    "buildNPM": "npm run build && npm version patch --force && npm publish && git push"
+```
+
 <p align="center">
   <img width="633" height="345" src="https://raw.githubusercontent.com/Tquila-ANZ/fiesta/master/assets/fiestaflow2.png">
 </p>

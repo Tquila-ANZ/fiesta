@@ -1,37 +1,34 @@
 import React, { Component } from "react";
-import { Button, View, TouchableHighlight, Text } from "react-native";
-import {RadioGroup, RadioButton} from 'react-native-flexi-radio-button'
-
-class TqanzRadioButton extends Component {
-    onSelect(index, value){
-        this.setState({
-            text: `Selected index: ${index} , value: ${value}`
-        })
-    }
-
-    render(){
-        return(
-            <View>
-
-                <RadioGroup
-                    onSelect = {(index, value) => this.onSelect(index, value)}
-                >
-                    <RadioButton value={'item1'} >
-                        <Text>This is item #1</Text>
-                    </RadioButton>
-
-                    <RadioButton value={'item2'}>
-                        <Text>This is item #2</Text>
-                    </RadioButton>
-
-                    <RadioButton value={'item3'}>
-                        <Text>This is item #3</Text>
-                    </RadioButton>
-                </RadioGroup>
-                
-            </View>
-        )
+import { View, Text } from "react-native";
+import { RadioGroup, RadioButton } from 'react-native-flexi-radio-button';
+class RadioGroupItem {
+    constructor(value, text) {
+        this.value = value;
+        this.text = text;
     }
 }
-
+class TqanzRadioButton extends Component {
+    constructor(props) {
+        super(props);
+        this.renderGroup = (a) => {
+            a.push(new RadioGroup(1, "Single"));
+            a.push(new RadioGroup(1, "Double"));
+            return a.map(info => (React.createElement(RadioButton, { value: info.value },
+                React.createElement(Text, null, info.text))));
+        };
+        this.state = ({ radios: this.props.radios });
+    }
+    onSelect(index, value) {
+        console.log(index);
+        console.log(value);
+        // this.setState({
+        //     text: `Selected index: ${index} , value: ${value}`
+        // })
+    }
+    render() {
+        return (React.createElement(View, null,
+            React.createElement(RadioGroup, { onSelect: (index, value) => this.onSelect(index, value) }, this.renderGroup(this.props.radios))));
+    }
+}
 export default TqanzRadioButton;
+//# sourceMappingURL=index.js.map
