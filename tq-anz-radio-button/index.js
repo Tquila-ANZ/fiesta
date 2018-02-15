@@ -36,4 +36,4 @@ class TqanzRadioButton extends Component {
     }
 }
 
-export default TqanzButton;
+export default TqanzRadioButton;
