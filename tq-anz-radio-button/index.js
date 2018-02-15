@@ -28,9 +28,7 @@ class TqanzRadioButton extends Component {
                         <Text>This is item #3</Text>
                     </RadioButton>
                 </RadioGroup>
-
-                <Text>{this.state.text}</Text>
-
+                
             </View>
         )
     }
