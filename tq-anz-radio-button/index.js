@@ -13,8 +13,9 @@ class TqanzRadioButton extends Component {
         this.renderGroup = (a) => {
             if (a === undefined)
                 a = new Array();
-            a.push(new RadioGroupItem(1, "Single"));
-            a.push(new RadioGroupItem(1, "Double"));
+            // FOR TESTING
+            // a.push(new RadioGroupItem(1, "Single"));
+            // a.push(new RadioGroupItem(1, "Double"));
             return a.map(info => (React.createElement(RadioButton, { value: info.value },
                 React.createElement(Text, null, info.text))));
         };
