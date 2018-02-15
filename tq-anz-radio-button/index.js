@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Button, View, TouchableHighlight, Text } from "react-native";
 import {RadioGroup, RadioButton} from 'react-native-flexi-radio-button'
-import styles from './styles';
 
 class TqanzRadioButton extends Component {
     onSelect(index, value){
@@ -30,7 +29,7 @@ class TqanzRadioButton extends Component {
                     </RadioButton>
                 </RadioGroup>
 
-                <Text style={styles.text}>{this.state.text}</Text>
+                <Text>{this.state.text}</Text>
 
             </View>
         )
