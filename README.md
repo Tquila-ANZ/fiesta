@@ -18,6 +18,7 @@ Some important items in package are under scripts, note for building Typescript:
     "buildNPM": "npm run build && npm version patch --force && npm publish && git push"
 ```
 To run Typescript: npm build
+
 To publish to npm use: buildNPM
 
 <p align="center">
