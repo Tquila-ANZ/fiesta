@@ -11,7 +11,7 @@ class TqanzRadioButton extends Component {
 
     render(){
         return(
-            <View style={styles.container}>
+            <View>
 
                 <RadioGroup
                     onSelect = {(index, value) => this.onSelect(index, value)}
