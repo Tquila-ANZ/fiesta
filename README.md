@@ -17,6 +17,8 @@ Some important items in package are under scripts, note for building Typescript:
     "clean": "rimraf artifacts",
     "buildNPM": "npm run build && npm version patch --force && npm publish && git push"
 ```
+To run Typescript: npm build
+To publish to npm use: buildNPM
 
 <p align="center">
   <img width="633" height="345" src="https://raw.githubusercontent.com/Tquila-ANZ/fiesta/master/assets/fiestaflow2.png">
@@ -53,12 +55,12 @@ For iOS you need to add permission to plist.
 ## Tquila ANZ Offline
 ```javascript
 import FiestaTqOffline from 'fiesta/tq-anz-offline';
-
+```
 <p align="center">
   <img width="633" height="345" src="https://raw.githubusercontent.com/Tquila-ANZ/fiesta/master/assets/Offline_SmartStore_Figure1.jpg">
   <img width="633" height="345" src="https://raw.githubusercontent.com/Tquila-ANZ/fiesta/master/assets/Offline_SmartStore_Figure2.jpg">
 </p>
-```
+
 #### Dependencies: React Native, Salesforce
 ---
 ## Tquila ANZ Accordion
