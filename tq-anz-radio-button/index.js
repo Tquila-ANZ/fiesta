@@ -16,8 +16,8 @@ class TqanzRadioButton extends Component {
             // FOR TESTING
             // a.push(new RadioGroupItem(1, "Single"));
             // a.push(new RadioGroupItem(1, "Double"));
-            return a.map(info => (React.createElement(RadioButton, { value: info.value },
-                React.createElement(Text, null, info.text))));
+            return a.map(info => (React.createElement(RadioButton, { key: info.value, value: info.value },
+                React.createElement(Text, { key: info.text }, info.text))));
         };
         this.state = ({ radios: this.props.radios });
     }
