@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 import {View} from 'react-native';
 import DropDown from 'react-native-dropdown';
 
@@ -14,7 +14,7 @@ interface props {
 interface state {
 }
 
-export default class TqanzDropDown extends Component<props, state> {
+export default class TqanzDropDown extends React.Component<props, state> {
     constructor(props) {
         super(props);
 
@@ -28,20 +28,7 @@ export default class TqanzDropDown extends Component<props, state> {
         updatePosition(this.refs['SELECT1']);
     }
 
-    _getOptionList() {
-        return this.refs['OPTIONLIST'];
-    }
-
-    _usa(state) {
-        this.setState({
-            ...this.state,
-            usa: state
-        });
-    }
-
-    _canada(province) {
-
-
+    onChangeHandler(province) {
         this.setState({
             ...this.state,
             canada: province
@@ -50,13 +37,12 @@ export default class TqanzDropDown extends Component<props, state> {
 
     render() {
         return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                 <Select
                     width={250}
                     ref="SELECT1"
-                    optionListRef={this._getOptionList.bind(this)}
-                    defaultValue="Select a Province in Canada ..."
-                    onSelect={this._canada.bind(this)}>
+                    defaultValue="Select ..."
+                    onSelect={this.onChangeHandler.bind(this)}>
                     <Option>Alberta</Option>
                     <Option>British Columbia</Option>
                     <Option>Manitoba</Option>

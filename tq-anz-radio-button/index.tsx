@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import * as React from "react";
 import { View, Text } from "react-native";
 import {RadioGroup, RadioButton} from 'react-native-flexi-radio-button';
 
@@ -22,7 +22,7 @@ class RadioGroupItem implements IRadioGroupItem {
     ){}
 }
 
-class TqanzRadioButton extends Component<props, state> {
+class TqanzRadioButton extends React.Component<props, state> {
     constructor(props) {
         super(props);
         this.state = ({ radios: this.props.radios});
