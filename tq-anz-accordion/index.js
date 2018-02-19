@@ -5,11 +5,15 @@ import Accordion from './Accordion';
 class TqanzAccordion extends Component {
 	constructor(props) {
 		super(props);
+    this.styles = {
+      ...defaultStyles,
+      ...props.styles
+		};
 	}
 	renderHeader(info) {
 		return (
-			<View style={styles.header}>
-				<Text style={styles.headerText}>
+			<View style={this.styles.tq_accordion_header}>
+				<Text style={this.styles.tq_accordion_header_text}>
 					{info}
 				</Text>
 			</View>
@@ -17,10 +21,11 @@ class TqanzAccordion extends Component {
 	}
 
 	render() {
+    const styles = this.styles;
 		return (
-			<View style={styles.example}>
+			<View style={styles.tq_accordion_container}>
 				<Accordion
-					style={styles.accordion}
+					styles={styles}
 					items={this.props.items}
 					headerRender={this.renderHeader}
 					contentRender={this.renderContent}
@@ -35,29 +40,20 @@ class TqanzAccordion extends Component {
 	}
 }
 
-const styles = StyleSheet.create({
-	example: {
+const defaultStyles = {
+	tq_accordion_container: {
 		flex: 1,
 		justifyContent: 'center',
 		backgroundColor: '#f1f1f1'
 	},
-	accordion: {
-		borderTopWidth: 1,
-		borderTopColor: '#666'
-	},
-	content: {
-		padding: 10,
-		backgroundColor: '#fff'
-	},
-	header: {
+	tq_accordion_header: {
 		padding: 10,
     backgroundColor: '#fff',
 	},
-	headerText: {
+	tq_accordion_header_text: {
     fontSize: 20,
     fontWeight: 'bold',
-  },
-	contentText: {}
-});
+  }
+};
 
 export default TqanzAccordion;

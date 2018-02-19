@@ -13,6 +13,10 @@ export default class Accordion extends Component {
     this.state = {
       activeItem: undefined
     };
+    this.styles = {
+      ...defaultStyles,
+      ...props.styles
+    };
   }
 
   _toggle(index) {
@@ -34,18 +38,20 @@ export default class Accordion extends Component {
       duration,
       backgroundColor
     } = this.props;
+    const styles = this.styles;
     return (
-      <View style={styles.container}>
+      <View style={styles.accordion_container}>
         {items.map((item, index) => {
           return (
             <View key={index}>
               <TouchableHighlight
               underlayColor={'rgba(0,0,0,0.2)'}
-              style={[styles.header, index === (items.length - 1) && styles.headerBorder]}
+              style={[styles.accordion_header, index === (items.length - 1) && styles.accordion_header_border]}
               onPress={() => {this._toggle(index);}}>
                 {headerRender(item[headerName])}
               </TouchableHighlight>
               <Collapse
+                styles={styles}
                 maxHeight = {maxHeight}
                 collapse = {this.state.activeItem !== index}
                 content = {item[contentName]}
@@ -61,24 +67,18 @@ export default class Accordion extends Component {
 }
 
 
-const styles = StyleSheet.create({
-  container: {
+const defaultStyles = {
+  accordion_container: {
     flex: 1
   },
-  header: {
+  accordion_header: {
     borderTopWidth: 1,
     borderColor: '#eee'
   },
-  headerBorder: {
+  accordion_header_border: {
     borderBottomWidth: 1
-  },
-  collapseContainer: {
-    paddingTop: 0
-  },
-  collapseItem: {
-    paddingBottom: 0
   }
-});
+};
 
 Accordion.defaultProps = {
   items: [],

@@ -51,7 +51,7 @@ export default class Collapse extends Component {
       this.handleHeight();
     }
     return (
-      <Animated.View style={[styles.collapseContainer, this.props.collapse && styles.collapseItem, this.contentInit && {height: this.state.height}, this.props.backgroundColor && {backgroundColor: this.props.backgroundColor}]}>
+      <Animated.View style={[styles.collapse_container, this.props.collapse && styles.collapse_item, this.contentInit && {height: this.state.height}, this.props.backgroundColor && {backgroundColor: this.props.backgroundColor}]}>
         <ScrollView onLayout={(event)=>{this.getContentHeight(event);}}>
           {this.props.content}
         </ScrollView>
@@ -61,13 +61,10 @@ export default class Collapse extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  collapseContainer: {
+  collapse_container: {
     paddingTop: 0
   },
-  collapseItem: {
+  collapse_item: {
     paddingBottom: 0
   }
 });
