@@ -13,6 +13,7 @@ interface props {
 
 interface state {
   radios: Array<RadioGroup>;
+  styles: any;
 }
 
 class RadioGroupItem implements IRadioGroupItem {
@@ -23,10 +24,12 @@ class TqanzRadioButton extends React.Component<props, state> {
   constructor(props) {
     super(props);
 
-    this.state = { radios: props.radios };
-    this.styles = {
-      ...defaultStyles,
-      ...props.styles
+    this.state = {
+      radios: props.radios,
+      styles: {
+        ...defaultStyles,
+        ...props.styles
+      }
     };
   }
   onSelect(index, value) {
@@ -48,9 +51,9 @@ class TqanzRadioButton extends React.Component<props, state> {
       <RadioButton
         key={info.value}
         value={info.value}
-        style={this.styles.radio_button}
+        style={this.state.styles.radio_button}
       >
-        <Text key={info.text} style={this.styles.radio_text}>
+        <Text key={info.text} style={this.state.styles.radio_text}>
           {info.text}
         </Text>
       </RadioButton>
@@ -58,14 +61,14 @@ class TqanzRadioButton extends React.Component<props, state> {
   };
 
   render() {
-    const styles = this.styles;
+    const styles = this.state.styles;
     return (
       <View>
         <RadioGroup
           onSelect={(index, value) => this.onSelect(index, value)}
           style={styles.radio_group}
         >
-          {this.renderGroup(this.props.radios).bind(this)}
+          {this.renderGroup(this.props.radios)}
         </RadioGroup>
       </View>
     );

@@ -1,37 +1,68 @@
 import * as React from "react";
 import { View, Text } from "react-native";
-import { RadioGroup, RadioButton } from 'react-native-flexi-radio-button';
+import { RadioGroup, RadioButton } from "react-native-flexi-radio-button";
 class RadioGroupItem {
-    constructor(value, text) {
-        this.value = value;
-        this.text = text;
-    }
+  constructor(value, text) {
+    this.value = value;
+    this.text = text;
+  }
 }
 class TqanzRadioButton extends React.Component {
-    constructor(props) {
-        super(props);
-        this.renderGroup = (a) => {
-            if (a === undefined)
-                a = new Array();
-            // FOR TESTING
-            // a.push(new RadioGroupItem(1, "Single"));
-            // a.push(new RadioGroupItem(1, "Double"));
-            return a.map(info => (React.createElement(RadioButton, { key: info.value, value: info.value },
-                React.createElement(Text, { key: info.text }, info.text))));
-        };
-        this.state = ({ radios: this.props.radios });
-    }
-    onSelect(index, value) {
-        console.log(index);
-        console.log(value);
-        // this.setState({
-        //     text: `Selected index: ${index} , value: ${value}`
-        // })
-    }
-    render() {
-        return (React.createElement(View, null,
-            React.createElement(RadioGroup, { onSelect: (index, value) => this.onSelect(index, value) }, this.renderGroup(this.props.radios))));
-    }
+  constructor(props) {
+    super(props);
+    this.renderGroup = a => {
+      if (a === undefined) a = new Array();
+      // FOR TESTING
+      // a.push(new RadioGroupItem(1, "Single"));
+      // a.push(new RadioGroupItem(1, "Double"));
+      return a.map(info =>
+        React.createElement(
+          RadioButton,
+          {
+            key: info.value,
+            value: info.value,
+            style: this.state.styles.radio_button
+          },
+          React.createElement(
+            Text,
+            { key: info.text, style: this.state.styles.radio_text },
+            info.text
+          )
+        )
+      );
+    };
+    this.state = {
+      radios: props.radios,
+      styles: Object.assign({}, defaultStyles, props.styles)
+    };
+  }
+  onSelect(index, value) {
+    console.log(index);
+    console.log(value);
+    // this.setState({
+    //     text: `Selected index: ${index} , value: ${value}`
+    // })
+  }
+  render() {
+    const styles = this.state.styles;
+    return React.createElement(
+      View,
+      null,
+      React.createElement(
+        RadioGroup,
+        {
+          onSelect: (index, value) => this.onSelect(index, value),
+          style: styles.radio_group
+        },
+        this.renderGroup(this.props.radios)
+      )
+    );
+  }
 }
+const defaultStyles = {
+  radio_text: {},
+  radio_group: {},
+  radio_button: {}
+};
 export default TqanzRadioButton;
 //# sourceMappingURL=index.js.map
