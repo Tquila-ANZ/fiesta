@@ -1,15 +1,10 @@
-import React, {PropTypes, Component} from 'react';
-import {
-  StyleSheet,
-  Animated,
-  ScrollView
-} from 'react-native';
-
+import React, { PropTypes, Component } from "react";
+import { StyleSheet, Animated, ScrollView } from "react-native";
 
 export default class Collapse extends Component {
   static defaultProps = {
     height: 0
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -21,11 +16,21 @@ export default class Collapse extends Component {
 
     this.contentInit = false;
     this.contentHeight = 0;
+
+    this.styles = {
+      ...defaultStyles,
+      ...props.styles
+    };
   }
 
   getContentHeight(event) {
     if (!this.contentInit) {
-      this.props.maxHeight ? this.contentHeight = Math.min(this.props.maxHeight, event.nativeEvent.layout.height) : this.contentHeight = event.nativeEvent.layout.height;
+      this.props.maxHeight
+        ? (this.contentHeight = Math.min(
+            this.props.maxHeight,
+            event.nativeEvent.layout.height
+          ))
+        : (this.contentHeight = event.nativeEvent.layout.height);
       this.contentInit = true;
       this.forceUpdate();
     }
@@ -33,26 +38,39 @@ export default class Collapse extends Component {
 
   handleHeight() {
     if (this.props.collapse) {
-      Animated.timing(
-        this.state.height,
-        {toValue: 0,
-          duration: this.props.duration}
-      ).start();
+      Animated.timing(this.state.height, {
+        toValue: 0,
+        duration: this.props.duration
+      }).start();
     } else {
-      Animated.timing(
-        this.state.height,
-        {toValue: this.contentHeight,
-          duration: this.props.duration}
-      ).start();
+      Animated.timing(this.state.height, {
+        toValue: this.contentHeight,
+        duration: this.props.duration
+      }).start();
     }
   }
   render() {
+    const styles = this.styles;
     if (this.contentInit) {
       this.handleHeight();
     }
     return (
-      <Animated.View style={[styles.collapse_container, this.props.collapse && styles.collapse_item, this.contentInit && {height: this.state.height}, this.props.backgroundColor && {backgroundColor: this.props.backgroundColor}]}>
-        <ScrollView onLayout={(event)=>{this.getContentHeight(event);}}>
+      <Animated.View
+        style={[
+          styles.collapse_container,
+          this.props.collapse && styles.collapse_item,
+          this.contentInit && { height: this.state.height },
+          this.props.backgroundColor && {
+            backgroundColor: this.props.backgroundColor
+          }
+        ]}
+      >
+        <ScrollView
+          onLayout={event => {
+            this.getContentHeight(event);
+          }}
+          style={styles.collapse_view}
+        >
           {this.props.content}
         </ScrollView>
       </Animated.View>
@@ -60,11 +78,19 @@ export default class Collapse extends Component {
   }
 }
 
-const styles = StyleSheet.create({
+const defaultStyles = {
   collapse_container: {
     paddingTop: 0
+  },
+  collapse_view: {
+    borderBottomColor: "#1E90FF",
+    borderBottomWidth: 2,
+    borderLeftWidth: StyleSheet.hairlineWidth,
+    borderRightWidth: StyleSheet.hairlineWidth,
+    borderLeftColor: "#1E90FF",
+    borderRightColor: "#1E90FF"
   },
   collapse_item: {
     paddingBottom: 0
   }
-});
+};

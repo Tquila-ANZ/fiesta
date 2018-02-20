@@ -1,11 +1,7 @@
-import React, {PropTypes, Component} from 'react';
-import {
-  StyleSheet,
-  View,
-  TouchableHighlight
-} from 'react-native';
+import React, { PropTypes, Component } from "react";
+import { StyleSheet, View, TouchableHighlight } from "react-native";
 
-import Collapse from './Collapse';
+import Collapse from "./Collapse";
 
 export default class Accordion extends Component {
   constructor(props) {
@@ -22,9 +18,9 @@ export default class Accordion extends Component {
   _toggle(index) {
     let oldItem = this.state.activeItem;
     if (oldItem === index) {
-      this.setState({activeItem: undefined});
+      this.setState({ activeItem: undefined });
     } else {
-      this.setState({activeItem: index});
+      this.setState({ activeItem: index });
     }
   }
   render() {
@@ -43,20 +39,26 @@ export default class Accordion extends Component {
       <View style={styles.accordion_container}>
         {items.map((item, index) => {
           return (
-            <View key={index}>
+            <View key={index} style={styles.accordion_content_container}>
               <TouchableHighlight
-              underlayColor={'rgba(0,0,0,0.2)'}
-              style={[styles.accordion_header, index === (items.length - 1) && styles.accordion_header_border]}
-              onPress={() => {this._toggle(index);}}>
+                underlayColor={"rgba(0,0,0,0.2)"}
+                style={[
+                  styles.accordion_header,
+                  index === items.length - 1 && styles.accordion_header_border
+                ]}
+                onPress={() => {
+                  this._toggle(index);
+                }}
+              >
                 {headerRender(item[headerName])}
               </TouchableHighlight>
               <Collapse
                 styles={styles}
-                maxHeight = {maxHeight}
-                collapse = {this.state.activeItem !== index}
-                content = {item[contentName]}
-                duration = {duration}
-                backgroundColor = {backgroundColor}
+                maxHeight={maxHeight}
+                collapse={this.state.activeItem !== index}
+                content={item[contentName]}
+                duration={duration}
+                backgroundColor={backgroundColor}
               />
             </View>
           );
@@ -66,17 +68,17 @@ export default class Accordion extends Component {
   }
 }
 
-
 const defaultStyles = {
   accordion_container: {
     flex: 1
   },
   accordion_header: {
     borderTopWidth: 1,
-    borderColor: '#eee'
+    borderColor: "#eee"
   },
-  accordion_header_border: {
-    borderBottomWidth: 1
+  accordion_header_border: {},
+  accordion_content_container: {
+    marginBottom: 10
   }
 };
 
