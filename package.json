@@ -40,6 +40,7 @@
     "react-native-invertible-scroll-view": "^1.1.0",
     "react-native-loading-spinner-overlay": "^0.5.2",
     "react-native-maps": "^0.18.0",
+    "react-native-modal-dropdown": "^0.6.1",
     "react-native-radio-buttons": "^1.0.0",
     "react-native-sortable-list": "0.0.20"
   },
