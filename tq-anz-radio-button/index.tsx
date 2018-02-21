@@ -9,11 +9,13 @@ interface IRadioGroupItem {
 
 interface props {
   radios: Array<RadioGroup>;
+  activeColor?: string;
 }
 
 interface state {
   radios: Array<RadioGroup>;
   styles: any;
+  selectedIndex?: number;
 }
 
 class RadioGroupItem implements IRadioGroupItem {
@@ -32,12 +34,21 @@ class TqanzRadioButton extends React.Component<props, state> {
       }
     };
   }
-  onSelect(index, value) {
-    console.log(index);
-    console.log(value);
-    // this.setState({
-    //     text: `Selected index: ${index} , value: ${value}`
-    // })
+  onSelect(index) {
+    this.setState({
+      selectedIndex: index
+    });
+  }
+
+  protected getTextColor(index) {
+    const { selectedIndex } = this.state;
+    if (index === selectedIndex) {
+      return {
+        color: this.props.activeColor
+      };
+    } else {
+      return {};
+    }
   }
 
   protected renderGroup = (a: Array<RadioGroupItem>) => {
@@ -47,13 +58,16 @@ class TqanzRadioButton extends React.Component<props, state> {
     // a.push(new RadioGroupItem(1, "Single"));
     // a.push(new RadioGroupItem(1, "Double"));
 
-    return a.map(info => (
+    return a.map((info, index) => (
       <RadioButton
         key={info.value}
         value={info.value}
         style={this.state.styles.radio_button}
       >
-        <Text key={info.text} style={this.state.styles.radio_text}>
+        <Text
+          key={info.text}
+          style={[this.state.styles.radio_text, this.getTextColor(index)]}
+        >
           {info.text}
         </Text>
       </RadioButton>
@@ -65,7 +79,7 @@ class TqanzRadioButton extends React.Component<props, state> {
     return (
       <View>
         <RadioGroup
-          onSelect={(index, value) => this.onSelect(index, value)}
+          onSelect={index => this.onSelect(index)}
           style={styles.radio_group}
         >
           {this.renderGroup(this.props.radios)}
