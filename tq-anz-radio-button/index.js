@@ -15,7 +15,7 @@ class TqanzRadioButton extends React.Component {
       // FOR TESTING
       // a.push(new RadioGroupItem(1, "Single"));
       // a.push(new RadioGroupItem(1, "Double"));
-      return a.map(info =>
+      return a.map((info, index) =>
         React.createElement(
           RadioButton,
           {
@@ -25,7 +25,10 @@ class TqanzRadioButton extends React.Component {
           },
           React.createElement(
             Text,
-            { key: info.text, style: this.state.styles.radio_text },
+            {
+              key: info.text,
+              style: [this.state.styles.radio_text, this.getTextColor(index)]
+            },
             info.text
           )
         )
@@ -36,12 +39,20 @@ class TqanzRadioButton extends React.Component {
       styles: Object.assign({}, defaultStyles, props.styles)
     };
   }
-  onSelect(index, value) {
-    console.log(index);
-    console.log(value);
-    // this.setState({
-    //     text: `Selected index: ${index} , value: ${value}`
-    // })
+  onSelect(index) {
+    this.setState({
+      selectedIndex: index
+    });
+  }
+  getTextColor(index) {
+    const { selectedIndex } = this.state;
+    if (index === selectedIndex) {
+      return {
+        color: this.props.activeColor
+      };
+    } else {
+      return {};
+    }
   }
   render() {
     const styles = this.state.styles;
@@ -50,10 +61,7 @@ class TqanzRadioButton extends React.Component {
       null,
       React.createElement(
         RadioGroup,
-        {
-          onSelect: (index, value) => this.onSelect(index, value),
-          style: styles.radio_group
-        },
+        { onSelect: index => this.onSelect(index), style: styles.radio_group },
         this.renderGroup(this.props.radios)
       )
     );
