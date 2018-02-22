@@ -62,7 +62,7 @@ https://github.com/react-community/react-native-maps/blob/master/docs/installati
 
 ---
 
-## Tquila ANZ Offline
+## Tquila ANZ Offline = IN PROGRESS
 
 ```javascript
 import FiestaTqOffline from "fiesta/tq-anz-offline";
@@ -79,7 +79,7 @@ Offline is for Salesforce Mobile SDK Soup and Sync
 
 ---
 
-## Tquila ANZ Cache
+## Tquila ANZ Cache = IN PROGRESS
 
 ```javascript
 import FiestaTqCache from "fiesta/tq-anz-cache";
