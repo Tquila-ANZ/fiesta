@@ -63,6 +63,8 @@ class TqanzRadioButton extends React.Component<props, state> {
         key={info.value}
         value={info.value}
         style={this.state.styles.radio_button}
+        activeColor={this.props.activeColor}
+        color={this.props.activeColor}
       >
         <Text
           key={info.text}
