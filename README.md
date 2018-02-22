@@ -139,6 +139,18 @@ Currently supporting StackNavigator from 'react-navigation';
 
 ---
 
+## Tquila ANZ Copyright
+
+```javascript
+import FiestaTqCopyright from "fiesta/tq-anz-copyright";
+```
+
+Props { name, version }
+
+#### Dependencies: React Native
+
+---
+
 # fiesta Unit Tests
 
 Unit Tests are based off Jest, to the run all test suites please do the following:
