@@ -1,6 +1,6 @@
 {
   "name": "fiesta",
-  "version": "1.5.64",
+  "version": "1.5.65",
   "repository": {
     "type": "git",
     "url": "https://github.com/Tquila-ANZ/fiesta.git"
@@ -8,7 +8,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
     "build": "npm run clean && npm run tsc --",
     "tsc": "tsc",
     "clean": "rimraf artifacts",
@@ -18,10 +17,6 @@
   },
   "lint-staged": {
     "*.{js,json,css,md}": ["prettier --write", "git add"]
-  },
-  "jest": {
-    "preset": "react-native",
-    "verbose": true
   },
   "author": "tquilamobile@tquilaanz.com",
   "license": "MIT",
