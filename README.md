@@ -68,12 +68,30 @@ https://github.com/react-community/react-native-maps/blob/master/docs/installati
 import FiestaTqOffline from "fiesta/tq-anz-offline";
 ```
 
+Offline is for Salesforce Mobile SDK Soup and Sync
+
 <p align="center">
   <img width="633" height="345" src="https://raw.githubusercontent.com/Tquila-ANZ/fiesta/master/assets/Offline_SmartStore_Figure1.jpg">
   <img width="633" height="345" src="https://raw.githubusercontent.com/Tquila-ANZ/fiesta/master/assets/Offline_SmartStore_Figure2.jpg">
 </p>
 
 #### Dependencies: React Native, Salesforce
+
+---
+
+## Tquila ANZ Cache
+
+```javascript
+import FiestaTqCache from "fiesta/tq-anz-cache";
+```
+
+Cache is slighly different to fiesta Offline, this is still handled offline rather as a read only cache after setting.
+
+<p align="center">
+  <img width="633" height="345" src="https://raw.githubusercontent.com/Tquila-ANZ/fiesta/master/assets/CacheLayer.png">
+ </p>
+
+#### Dependencies: React Native, Typescript
 
 ---
 
