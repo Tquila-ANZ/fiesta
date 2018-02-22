@@ -88,7 +88,7 @@ import FiestaTqCache from "fiesta/tq-anz-cache";
 Cache is slighly different to fiesta Offline, this is still handled offline rather as a read only cache after setting.
 
 <p align="center">
-  <img width="633" height="345" src="https://raw.githubusercontent.com/Tquila-ANZ/fiesta/master/assets/CacheLayer.png">
+  <img src="https://raw.githubusercontent.com/Tquila-ANZ/fiesta/master/assets/CacheLayer.png">
  </p>
 
 #### Dependencies: React Native, Typescript
