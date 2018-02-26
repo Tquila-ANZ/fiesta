@@ -38,16 +38,33 @@ export default class TqanzCache extends React.Component {
     }
     TqanzCache._instance = this;
   }
+  setHasCacheLayer(value) {
+    this._hasCacheLayer = value;
+  }
+  getHasCacheLayer() {
+    return this._hasCacheLayer;
+  }
   init() {
     return __awaiter(this, void 0, void 0, function*() {
-      if (!this._isOnline && this._hasCacheLayer) return yield "cache layer";
-      else if (!this._isOnline && !this._hasCacheLayer)
-        return yield "Model Popup No Data";
-      else if (this._isOnline && this._hasCacheLayer) {
+      if (!this.isOnline() && this.getHasCacheLayer())
+        return yield "cache layer text";
+      else if (!this.isOnline() && !this.getHasCacheLayer())
+        return yield undefined;
+      else if (this.isOnline() && this.getHasCacheLayer()) {
         // Check date of cache
-        if ("i" == "i") return yield "cache layer";
-        else return yield "Do SOQL, set cache date and set cache"; // do soql,set cache date and set cache
+        if (this.isOnline() && this.getHasCacheLayer())
+          //date < this.props.cacheTime
+          return yield "cache layer text";
+        else {
+          return yield true; // "Do SOQL, set cache date and set cache"; // do soql,set cache date and set cache
+        }
+      } else {
+        return yield false;
       }
+    });
+  }
+  startCacheLayer() {
+    return __awaiter(this, void 0, void 0, function*() {
       return yield AsyncStorage.setItem("@fiesta:date", Date.now().toString());
     });
   }
@@ -80,16 +97,16 @@ export default class TqanzCache extends React.Component {
   isOnline() {
     NetInfo.isConnected.fetch().then(isConnected => {
       if (isConnected) {
-        return (this._isOnline = true);
+        return true;
       }
-      return (this._isOnline = false);
+      return false;
     });
-    return (this._isOnline = false);
+    return false;
   }
   set(key, value, callback) {
     return __awaiter(this, void 0, void 0, function*() {
       try {
-        this._hasCacheLayer = true;
+        this.setHasCacheLayer(true);
         yield AsyncStorage.setItem(key, value, callback);
       } catch (error) {
         // Error saving data
