@@ -10,6 +10,7 @@ interface IRadioGroupItem {
 interface props {
   radios: Array<RadioGroup>;
   activeColor?: string;
+  onSelect?: any;
 }
 
 interface state {
@@ -23,6 +24,10 @@ class RadioGroupItem implements IRadioGroupItem {
 }
 
 class TqanzRadioButton extends React.Component<props, state> {
+  public static defaultProps: Partial<props> = {
+    onSelect: () => {}
+  };
+
   constructor(props) {
     super(props);
 
@@ -34,10 +39,12 @@ class TqanzRadioButton extends React.Component<props, state> {
       }
     };
   }
-  onSelect(index) {
+  onSelect(index, value) {
     this.setState({
       selectedIndex: index
     });
+
+    this.props.onSelect(index, value);
   }
 
   protected getTextColor(index) {
@@ -81,7 +88,7 @@ class TqanzRadioButton extends React.Component<props, state> {
     return (
       <View>
         <RadioGroup
-          onSelect={index => this.onSelect(index)}
+          onSelect={this.onSelect.bind(this)}
           style={styles.radio_group}
         >
           {this.renderGroup(this.props.radios)}

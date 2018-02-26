@@ -41,10 +41,11 @@ class TqanzRadioButton extends React.Component {
       styles: Object.assign({}, defaultStyles, props.styles)
     };
   }
-  onSelect(index) {
+  onSelect(index, value) {
     this.setState({
       selectedIndex: index
     });
+    this.props.onSelect(index, value);
   }
   getTextColor(index) {
     const { selectedIndex } = this.state;
@@ -63,12 +64,15 @@ class TqanzRadioButton extends React.Component {
       null,
       React.createElement(
         RadioGroup,
-        { onSelect: index => this.onSelect(index), style: styles.radio_group },
+        { onSelect: this.onSelect.bind(this), style: styles.radio_group },
         this.renderGroup(this.props.radios)
       )
     );
   }
 }
+TqanzRadioButton.defaultProps = {
+  onSelect: () => {}
+};
 const defaultStyles = {
   radio_text: {},
   radio_group: {},
