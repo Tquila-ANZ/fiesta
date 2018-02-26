@@ -23,11 +23,9 @@ export default class TqanzCache extends React.Component<props, state> {
             throw new Error("Error: Instantiation failed: Use TqanzCache.getInstance() instead of new.");
         }
         TqanzCache._instance = this;
-
-        this.init();
     };
 
-    private async init() {
+    public async init() {
         if(!this._isOnline && this._hasCacheLayer)
             return "cache layer";
         else if(!this._isOnline && !this._hasCacheLayer)

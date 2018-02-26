@@ -37,7 +37,6 @@ export default class TqanzCache extends React.Component {
       );
     }
     TqanzCache._instance = this;
-    this.init();
   }
   init() {
     return __awaiter(this, void 0, void 0, function*() {
