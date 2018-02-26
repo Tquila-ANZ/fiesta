@@ -27,18 +27,16 @@ export default class TqanzCache extends React.Component<props, state> {
 
     public async init() {
         if(!this._isOnline && this._hasCacheLayer)
-            return "cache layer";
+            return await "cache layer";
         else if(!this._isOnline && !this._hasCacheLayer)
-            return "Model Popup No Data";
+            return await "Model Popup No Data";
         else if(this._isOnline && this._hasCacheLayer) {
             // Check date of cache
             if("i"== "i")//date < this.props.cacheTime
-                return "cache layer"
+                return await "cache layer"
             else
-                return ""; // do soql,set cache date and set cache
+                return await "Do SOQL, set cache date and set cache"; // do soql,set cache date and set cache
         }
-       // return "";
-
         return await AsyncStorage.setItem('@fiesta:date', Date.now().toString());
     }
 

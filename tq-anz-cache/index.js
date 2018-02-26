@@ -40,15 +40,14 @@ export default class TqanzCache extends React.Component {
   }
   init() {
     return __awaiter(this, void 0, void 0, function*() {
-      if (!this._isOnline && this._hasCacheLayer) return "cache layer";
+      if (!this._isOnline && this._hasCacheLayer) return yield "cache layer";
       else if (!this._isOnline && !this._hasCacheLayer)
-        return "Model Popup No Data";
+        return yield "Model Popup No Data";
       else if (this._isOnline && this._hasCacheLayer) {
         // Check date of cache
-        if ("i" == "i") return "cache layer";
-        else return ""; // do soql,set cache date and set cache
+        if ("i" == "i") return yield "cache layer";
+        else return yield "Do SOQL, set cache date and set cache"; // do soql,set cache date and set cache
       }
-      // return "";
       return yield AsyncStorage.setItem("@fiesta:date", Date.now().toString());
     });
   }
