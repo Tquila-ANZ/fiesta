@@ -80,15 +80,16 @@ export default class TqanzCache extends React.Component {
   isOnline() {
     NetInfo.isConnected.fetch().then(isConnected => {
       if (isConnected) {
-        return true;
+        return (this._isOnline = true);
       }
-      return false;
+      return (this._isOnline = false);
     });
-    return false;
+    return (this._isOnline = false);
   }
   set(key, value, callback) {
     return __awaiter(this, void 0, void 0, function*() {
       try {
+        this._hasCacheLayer = true;
         yield AsyncStorage.setItem(key, value, callback);
       } catch (error) {
         // Error saving data
