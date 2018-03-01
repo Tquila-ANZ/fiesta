@@ -3,13 +3,13 @@ import { View, TextInput } from "react-native";
 import styles from "./styles";
 
 class TqanzNotes extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <View style={styles.inputsContainer}>
-        <TextInput
-          onChangeText={text => this.setState({ text })}
-          value={this.state.text}
-        />
+        <TextInput value={this.props.text} />
       </View>
     );
   }
