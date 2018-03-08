@@ -1,21 +1,32 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import styles from './styles';
+import React, { PureComponent } from "react";
+import { View, Text } from "react-native";
 
-class TqanzCopyright extends Component {
-	constructor(props) {
-		super(props);
-		this.state = { name: '', version: '0.0' };
-	}
-	render() {
-		return (
-			<View style={styles.copyright}>
-				<Text style={{fontSize: 9, color: '#1db1c8'}}>
-					© Copyright {this.props.name} {getCopyrightYear()} - Version {this.props.version}
-				</Text>
-			</View>
-		);
-	}
+class TqanzCopyright extends PureComponent {
+  render() {
+    const styles = {
+      ...defaultStyles,
+      ...this.props.styles
+    };
+
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>
+          © Copyright {this.props.name} {getCopyrightYear()} - Version
+          {this.props.version}
+        </Text>
+      </View>
+    );
+  }
 }
+
+const defaultStyles = {
+  container: {
+    flex: 1
+  },
+  text: {
+    fontSize: 18,
+    color: "black"
+  }
+};
 
 export default TqanzCopyright;
