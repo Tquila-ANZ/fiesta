@@ -23,6 +23,7 @@
   "dependencies": {
     "firebase": "^4.9.0",
     "jest-react-native": "^18.0.0",
+    "react-native-camera-kit": "^5.3.26",
     "react-native-dropdown": "0.0.6",
     "react-native-elements": "^0.19.0",
     "react-native-fetch-blob": "^0.10.8",
@@ -37,7 +38,8 @@
     "react-native-maps": "^0.18.0",
     "react-native-modal-dropdown": "^0.6.1",
     "react-native-radio-buttons": "^1.0.0",
-    "react-native-sortable-list": "0.0.20"
+    "react-native-sortable-list": "0.0.20",
+    "react-native-super-grid": "^2.0.2"
   },
   "devDependencies": {
     "@types/jest": "^22.1.1",

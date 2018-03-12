@@ -4,10 +4,13 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "copy-camera": "cp -R ../tq-anz-camera/ fiesta-packages/tq-anz-camera/",
+    "copy-super-grid":
+      "cp -R ../tq-anz-super-grid/ fiesta-packages/tq-anz-super-grid/",
+    "fiesta": "npm run copy-camera && npm run copy-super-grid"
   },
   "dependencies": {
-    "fiesta": "^1.5.7",
     "jest-cli": "^21.2.1",
     "react": "16.0.0",
     "react-native": "0.51.0"
@@ -16,15 +19,32 @@
     "babel-jest": "21.2.0",
     "babel-preset-react-native": "4.0.0",
     "jest": "^21.2.1",
-    "react-test-renderer": "16.0.0"
+    "react-test-renderer": "16.0.0",
+    "firebase": "^4.9.0",
+    "jest-react-native": "^18.0.0",
+    "react-native-camera-kit": "^5.3.26",
+    "react-native-dropdown": "0.0.6",
+    "react-native-elements": "^0.19.0",
+    "react-native-fetch-blob": "^0.10.8",
+    "react-native-flexi-radio-button": "^0.2.2",
+    "react-native-force":
+      "git+https://github.com/forcedotcom/SalesforceMobileSDK-ReactNative.git#v5.3.0",
+    "react-native-gifted-messenger": "^0.1.4",
+    "react-native-hr": "^1.1.4",
+    "react-native-image-picker": "^0.26.7",
+    "react-native-invertible-scroll-view": "^1.1.0",
+    "react-native-loading-spinner-overlay": "^0.5.2",
+    "react-native-maps": "^0.18.0",
+    "react-native-modal-dropdown": "^0.6.1",
+    "react-native-radio-buttons": "^1.0.0",
+    "react-native-sortable-list": "0.0.20",
+    "react-native-super-grid": "^2.0.2"
   },
   "jest": {
     "preset": "react-native",
     "transform": {
       "^.+\\.js?$": "babel-jest"
     },
-    "transformIgnorePatterns": [
-      "!node_modules/react-runtime"
-    ]
+    "transformIgnorePatterns": ["!node_modules/react-runtime"]
   }
 }
