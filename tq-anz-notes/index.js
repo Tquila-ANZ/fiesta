@@ -1,18 +1,25 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { View, TextInput } from "react-native";
-import styles from "./styles";
 
-class TqanzNotes extends Component {
-  constructor(props) {
-    super(props);
-  }
+class TqanzNotes extends PureComponent {
   render() {
+    const styles = {
+      ...defaultStyles,
+      ...this.props.styles
+    };
     return (
-      <View style={styles.inputsContainer}>
-        <TextInput value={this.props.text} />
-      </View>
+      <TextInput
+        {...this.props.attributes}
+        style={styles.textInput}
+        value={this.props.text}
+      />
     );
   }
 }
+
+const defaultStyles = {
+  container: {},
+  textInput: {}
+};
 
 export default TqanzNotes;

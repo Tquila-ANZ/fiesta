@@ -1,53 +1,89 @@
-import React, {Component} from 'react';
-import {Text, View} from 'react-native';
-import Hr from 'react-native-hr';
-import styles from './styles';
+import React, { PureComponent } from "react";
+import { Text, View } from "react-native";
+import Hr from "react-native-hr";
 
-class TqanzCustomerDetails extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: this.props.data,
-            height: this.props.height,
-            titleColor: this.props.titleColor,
-            valueColor: this.props.valueColor,
-        };
-    }
+class TqanzCustomerDetails extends PureComponent {
+  render() {
+    // Data Format
 
-    render() {
-        return (
-            <View style={styles.inputsContainer}>
-                <View style={{flexDirection: 'row', flex: 1}}>
-                    <View style={{flex: 1, padding: 18}}>
-                        <Text style={{color: this.props.titleColor}}>First name</Text>
-                        <Text style={{color: this.props.valueColor}}>{this.props.data['FirstName']}</Text>
-                    </View>
-                    <View style={{flex: 1, padding: 18}}>
-                        <Text style={{color: this.props.titleColor}}>Surname</Text>
-                        <Text style={{color: this.props.valueColor}}>{this.props.data['LastName']}</Text>
-                    </View>
+    // First Name: "Gary",
+    // Surname: "Hendrix",
+    // Gender: "Male",
+    // Date Of Birth: "31 Dec 1991",
+    // Mobile : "0405950939"
+
+    const { data, columns = 2 } = this.props;
+    const styles = {
+      ...defaultStyles,
+      ...this.props.styles
+    };
+
+    const cols = [],
+      rows = [];
+    Object.keys(data).map((d, index) => {
+      cols.push({
+        label: d,
+        value: data[d]
+      });
+    });
+
+    let column = [];
+    cols.forEach((col, index) => {
+      column = column.concat(col);
+      if ((index + 1) % columns === 0) {
+        rows.push(column);
+        column = [];
+      }
+      if (index === cols.length - 1) {
+        rows.push(column);
+      }
+    });
+
+    return (
+      <View style={styles.container}>
+        {rows.map((row, index) => (
+          <View key={index}>
+            <View style={styles.row}>
+              {row.map(col => (
+                <View style={styles.column} key={col.label}>
+                  <Text style={styles.label}>{col.label}</Text>
+                  <Text style={styles.value}>{col.value}</Text>
                 </View>
-                <Hr/>
-                <View style={{flexDirection: 'row', flex: 1}}>
-                    <View style={{flex: 1, padding: 18}}>
-                        <Text style={{color: this.props.titleColor}}>Gender</Text>
-                        <Text style={{color: this.props.valueColor}}>{this.props.data['Gender__c']}</Text>
-                    </View>
-                    <View style={{flex: 1, padding: 18}}>
-                        <Text style={{color: this.props.titleColor}}>Date of Birth</Text>
-                        <Text style={{color: this.props.valueColor}}>{this.props.data['Date_of_Birth__c']}</Text>
-                    </View>
-                </View>
-                <Hr/>
-                <View style={{flexDirection: 'row', flex: 1}}>
-                    <View style={{flex: 1, padding: 18}}>
-                        <Text style={{color: this.props.titleColor}}>mobile</Text>
-                        <Text style={{color: this.props.valueColor}}>{this.props.data['MobilePhone']}</Text>
-                    </View>
-                </View>
+              ))}
             </View>
-        );
-    }
+            <Hr lineStyle={styles.lineStyle} />
+          </View>
+        ))}
+      </View>
+    );
+  }
 }
+
+const defaultStyles = {
+  container: {
+    flex: 1
+  },
+  row: {
+    flexDirection: "row",
+    flex: 1,
+    paddingBottom: 10,
+    paddingTop: 10
+  },
+  column: {
+    flex: 1
+  },
+  label: {
+    fontSize: 14,
+    color: "black",
+    fontWeight: "bold"
+  },
+  value: {
+    color: "black",
+    fontSize: 18
+  },
+  lineStyle: {
+    backgroundColor: "black"
+  }
+};
 
 export default TqanzCustomerDetails;
