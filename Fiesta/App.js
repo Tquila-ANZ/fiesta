@@ -38,13 +38,18 @@ export default class App extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
-        <View>
+        <View style={{ height: 60 }}>
           <Image
             style={styles.image}
             source={require("./src/assets/tquila-anz-logo_LG.jpg")}
           />
         </View>
-        <Text style={styles.welcome}>Welcome to fiesta!</Text>
+        <View style={{ height: 120 }}>
+          <Image
+            style={styles.imageFiesta}
+            source={require("./src/assets/fiestalogo.png")}
+          />
+        </View>
         <FiestaSuperGrid gridItems={gridItems} />
       </View>
     );
@@ -71,6 +76,10 @@ const styles = StyleSheet.create({
   image: {
     top: 20,
     width: 320,
+    resizeMode: "contain"
+  },
+  imageFiesta: {
+    width: 180,
     resizeMode: "contain"
   }
 });
