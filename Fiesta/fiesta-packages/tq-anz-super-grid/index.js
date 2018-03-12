@@ -3,35 +3,15 @@ import { StyleSheet, View, Text } from "react-native";
 import GridView from "react-native-super-grid";
 
 export default class TqanzSuperGrid extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { gridItems: props.gridItems };
+  }
   render() {
-    // Taken from https://flatuicolors.com/
-    const items = [
-      { name: "CAMERA", code: "#f9521f" },
-      { name: "FEISTA COMP", code: "#f9521f" },
-      { name: "FEISTA COMP", code: "#f9521f" },
-      { name: "FEISTA COMP", code: "#f9521f" },
-      { name: "FEISTA COMP", code: "#f9521f" },
-      { name: "FEISTA COMP", code: "#f9521f" },
-      { name: "FEISTA COMP", code: "#f9521f" },
-      { name: "FEISTA COMP", code: "#f9521f" },
-      { name: "FEISTA COMP", code: "#f9521f" },
-      { name: "FEISTA COMP", code: "#f9521f" },
-      { name: "FEISTA COMP", code: "#f9521f" },
-      { name: "FEISTA COMP", code: "#f9521f" },
-      { name: "FEISTA COMP", code: "#f9521f" },
-      { name: "FEISTA COMP", code: "#f9521f" },
-      { name: "FEISTA COMP", code: "#f9521f" },
-      { name: "FEISTA COMP", code: "#f9521f" },
-      { name: "FEISTA COMP", code: "#f9521f" },
-      { name: "FEISTA COMP", code: "#f9521f" },
-      { name: "FEISTA COMP", code: "#f9521f" },
-      { name: "FEISTA COMP", code: "#f9521f" }
-    ];
-
     return (
       <GridView
         itemDimension={130}
-        items={items}
+        items={this.props.gridItems}
         style={styles.gridView}
         renderItem={item => (
           <View style={[styles.itemContainer, { backgroundColor: item.code }]}>

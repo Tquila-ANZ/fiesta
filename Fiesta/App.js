@@ -12,7 +12,28 @@ const instructions = Platform.select({
     "Double tap R on your keyboard to reload,\n" +
     "Shake or press menu button for dev menu"
 });
-
+const gridItems = [
+  { name: "CAMERA", code: "#f9521f" },
+  { name: "FORM BUILDER", code: "#f9521f" },
+  { name: "SUPER GRID", code: "#f9521f" },
+  { name: "COPYRIGHT", code: "#f9521f" },
+  { name: "CHAT", code: "#f9521f" },
+  { name: "AVATAR", code: "#f9521f" },
+  { name: "BUTTON", code: "#f9521f" },
+  { name: "CACHE", code: "#f9521f" },
+  { name: "ACCORDION", code: "#f9521f" },
+  { name: "CUSTOMER DETAILS", code: "#f9521f" },
+  { name: "DETAILS", code: "#f9521f" },
+  { name: "LOADING MODEL", code: "#f9521f" },
+  { name: "MAP", code: "#f9521f" },
+  { name: "NAVIGATION", code: "#f9521f" },
+  { name: "NOTES", code: "#f9521f" },
+  { name: "OFFLINE", code: "#f9521f" },
+  { name: "PICKER", code: "#f9521f" },
+  { name: "RADIO BUTTON", code: "#f9521f" },
+  { name: "RADIO IMAGE BUTTON", code: "#f9521f" },
+  { name: "SELECT DROP DOWN", code: "#f9521f" }
+];
 export default class App extends Component<{}> {
   render() {
     return (
@@ -24,10 +45,7 @@ export default class App extends Component<{}> {
           />
         </View>
         <Text style={styles.welcome}>Welcome to fiesta!</Text>
-
-        <FiestaSuperGrid />
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <FiestaSuperGrid gridItems={gridItems} />
       </View>
     );
   }
