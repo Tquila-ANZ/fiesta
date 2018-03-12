@@ -39,6 +39,7 @@ class HomeScreen extends Component {
     title: "Welcome"
   };
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <View style={{ height: 60 }}>

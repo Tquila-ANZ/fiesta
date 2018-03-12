@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { StackNavigator } from "react-navigation";
 import { Platform, StyleSheet, Text, View, Image } from "react-native";
 import HomeScreen from "./src/containers/HomeScreen";
+import CameraScreen from "./src/containers/CameraScreen";
 
 //------------------------------------------- Fiesta
 // import { StackNavigator } from "./fiesta-packages/tq-anz-navigation";
@@ -11,7 +12,13 @@ import HomeScreen from "./src/containers/HomeScreen";
 
 export default (App = StackNavigator(
   {
-    Home: { screen: HomeScreen }
+    Home: { screen: HomeScreen },
+    Camera: {
+      screen: CameraScreen,
+      navigationOptions: ({ navigation }) => ({
+        title: "Camera"
+      })
+    }
   },
   {
     headerMode: "screen",
