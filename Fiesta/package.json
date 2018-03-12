@@ -5,10 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "copy-camera": "cp -R ../tq-anz-camera/ fiesta-packages/tq-anz-camera/",
-    "copy-super-grid":
-      "cp -R ../tq-anz-super-grid/ fiesta-packages/tq-anz-super-grid/",
-    "fiesta": "npm run copy-camera && npm run copy-super-grid"
+    "fiesta": "cp -R ../tq-anz-* fiesta-packages/"
   },
   "dependencies": {
     "jest-cli": "^21.2.1",
