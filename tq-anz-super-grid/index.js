@@ -1,11 +1,16 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, Alert } from "react-native";
 import GridView from "react-native-super-grid";
 
 export default class TqanzSuperGrid extends Component {
   constructor(props) {
     super(props);
-    this.state = { gridItems: props.gridItems };
+    //this.state = { gridItems: props.gridItems, goto: props.nav };
+  }
+  _onPressButton(screen) {
+    this.props.nav.navigate(screen, {
+      name: screen
+    });
   }
   render() {
     return (
@@ -14,10 +19,17 @@ export default class TqanzSuperGrid extends Component {
         items={this.props.gridItems}
         style={styles.gridView}
         renderItem={item => (
-          <View style={[styles.itemContainer, { backgroundColor: item.code }]}>
-            <Text style={styles.itemName}>{item.name}</Text>
-            {/* <Text style={styles.itemCode}>{item.code}</Text> */}
-          </View>
+          <TouchableOpacity
+            style={styles.itemContainerOutside}
+            onPress={() => this._onPressButton(this.item)}
+          >
+            <View
+              style={[styles.itemContainer, { backgroundColor: item.code }]}
+            >
+              <Text style={styles.itemName}>{item.name}</Text>
+              {/* <Text style={styles.itemCode}>{item.code}</Text> */}
+            </View>
+          </TouchableOpacity>
         )}
       />
     );
@@ -28,6 +40,11 @@ const styles = StyleSheet.create({
   gridView: {
     paddingTop: 25,
     flex: 1
+  },
+  itemContainerOutside: {
+    justifyContent: "flex-end",
+    borderRadius: 5,
+    height: 150
   },
   itemContainer: {
     justifyContent: "flex-end",

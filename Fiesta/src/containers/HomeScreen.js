@@ -54,7 +54,7 @@ class HomeScreen extends Component {
             source={require("../assets/fiestalogo.png")}
           />
         </View>
-        <FiestaSuperGrid gridItems={gridItems} />
+        <FiestaSuperGrid gridItems={gridItems} nav={navigate} />
       </View>
     );
   }
