@@ -7,10 +7,9 @@ export default class TqanzSuperGrid extends Component {
     super(props);
     //this.state = { gridItems: props.gridItems, goto: props.nav };
   }
-  _onPressButton() {
-    //Alert.alert('on Press!');
-    this.props.nav.navigate("Camera", {
-      name: "Camera"
+  _onPressButton(screen) {
+    this.props.nav(screen, {
+      name: screen
     });
   }
   render() {
@@ -22,10 +21,10 @@ export default class TqanzSuperGrid extends Component {
         renderItem={item => (
           <TouchableOpacity
             style={styles.itemContainerOutside}
-            onPress={this._onPressButton}
+            onPress={() => this._onPressButton(item.code)}
           >
             <View
-              style={[styles.itemContainer, { backgroundColor: item.code }]}
+              style={[styles.itemContainer, { backgroundColor: "#f9521f" }]}
             >
               <Text style={styles.itemName}>{item.name}</Text>
               {/* <Text style={styles.itemCode}>{item.code}</Text> */}

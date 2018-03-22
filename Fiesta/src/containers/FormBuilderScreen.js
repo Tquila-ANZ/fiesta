@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
-// Import fiesta via adding and running each component from the package.json
-// import { FiestaCamera } from "../../fiesta-packages/tq-anz-camera";
 
-export default class CameraScreen extends Component {
+// Import fiesta via adding and running each component from the package.json
+// import { FiestaFormBuilder } from "../../fiesta-packages/tq-anz-form-builder";
+
+class FormBuilderScreen extends Component {
   render() {
-    return <View style={styles.container}>{/* <FiestaCamera /> */}</View>;
+    return <View>{/* <FiestaFormBuilder /> */}</View>;
   }
 }
 
@@ -27,3 +28,4 @@ const styles = StyleSheet.create({
     marginBottom: 5
   }
 });
+export default FormBuilderScreen;

@@ -3,6 +3,7 @@ import { StackNavigator } from "react-navigation";
 import { Platform, StyleSheet, Text, View, Image } from "react-native";
 import HomeScreen from "./src/containers/HomeScreen";
 import CameraScreen from "./src/containers/CameraScreen";
+import FormBuilderScreen from "./src/containers/FormBuilderScreen";
 
 //------------------------------------------- Fiesta
 // import { StackNavigator } from "./fiesta-packages/tq-anz-navigation";
@@ -18,7 +19,8 @@ export default (App = StackNavigator(
       navigationOptions: ({ navigation }) => ({
         title: "Camera"
       })
-    }
+    },
+    FormBuilder: { screen: FormBuilderScreen }
   },
   {
     headerMode: "screen",

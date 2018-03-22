@@ -13,8 +13,8 @@ const instructions = Platform.select({
     "Shake or press menu button for dev menu"
 });
 const gridItems = [
-  { name: "CAMERA", code: "#f9521f" },
-  { name: "FORM BUILDER", code: "#f9521f" },
+  { name: "CAMERA", code: "Camera" },
+  { name: "FORM BUILDER", code: "FormBuilder" },
   { name: "SUPER GRID", code: "#f9521f" },
   { name: "COPYRIGHT", code: "#f9521f" },
   { name: "CHAT", code: "#f9521f" },

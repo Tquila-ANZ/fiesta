@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Alert } from "react-native";
 import { CameraKitCameraScreen } from "react-native-camera-kit";
 
-export default class TqanzCamera extends Component {
+class TqanzCamera extends Component {
   onBottomButtonPressed(event) {
     const captureImages = JSON.stringify(event.captureImages);
     Alert.alert(
@@ -29,3 +29,5 @@ export default class TqanzCamera extends Component {
     );
   }
 }
+
+export default TqanzCamera;
