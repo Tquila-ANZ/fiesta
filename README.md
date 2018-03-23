@@ -151,6 +151,18 @@ Props { name, version }
 
 ---
 
+## Tquila ANZ Camera
+
+```javascript
+import FiestaTqCamera from "fiesta/tq-anz-camera";
+```
+
+https://github.com/wix/react-native-camera-kit
+
+#### Dependencies: React Native, React Native Camera Kit
+
+---
+
 # fiesta Unit Tests
 
 Unit Tests are based off Jest, to the run all test suites please do the following:
