@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Alert } from "react-native";
+import { Alert, View, Text } from "react-native";
 import { CameraKitCameraScreen } from "react-native-camera-kit";
 
 class TqanzCamera extends Component {
