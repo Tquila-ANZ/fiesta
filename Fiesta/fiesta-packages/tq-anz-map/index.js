@@ -45,7 +45,6 @@ class TqanzMap extends React.Component {
   }
 
   componentDidMount() {
-    console.log("Component did mount");
     this.getCurrentPosition();
   }
 
@@ -76,13 +75,9 @@ class TqanzMap extends React.Component {
     }
   };
 
-  onRegionChange = region => {
-    console.log("onRegionChange", region);
-  };
+  onRegionChange = region => {};
 
-  onRegionChangeComplete = region => {
-    console.log("onRegionChangeComplete", region);
-  };
+  onRegionChangeComplete = region => {};
 
   render() {
     const { region } = this.state;

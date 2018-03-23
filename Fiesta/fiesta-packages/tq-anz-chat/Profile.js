@@ -1,6 +1,13 @@
 import React, { Component } from "react";
-import { Modal, TouchableHighlight, View, AsyncStorage } from "react-native";
-import { FormLabel, FormInput, Text, Button } from "react-native-elements";
+import {
+  Modal,
+  TouchableHighlight,
+  View,
+  AsyncStorage,
+  Button,
+  Text,
+  TextInput
+} from "react-native";
 import FirebaseClient from "./FirebaseClient";
 
 class Profile extends Component {
@@ -46,10 +53,8 @@ class Profile extends Component {
   render() {
     return (
       <View style={{ marginTop: 22 }}>
-        <FormLabel labelStyle={{ fontSize: 22, marginBottom: 10 }}>
-          Your Name
-        </FormLabel>
-        <FormInput
+        <Text labelStyle={{ fontSize: 22, marginBottom: 10 }}>Your Name</Text>
+        <TextInput
           value={this.state.profile_name}
           onChangeText={this.onChangeProfileName}
           inputStyle={{ height: 60, fontSize: 28 }}

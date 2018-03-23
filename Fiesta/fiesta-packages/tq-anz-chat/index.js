@@ -8,13 +8,13 @@ import {
   Image,
   Platform,
   TouchableHighlight,
-  Button as ButtonNative,
+  Button,
   Dimensions,
-  View
+  View,
+  TextInput
 } from "react-native";
 import ImagePicker from "react-native-image-picker";
 import RNFetchBlob from "react-native-fetch-blob";
-import { FormLabel, FormInput, Button } from "react-native-elements";
 import FirebaseClient from "./FirebaseClient";
 import Item from "./Item";
 import FiestaButton from "../tq-anz-button";
@@ -42,9 +42,7 @@ class TqanzChat extends Component {
   static navigationOptions = {
     title: "Firebase Chat",
     header: ({ state, setParams, navigate }) => ({
-      right: (
-        <ButtonNative title="Profile" onPress={() => navigate("Profile")} />
-      )
+      right: <Button title="Profile" onPress={() => navigate("Profile")} />
     })
   };
 
@@ -254,7 +252,7 @@ class TqanzChat extends Component {
         <View style={styles.sendMessageArea}>
           <View style={styles.inputMessageArea}>
             <View style={styles.formInputArea}>
-              <FormInput
+              <TextInput
                 onChangeText={this.updateMessage}
                 value={this.state.message}
                 inputStyle={styles.inputMessage}
