@@ -175,3 +175,7 @@ Each test should match to each component in "fiesta" for example:
 \_\_tests\_\_/FiestaCache.js
 
 ---
+
+# fiesta demo app
+
+Can be found at: https://github.com/Tquila-ANZ/fiesta-mobile-app
