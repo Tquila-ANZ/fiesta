@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { View, TouchableOpacity, Text } from "react-native";
 import FontAwesome, { Icons } from "react-native-fontawesome";
 
-class TqanzRoundButton extends PureComponent {
+class TqanzButtonWithIcon extends PureComponent {
   render() {
     const styles = {
       ...defaultStyles,
@@ -26,6 +26,13 @@ class TqanzRoundButton extends PureComponent {
 }
 
 const defaultStyles = {
+  container: {},
+  button: {},
+  icon: {},
+  text: {}
+};
+
+const roundButtonWithIconOnTop = {
   container: {
     flex: 1,
     justifyContent: "center",
@@ -46,4 +53,4 @@ const defaultStyles = {
   text: {}
 };
 
-export default TqanzRoundButton;
+export default TqanzButtonWithIcon;
