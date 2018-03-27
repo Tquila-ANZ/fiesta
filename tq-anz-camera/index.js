@@ -1,32 +1,39 @@
 import React, { Component } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  AlertIOS
-} from "react-native";
+import { Text, View, TouchableOpacity, AlertIOS } from "react-native";
 
 import { CameraKitCamera, CameraKitGallery } from "react-native-camera-kit";
 
 import CameraScreen from "./CameraScreen";
-// import AlbumsScreen from './src/AlbumsScreen';
 import GalleryScreen from "./GalleryScreen";
-// import BarcodeScreen from './src/BarcodeScreen';
 
-export default class example extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      example: undefined
-    };
-  }
+export { default as CameraScreen } from "./CameraScreen.js";
+export { default as GalleryScreen } from "./GalleryScreen.js";
+
+export default class CameraSample extends Component {
+  onCheckCameraAuthoPressed = async () => {
+    const success = await CameraKitCamera.checkDeviceCameraAuthorizationStatus();
+    if (success) {
+      AlertIOS.alert("You have permission 🤗");
+    } else {
+      AlertIOS.alert("No permission 😳");
+    }
+  };
+
+  onCheckGalleryAuthoPressed = async () => {
+    const success = await CameraKitGallery.checkDevicePhotosAuthorizationStatus();
+    if (success) {
+      AlertIOS.alert("You have permission 🤗");
+    } else {
+      AlertIOS.alert("No permission 😳");
+    }
+  };
 
   render() {
-    if (this.state.example) {
-      const Example = this.state.example;
-      return <Example />;
-    }
+    const styles = {
+      ...defaultStyles,
+      ...this.props.styles
+    };
+
     return (
       <View style={{ flex: 1 }}>
         <View style={styles.headerContainer}>
@@ -35,23 +42,11 @@ export default class example extends Component {
         </View>
 
         <View style={styles.container}>
-          {/* <TouchableOpacity onPress={() => this.setState({ example: BarcodeScreen })}>
-            <Text style={styles.buttonText}>
-              Barcode scanner Screen
-            </Text>
-          </TouchableOpacity> */}
-
           <TouchableOpacity
             onPress={() => this.setState({ example: CameraScreen })}
           >
             <Text style={styles.buttonText}>Camera Screen</Text>
           </TouchableOpacity>
-
-          {/* <TouchableOpacity onPress={() => this.setState({ example: AlbumsScreen })}>
-            <Text style={styles.buttonText}>
-              Albums Screen
-            </Text>
-          </TouchableOpacity> */}
 
           <TouchableOpacity
             onPress={() => this.setState({ example: GalleryScreen })}
@@ -59,38 +54,20 @@ export default class example extends Component {
             <Text style={styles.buttonText}>Gallery Screen</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => this.onCheckCameraAuthoPressed()}>
+          <TouchableOpacity onPress={this.onCheckCameraAuthoPressed}>
             <Text style={styles.buttonText}>Camera Autotization Status</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => this.onCheckGalleryAuthoPressed()}>
+          <TouchableOpacity onPress={this.onCheckGalleryAuthoPressed}>
             <Text style={styles.buttonText}>Photos Autotization Status</Text>
           </TouchableOpacity>
         </View>
       </View>
     );
   }
-
-  async onCheckCameraAuthoPressed() {
-    const success = await CameraKitCamera.checkDeviceCameraAuthorizationStatus();
-    if (success) {
-      AlertIOS.alert("You have permission 🤗");
-    } else {
-      AlertIOS.alert("No permission 😳");
-    }
-  }
-
-  async onCheckGalleryAuthoPressed() {
-    const success = await CameraKitGallery.checkDevicePhotosAuthorizationStatus();
-    if (success) {
-      AlertIOS.alert("You have permission 🤗");
-    } else {
-      AlertIOS.alert("No permission 😳");
-    }
-  }
 }
 
-const styles = StyleSheet.create({
+const defaultStyles = {
   container: {
     flex: 1,
     // justifyContent: 'center',
@@ -114,4 +91,4 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     fontSize: 20
   }
-});
+};
