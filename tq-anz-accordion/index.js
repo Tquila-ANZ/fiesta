@@ -20,6 +20,13 @@ class TqanzAccordion extends Component {
 
   render() {
     const styles = this.styles;
+    const {
+      headerName = "name",
+      contentName = "description",
+      maxHeight = 1000,
+      duration = 200,
+      backgroundColor = "#fff"
+    } = this.props;
     return (
       <View style={styles.tq_accordion_container}>
         <Accordion
@@ -27,11 +34,11 @@ class TqanzAccordion extends Component {
           items={this.props.items}
           headerRender={this.renderHeader.bind(this)}
           contentRender={this.renderContent}
-          headerName="name"
-          contentName="description"
-          maxHeight={490}
-          duration={200}
-          backgroundColor={"#fff"}
+          headerName={headerName}
+          contentName={contentName}
+          maxHeight={maxHeight}
+          duration={duration}
+          backgroundColor={backgroundColor}
         />
       </View>
     );
