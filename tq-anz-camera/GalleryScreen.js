@@ -1,30 +1,26 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
+import { Text, View } from "react-native";
+import {
+  CameraKitCamera,
+  CameraKitGalleryView,
+  CameraKitGallery
+} from "react-native-camera-kit";
 
-import { CameraKitGalleryView } from "react-native-camera-kit";
+export default class GalleryScreen extends PureComponent {
+  state = {
+    selectedImages: []
+  };
 
-import CameraScreen from "./CameraScreen";
+  onTapImage = async event => {
+    const { selectedImages } = this.state;
+    const isSelected = event.nativeEvent.isSelected;
+    const image = await CameraKitGallery.getImageForTapEvent(event.nativeEvent);
 
-export default class GalleryScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      album: this.props.albumName,
-      images: {},
-      shouldRenderCameraScreen: false
-    };
-  }
-
-  onTapImage = event => {
-    const uri = event.nativeEvent.selected;
-    const { images } = this.state;
-    console.log("Tapped on an image: " + uri);
-
-    if (images[uri]) {
-      delete images[uri];
-    } else {
-      images[uri] = true;
-    }
-    this.setState({ images });
+    selectedImages.push(image);
+    console.log(selectedImages);
+    this.setState({
+      selectedImages
+    });
   };
 
   render() {
@@ -32,66 +28,38 @@ export default class GalleryScreen extends Component {
       ...defaultStyles,
       ...this.props.styles
     };
-
-    const { shouldRenderCameraScreen, album, images } = this.state;
     const {
+      album = "",
       minimumInteritemSpacing = 10,
       minimumLineSpacing = 10,
-      onSelected = () => {},
-      onTapImage = e => this.onTapImage(e),
-      selection = {
-        selectedImage: require("./images/selected.png"),
-        imagePosition: "bottom-right",
-        imageSizeAndroid: "large",
-        enable: Object.keys(images).length < 3
-      },
-      fileTypeSupport = {
-        supportedFileTypes: ["image/jpeg"],
-        unsupportedOverlayColor: "#00000055",
-        unsupportedImage: require("./images/unsupportedImage.png"),
-        //unsupportedText: 'JPEG!!',
-        unsupportedTextColor: "#ff0000"
-      },
-      customButtonStyle = {
-        image: require("./images/openCamera.png"),
-        backgroundColor: "#06c4e9"
-      },
-      onCustomButtonPress = () => {
-        this.setState({ shouldRenderCameraScreen: true });
-      }
+      columnCount = 3,
+      remoteDownloadIndicatorType = "progress-pie", //spinner / progress-bar / progress-pie
+      remoteDownloadIndicatorColor = "white"
     } = this.props;
 
-    if (shouldRenderCameraScreen) {
-      return <CameraScreen />;
-    }
-
     return (
-      <CameraKitGalleryView
-        ref={gallery => {
-          this.gallery = gallery;
-        }}
-        style={styles.container}
-        albumName={album}
-        minimumInteritemSpacing={minimumInteritemSpacing}
-        minimumLineSpacing={minimumLineSpacing}
-        columnCount={3}
-        selectedImages={Object.keys(images)}
-        onSelected={onSelected}
-        onTapImage={onTapImage}
-        selection={selection}
-        fileTypeSupport={fileTypeSupport}
-        customButtonStyle={customButtonStyle}
-        onCustomButtonPress={onCustomButtonPress}
-      />
+      <View style={styles.container}>
+        <CameraKitGalleryView
+          style={styles.gallery}
+          albumName={album}
+          minimumInteritemSpacing={minimumInteritemSpacing}
+          minimumLineSpacing={minimumLineSpacing}
+          columnCount={columnCount}
+          selection={{
+            imagePosition: "top-right"
+          }}
+          onTapImage={this.onTapImage}
+          remoteDownloadIndicatorType={remoteDownloadIndicatorType}
+          remoteDownloadIndicatorColor={remoteDownloadIndicatorColor}
+        />
+      </View>
     );
   }
 }
 
 const defaultStyles = {
   container: {
-    flex: 1,
-    margin: 0,
-    backgroundColor: "#ffffff",
-    marginTop: 50
-  }
+    flex: 1
+  },
+  gallery: { flex: 1, margin: 0, marginTop: 50 }
 };
