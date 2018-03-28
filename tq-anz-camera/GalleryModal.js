@@ -45,7 +45,11 @@ export default class GalleryModal extends PureComponent {
       minimumLineSpacing = 5,
       columnCount = 5,
       remoteDownloadIndicatorType = "progress-pie", //spinner / progress-bar / progress-pie
-      remoteDownloadIndicatorColor = "white"
+      remoteDownloadIndicatorColor = "white",
+      selection = {
+        selectedImage: require("./images/selected.png"),
+        imagePosition: "bottom-right"
+      }
     } = this.props;
 
     const styles = {
@@ -67,10 +71,7 @@ export default class GalleryModal extends PureComponent {
             minimumInteritemSpacing={minimumInteritemSpacing}
             minimumLineSpacing={minimumLineSpacing}
             columnCount={columnCount}
-            selection={{
-              selectedImage: require("./images/selected.png"),
-              imagePosition: "top-right"
-            }}
+            selection={selection}
             onTapImage={this.onTapImage}
             remoteDownloadIndicatorType={remoteDownloadIndicatorType}
             remoteDownloadIndicatorColor={remoteDownloadIndicatorColor}

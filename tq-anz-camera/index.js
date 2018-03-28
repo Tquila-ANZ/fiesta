@@ -8,6 +8,7 @@ import GalleryScreen from "./GalleryScreen";
 
 export { default as CameraScreen } from "./CameraScreen.js";
 export { default as GalleryScreen } from "./GalleryScreen.js";
+export { default as GalleryModal } from "./GalleryModal.js";
 
 export default class CameraSample extends Component {
   onCheckCameraAuthoPressed = async () => {
