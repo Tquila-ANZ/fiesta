@@ -7,13 +7,11 @@ class TqanzNotes extends PureComponent {
       ...defaultStyles,
       ...this.props.styles
     };
-    return (
-      <TextInput
-        {...this.props.attributes}
-        style={styles.textInput}
-        value={this.props.text}
-      />
-    );
+    let props = { ...this.props };
+    // No need for styles in the props anymore
+    delete props["styles"];
+
+    return <TextInput {...props} style={styles.textInput} />;
   }
 }
 
