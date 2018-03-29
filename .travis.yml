@@ -16,14 +16,17 @@ addons:
 
 install:
   - npm install
-  
+
 deploy:
   provider: npm
   email: "tquilamobile@tquilaanz.com"
   api_key: $NPM_TOKEN
   on:
     tags: true
-  
+
 script:
   - npm run build
+  - rm -rf node_modules
+  - rm -rf .git
+  - npm run buildNPM
   - npm test
