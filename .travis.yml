@@ -1,28 +1,28 @@
 sudo: false
 language: node_js
 node_js:
-  - "stable"
+- stable
 cache:
   directories:
-    - node_modules
+  - node_modules
 env:
-  - CXX=g++-4.8
+- CXX=g++-4.8
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
+    - ubuntu-toolchain-r-test
     packages:
-      - g++-4.8
-
+    - g++-4.8
 install:
-  - npm install
-
+- npm install
 deploy:
   provider: npm
   email: tquilamobile@tquilaanz.com
-  api_key: $NPM_TOKEN
-
+  api_key:
+    secure: SBocKG+hXJA7khyuzTTMsCO0LLPzeTrW2RoGe9oMno0HRBZ/FWgNeWgu3EmmK+bJAW8OznsYQDrcfXJxK+Duk40UhVyhnvs5BUgzyzBsutrG3W1pMWKxZSFqdREMyrjnQafTlLkc1KtiI06RCfKbexnPGN0thnqsCseboBYUHGE4DxFemWodPwQ7L4NfpVtycI+ZH6eksLkHMsPS54W5WYI6u9cd+NEDEnqnOAqikKtxYiutfcAkBAm+GbZ1sCtovoEKoqZWiCMhRMZggJkPtNQ0YLG6kZoMhQj6ymN5ZdptpXgp4bPtbq4dWfBc86yHq2gcQBkXEykcoKa6ONlaLD2kZZaX5dlsvP3QRABOO4V+F7fosTCQypF/VSnk2S31iFpnDr9ewxT+/1wvWPJVOP6jkN2EN1AP2+IqWdjeWDKDPI6hao9f2dxQShk6tmoHtHq8PodeXGlsisv9PuAOYwq5drhqpyPVBU+e4LPirRQ4jtWFYARoXlGUKhK2p130AdP5dBiExZr+vzr27NwSUkoU+UmDvGY4lmhiOt2sb4SGJyufaNGU+jacyAmVjt+uNLJ+9OcaEUE2X83t1vtzknDkMrvaTbf0Ee5RPGEs8mTK3rRN+L7lGQ7NVMwhF26Xd8u0nH1zdnQN1XT3GBADECqviO3S7JvOzuRMsuNiVnY=
+  on:
+    repo: Tquila-ANZ/fiesta
 script:
-  - npm run build
-  - rm -rf .git
-  - npm run buildNPM
+- npm run build
+- rm -rf .git
+- npm run buildNPM
