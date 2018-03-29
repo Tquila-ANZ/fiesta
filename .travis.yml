@@ -13,14 +13,15 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
+
+install:
+  - npm install
+  
 deploy:
   provider: npm
   email: "tquilamobile@tquilaanz.com"
   api_key: "e11d3226-cc60-4039-967d-34a1853a2b1e"
-
-install:
-  - npm install
-
+  
 script:
   - npm run build
   - npm run buildNPM
