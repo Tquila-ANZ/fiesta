@@ -25,4 +25,4 @@ deploy:
 script:
 - npm run build
 - rm -rf .git
-- npm run buildNPM
+- npm run npmpatch
