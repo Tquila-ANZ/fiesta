@@ -26,6 +26,5 @@ deploy:
 
 script:
   - npm run build
-  - rm -rf node_modules
   - rm -rf .git
   - npm run buildNPM
