@@ -20,6 +20,9 @@
       "git add"
     ]
   },
+   "publishConfig": {
+    "access": "public"
+  },
   "author": "tquilamobile@tquilaanz.com",
   "license": "MIT",
   "dependencies": {
