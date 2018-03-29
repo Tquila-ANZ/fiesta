@@ -26,6 +26,4 @@ deploy:
   
 script:
   - npm run build
-  - npm adduser
-  - npm run buildNPM
   - npm test
