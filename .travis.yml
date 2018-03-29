@@ -19,10 +19,8 @@ install:
 
 deploy:
   provider: npm
-  email: "tquilamobile@tquilaanz.com"
+  email: tquilamobile@tquilaanz.com
   api_key: $NPM_TOKEN
-  on:
-    tags: true
 
 script:
   - npm run build
