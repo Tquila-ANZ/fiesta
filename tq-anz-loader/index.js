@@ -1,29 +1,26 @@
-import React, { Component } from 'react';
-import Spinner from 'react-native-loading-spinner-overlay';
+import React, { PureComponent } from "react";
+import Spinner from "react-native-loading-spinner-overlay";
 
-class TqanzLoader extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			visible: true,
-			color: '#00aec7',
-			overlayColor: 'rgba(255, 255, 255, 0.95)',
-			textContent: 'Loading...',
-			textStyle: '#00aec7'
-		};
-	}
+class TqanzLoader extends PureComponent {
+  render() {
+    const {
+      visible = true,
+      color = "#00aec7",
+      overlayColor = "rgba(255, 255, 255, 0.95)",
+      textContent = "Loading...",
+      textStyle = "#00aec7"
+    } = this.props;
 
-	render() {
-		return (
-			<Spinner
-				visible={this.props.visible}
-				color={this.props.color}
-				overlayColor={this.props.overlayColor}
-				textContent={this.props.textContent}
-				textStyle={{ color: this.props.textStyle }}
-			/>
-		);
-	}
+    return (
+      <Spinner
+        visible={visible}
+        color={color}
+        overlayColor={overlayColor}
+        textContent={textContent}
+        textStyle={{ color: textStyle }}
+      />
+    );
+  }
 }
 
 export default TqanzLoader;
