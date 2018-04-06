@@ -13,7 +13,7 @@
     "clean": "rimraf artifacts",
     "buildNPM":
       "npm run build && npm version patch --force && npm publish && git push",
-    "npmpatch": "npm version patch",
+    "npmpatch": "npm version patch --force && git push",
     "precommit": "lint-staged"
   },
   "lint-staged": {
