@@ -24,5 +24,4 @@ deploy:
     repo: Tquila-ANZ/fiesta
 script:
 - npm run build
-- npm run npmpatch
 - rm -rf .git
