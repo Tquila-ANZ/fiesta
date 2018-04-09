@@ -1,3 +1,13 @@
+# Fiesta
+
+## Publishing to npm
+
+Once you're ready to publish to npm. Run:
+
+* `npm run buildNPM`
+
+This command updates the version number of the repo and then the Travis CI would build and publish to npm.
+
 <p align="center">
   <img width="200" height="152" src="https://raw.githubusercontent.com/Tquila-ANZ/fiesta/master/assets/fiestalogo.png">
 </p>
