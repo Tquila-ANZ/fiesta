@@ -1,6 +1,6 @@
 {
   "name": "fiesta",
-  "version": "1.5.89",
+  "version": "1.5.90",
   "repository": {
     "type": "git",
     "url": "https://github.com/Tquila-ANZ/fiesta.git"
@@ -11,7 +11,7 @@
     "build": "npm run clean && npm run tsc --",
     "tsc": "tsc",
     "clean": "rimraf artifacts",
-    "buildNPM": "npm run build && npm version patch --force && git push && rm -rf .git && npm publish",
+    "buildNPM": "npm run build && npm version patch --force && git push",
     "npmpatch": "npm version patch --force && git push",
     "precommit": "lint-staged"
   },
