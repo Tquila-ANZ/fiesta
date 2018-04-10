@@ -31,11 +31,19 @@ class TqanzRadioButton extends React.Component {
   };
 
   onSelect = (index, value) => {
-    this.setState({
-      selectedIndex: index
-    });
-
-    this.props.onSelect(index, value);
+    // This is to provide the ability to deselect a radio button if it is tapped again
+    const { selectedIndex } = this.state;
+    if (index === selectedIndex) {
+      this.setState({
+        selectedIndex: null
+      });
+      this.props.onSelect(index, null);
+    } else {
+      this.setState({
+        selectedIndex: index
+      });
+      this.props.onSelect(index, value);
+    }
   };
 
   getTextColor = index => {
