@@ -35,11 +35,12 @@ export default class Accordion extends Component {
       backgroundColor
     } = this.props;
     const styles = this.styles;
+
     return (
       <View style={styles.accordion_container}>
         {items.map((item, index) => {
           return (
-            <View key={index} style={styles.accordion_content_container}>
+            <View key={item.key} style={styles.accordion_content_container}>
               <TouchableHighlight
                 underlayColor={"rgba(0,0,0,0.2)"}
                 style={[
