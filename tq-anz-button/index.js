@@ -9,13 +9,24 @@ class TqanzButton extends PureComponent {
       ...this.props.styles
     };
 
-    const { title = "Button", onPress = () => {}, icon = null } = this.props;
+    /**
+     * Pass any properties for touchable opacity via
+     * attributes object
+     */
+
+    const {
+      title = "Button",
+      onPress = () => {},
+      icon = null,
+      disabled = false
+    } = this.props;
 
     return (
       <View style={styles.container}>
         <TouchableOpacity
           onPress={onPress}
           style={[styles.container, styles.button]}
+          disabled={disabled}
         >
           {icon ? (
             <FontAwesome style={styles.icon}>{Icons[icon]}</FontAwesome>
