@@ -1,10 +1,17 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { View } from "react-native";
 import ModalDropdown from "react-native-modal-dropdown";
 
-export default class Dropdown extends Component {
+export default class Dropdown extends PureComponent {
   render() {
-    const { options } = this.props;
-    return <ModalDropdown {...this.props} />;
+    let props = this.props;
+    if (props && !props.defaultValue) {
+      props = {
+        ...props,
+        defaultValue: "Please select..."
+      };
+    }
+
+    return <ModalDropdown {...props} />;
   }
 }
