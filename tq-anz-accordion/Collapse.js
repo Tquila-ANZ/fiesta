@@ -25,18 +25,19 @@ export default class Collapse extends Component {
 
   getContentHeight(event) {
     if (!this.contentInit) {
-      this.props.maxHeight
-        ? (this.contentHeight = Math.min(
-            this.props.maxHeight,
-            event.nativeEvent.layout.height
-          ))
-        : (this.contentHeight = event.nativeEvent.layout.height);
+      // Do not use maxHeight as it messes with the whole usability of the app
+      // Using maxHeight creates a collapse as a scroll container causing the app to now have
+      // multiple scroll containers in terms of multiple collapse containers
+      // Simply make the collapse container as big as the content itself
+
+      this.contentHeight = event.nativeEvent.layout.height;
       this.contentInit = true;
       this.forceUpdate();
     }
   }
 
   handleHeight() {
+    ``;
     if (this.props.collapse) {
       Animated.timing(this.state.height, {
         toValue: 0,

@@ -23,7 +23,6 @@ class TqanzAccordion extends Component {
     const {
       headerName = "name",
       contentName = "description",
-      maxHeight = 1000,
       duration = 200,
       backgroundColor = "#fff"
     } = this.props;
@@ -36,7 +35,6 @@ class TqanzAccordion extends Component {
           contentRender={this.renderContent}
           headerName={headerName}
           contentName={contentName}
-          maxHeight={maxHeight}
           duration={duration}
           backgroundColor={backgroundColor}
         />

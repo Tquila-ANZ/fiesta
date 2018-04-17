@@ -30,7 +30,6 @@ export default class Accordion extends Component {
       contentRender,
       headerName,
       contentName,
-      maxHeight,
       duration,
       backgroundColor
     } = this.props;
@@ -55,7 +54,6 @@ export default class Accordion extends Component {
               </TouchableHighlight>
               <Collapse
                 styles={styles}
-                maxHeight={maxHeight}
                 collapse={this.state.activeItem !== index}
                 content={item[contentName]}
                 duration={duration}
