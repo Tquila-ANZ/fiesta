@@ -28,7 +28,9 @@ export default class GalleryModal extends PureComponent {
   onClose = () => {
     const { onClose = () => {} } = this.props;
     const { selectedImages } = this.state;
-
+    this.setState({
+      selectedImages: []
+    });
     onClose(selectedImages);
   };
 
