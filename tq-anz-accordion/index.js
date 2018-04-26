@@ -38,9 +38,7 @@ class TqanzAccordion extends Component {
     return (
       <View style={this.styles.tq_accordion_header}>
         <Text style={this.styles.tq_accordion_header_text}>{info}</Text>
-        {this.state.showArrow ? (
-          <View style={this.styles.tq_accordion_container_right}>{icon}</View>
-        ) : null}
+        {this.state.showArrow ? <View>{icon}</View> : null}
       </View>
     );
   };
@@ -76,10 +74,6 @@ const defaultStyles = {
     flex: 1,
     justifyContent: "center",
     backgroundColor: "#f1f1f1"
-  },
-  tq_accordion_container_right: {
-    justifyContent: "flex-end",
-    color: "#fff"
   },
   tq_accordion_header_arrow_icon: {
     color: "#f1f1f1",
