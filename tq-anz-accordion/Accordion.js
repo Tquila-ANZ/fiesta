@@ -50,7 +50,10 @@ export default class Accordion extends Component {
                   this._toggle(index);
                 }}
               >
-                {headerRender(item[headerName])}
+                {headerRender(
+                  item[headerName],
+                  this.state.activeItem !== index
+                )}
               </TouchableHighlight>
               <Collapse
                 styles={styles}
