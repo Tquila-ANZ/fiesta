@@ -46,8 +46,7 @@ class TqanzRadioButton extends React.Component {
     }
   };
 
-  getTextColor = index => {
-    const { selectedIndex } = this.state;
+  getTextColor = (index, selectedIndex) => {
     if (index === selectedIndex) {
       return {
         color: this.props.activeColor
@@ -57,7 +56,7 @@ class TqanzRadioButton extends React.Component {
     }
   };
 
-  renderGroup = a => {
+  renderGroup = (a, selectedIndex) => {
     if (a === undefined) a = new Array();
 
     // FOR TESTING
@@ -74,7 +73,10 @@ class TqanzRadioButton extends React.Component {
       >
         <Text
           key={info.text}
-          style={[this.state.styles.radio_text, this.getTextColor(index)]}
+          style={[
+            this.state.styles.radio_text,
+            this.getTextColor(index, selectedIndex)
+          ]}
         >
           {info.text}
         </Text>
@@ -92,7 +94,7 @@ class TqanzRadioButton extends React.Component {
           style={styles.radio_group}
           selectedIndex={index}
         >
-          {this.renderGroup(this.props.radios)}
+          {this.renderGroup(this.props.radios, index)}
         </RadioGroup>
       </View>
     );
