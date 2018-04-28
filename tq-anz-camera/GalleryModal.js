@@ -12,11 +12,18 @@ export default class GalleryModal extends PureComponent {
   };
 
   onTapImage = async event => {
-    const { selectedImages } = this.state;
+    let { selectedImages } = this.state;
     const isSelected = event.nativeEvent.isSelected;
     const image = await CameraKitGallery.getImageForTapEvent(event.nativeEvent);
 
-    selectedImages.push(image);
+    if (isSelected) {
+      selectedImages.push(image);
+    } else {
+      selectedImages = selectedImages.filter(
+        i => i.selectedImageId !== image.selectedImageId
+      );
+    }
+
     this.setState({
       selectedImages
     });
