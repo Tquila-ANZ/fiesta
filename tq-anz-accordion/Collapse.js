@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from "react";
+import React, { Component } from "react";
 import { StyleSheet, Animated, ScrollView } from "react-native";
 
 export default class Collapse extends Component {

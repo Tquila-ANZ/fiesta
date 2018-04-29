@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from "react";
+import React, { Component } from "react";
 import { StyleSheet, View, TouchableHighlight } from "react-native";
 
 import Collapse from "./Collapse";
