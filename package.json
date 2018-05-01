@@ -1,6 +1,6 @@
 {
   "name": "fiesta",
-  "version": "1.5.117",
+  "version": "1.5.118",
   "repository": {
     "type": "git",
     "url": "https://github.com/Tquila-ANZ/fiesta.git"
@@ -14,7 +14,7 @@
     "buildNPM": "npm run build && npm version patch --force && git push",
     "npmpatch": "npm version patch --force && git push",
     "precommit": "lint-staged",
-    "publish": "npm run build && npm version patch --force && npm publish && git push"
+    "publish": "npm version patch --force && npm publish && git push"
   },
   "lint-staged": {
     "*.{js,json,css,md}": [
