@@ -19,9 +19,10 @@ import FontAwesome, { Icons } from "react-native-fontawesome";
  * styles: Object for styles
  */
 
-export default class TqanzSelectMultiple extends PureComponent {
+export default class SelectMultiple extends PureComponent {
   constructor(props) {
     super(props);
+
     const {
       items = [],
       selectedItems = [],
@@ -29,10 +30,26 @@ export default class TqanzSelectMultiple extends PureComponent {
       valueField = "value"
     } = props;
 
+    const selectedItemsMap = {};
+
+    selectedItems.map(item => {
+      if (!item) {
+        return;
+      }
+
+      if (item[idField]) {
+        selectedItemsMap[item[idField]] = item;
+      } else {
+        selectedItemsMap[item] = item;
+      }
+    });
+
     this.state = {
       items,
       selectedItems,
-      selectedItemsMap: {},
+      selectedItemsMap: {
+        ...selectedItemsMap
+      },
       idField,
       valueField
     };
