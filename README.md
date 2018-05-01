@@ -173,6 +173,18 @@ https://github.com/wix/react-native-camera-kit
 
 ---
 
+## Tquila ANZ Permissions
+
+```javascript
+import FiestaTqPermissions from "fiesta/tq-anz-permissions";
+```
+
+https://github.com/yonahforst/react-native-permissions
+
+#### Dependencies: React Native, React Native Permissions
+
+---
+
 # fiesta Unit Tests
 
 Unit Tests are based off Jest, to the run all test suites please do the following:
