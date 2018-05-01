@@ -1,6 +1,6 @@
 {
   "name": "fiesta",
-  "version": "1.5.104",
+  "version": "1.5.105",
   "repository": {
     "type": "git",
     "url": "https://github.com/Tquila-ANZ/fiesta.git"
@@ -14,11 +14,13 @@
     "buildNPM": "npm run build && npm version patch --force && git push",
     "npmpatch": "npm version patch --force && git push",
     "precommit": "lint-staged",
-    "publish":
-      "npm run build && npm version patch --force && npm publish && git push"
+    "publish": "npm run build && npm version patch --force && npm publish && git push"
   },
   "lint-staged": {
-    "*.{js,json,css,md}": ["prettier --write", "git add"]
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "publishConfig": {
     "access": "public"
@@ -34,8 +36,7 @@
     "react-native-fetch-blob": "^0.10.8",
     "react-native-flexi-radio-button": "^0.2.2",
     "react-native-fontawesome": "^5.7.0",
-    "react-native-force":
-      "git+https://github.com/forcedotcom/SalesforceMobileSDK-ReactNative.git#v5.3.0",
+    "react-native-force": "git+https://github.com/forcedotcom/SalesforceMobileSDK-ReactNative.git#v5.3.0",
     "react-native-gifted-messenger": "^0.1.4",
     "react-native-google-static-map": "^0.1.11",
     "react-native-hr-plus": "^1.0.6",
