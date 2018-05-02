@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { Text, View } from "react-native";
-import Hr from "react-native-hr-plus";
+import Hr from "../tq-anz-hr";
 
 class TqanzCustomerDetails extends PureComponent {
   render() {
