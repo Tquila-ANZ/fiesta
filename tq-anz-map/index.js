@@ -32,8 +32,8 @@ class TqanzMap extends React.Component {
     filteredMarkers: []
   };
 
-  setRegion(region, mapper) {
-    if (this.state.ready) {
+  setRegion(region, mapper = null) {
+    if (this.state.ready && mapper) {
       if (this.props.lat !== null && this.props.long !== null) {
         region.latitude = this.props.lat;
         region.longitude = this.props.long;
@@ -115,7 +115,10 @@ const defaultStyles = {
   map_text: {
     color: "#bc8b00"
   },
-  map_inner_container: { backgroundColor: "white", borderColor: "#BC8B00" }
+  map_inner_container: {
+    backgroundColor: "white",
+    borderColor: "#BC8B00"
+  }
 };
 
 export default TqanzMap;
