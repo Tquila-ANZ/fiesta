@@ -10,35 +10,25 @@ class TqanzAccordion extends Component {
       ...defaultStyles,
       ...props.styles
     };
-    this.state = {
-      showArrow: false
-    };
   }
 
-  componentWillMount() {
-    if (this.props.showArrow) {
-      this.setState({ showArrow: true });
-    }
-  }
+  renderHeader = (headerName, up = false) => {
+    const {
+      showArrow = true,
+      iconUp = "angleUp",
+      iconDown = "angleDown"
+    } = this.props;
 
-  renderHeader = (info, up = false) => {
-    let icon = (
-      <FontAwesome style={this.styles.tq_accordion_header_arrow_icon}>
-        {Icons.angleUp}
-      </FontAwesome>
-    );
-
-    if (up) {
-      icon = (
-        <FontAwesome style={this.styles.tq_accordion_header_arrow_icon}>
-          {Icons.angleDown}
-        </FontAwesome>
-      );
-    }
     return (
       <View style={this.styles.tq_accordion_header}>
-        <Text style={this.styles.tq_accordion_header_text}>{info}</Text>
-        {this.state.showArrow ? <View>{icon}</View> : null}
+        <Text style={this.styles.tq_accordion_header_text}>{headerName}</Text>
+        {showArrow ? (
+          <View>
+            <FontAwesome style={this.styles.tq_accordion_header_arrow_icon}>
+              {up ? Icons[iconUp] : Icons[iconDown]}
+            </FontAwesome>
+          </View>
+        ) : null}
       </View>
     );
   };
@@ -57,7 +47,7 @@ class TqanzAccordion extends Component {
         <Accordion
           styles={styles}
           items={this.props.items}
-          headerRender={this.renderHeader.bind(this)}
+          headerRender={this.renderHeader}
           contentRender={this.renderContent}
           headerName={headerName}
           contentName={contentName}
@@ -72,19 +62,19 @@ class TqanzAccordion extends Component {
 const defaultStyles = {
   tq_accordion_container: {
     flex: 1,
-    justifyContent: "center",
     backgroundColor: "#f1f1f1"
   },
   tq_accordion_header_arrow_icon: {
     color: "#f1f1f1",
-    fontSize: 20
+    fontSize: 20,
+    flex: 1
   },
   tq_accordion_header: {
     flexDirection: "row",
     justifyContent: "space-between",
     flex: 1,
     padding: 10,
-    backgroundColor: "#fff"
+    backgroundColor: "#009FDF"
   },
   tq_accordion_header_text: {
     justifyContent: "flex-start",
