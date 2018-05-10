@@ -109,7 +109,7 @@ class TqanzMap extends React.Component {
 
 const defaultStyles = {
   map_container: {
-    height: "120%",
+    height: "100%",
     width: "100%"
   },
   map_text: {
