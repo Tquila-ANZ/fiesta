@@ -31,26 +31,21 @@ class TqanzRadioButton extends React.Component {
   };
 
   onSelect = (index, value) => {
-    // This is to provide the ability to deselect a radio button if it is tapped again
+    // This is to provide the ability to deselect a radio button if it is tapped
+    // again
     const { selectedIndex } = this.state;
     if (index === selectedIndex) {
-      this.setState({
-        selectedIndex: null
-      });
+      this.setState({ selectedIndex: null });
       this.props.onSelect(index, null);
     } else {
-      this.setState({
-        selectedIndex: index
-      });
+      this.setState({ selectedIndex: index });
       this.props.onSelect(index, value);
     }
   };
 
   getTextColor = (index, selectedIndex) => {
     if (index === selectedIndex) {
-      return {
-        color: this.props.activeColor
-      };
+      return { color: this.props.activeColor };
     } else {
       return {};
     }
@@ -59,9 +54,8 @@ class TqanzRadioButton extends React.Component {
   renderGroup = (a, selectedIndex) => {
     if (a === undefined) a = new Array();
 
-    // FOR TESTING
-    // a.push(new RadioGroupItem(1, "Single"));
-    // a.push(new RadioGroupItem(1, "Double"));
+    // FOR TESTING a.push(new RadioGroupItem(1, "Single")); a.push(new
+    // RadioGroupItem(1, "Double"));
 
     return a.map((info, index) => (
       <RadioButton
@@ -87,12 +81,14 @@ class TqanzRadioButton extends React.Component {
   render() {
     const styles = this.state.styles;
     const index = this.getIndex(this.props.radios, this.props.selectedRadio);
+    const { inactiveColor = "black" } = this.props;
     return (
       <View>
         <RadioGroup
           onSelect={this.onSelect}
           style={styles.radio_group}
           selectedIndex={index}
+          color={inactiveColor}
         >
           {this.renderGroup(this.props.radios, index)}
         </RadioGroup>
