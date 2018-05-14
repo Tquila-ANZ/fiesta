@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 import RadioGroup from "./radioGroup";
 import RadioButton from "./radioButton";
 
-class TqanzRadioCustomButton extends React.Component {
+export default class TqanzRadioCustomButton extends React.Component {
   constructor(props) {
     super(props);
 
@@ -104,5 +104,3 @@ const defaultStyles = {
   radio_group: {},
   radio_button: {}
 };
-
-export default TqanzRadioButton;

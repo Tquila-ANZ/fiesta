@@ -42,8 +42,10 @@ export default class RadioButton extends Component {
                 : null
             ]}
           >
-            <View>{renderHeader(value, isSelected)}</View>
-            <View style={styles.item}>{children}</View>
+            <View style={styles.item}>
+              {renderHeader(value, isSelected)}
+              {children}
+            </View>
           </View>
         </TouchableWithoutFeedback>
       </View>
