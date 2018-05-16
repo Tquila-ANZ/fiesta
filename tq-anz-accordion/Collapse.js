@@ -6,38 +6,45 @@ export default class Collapse extends Component {
     height: 0
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      height: new Animated.Value(this.props.height)
-    };
-    this.getContentHeight = this.getContentHeight.bind(this);
-    this.handleHeight = this.handleHeight.bind(this);
+  contentInit = false;
+  contentHeight = 0;
+  state = {
+    height: new Animated.Value(0)
+  };
 
-    this.contentInit = false;
-    this.contentHeight = 0;
-
-    this.styles = {
-      ...defaultStyles,
-      ...props.styles
-    };
+  componentWillReceiveProps(nextProps) {
+    this.init(nextProps);
   }
 
-  getContentHeight(event) {
+  componentDidMount() {
+    this.init(this.props);
+  }
+
+  init = (props = {}) => {
+    const { height } = props;
+
+    if (height !== this.state.height) {
+      this.setState({
+        height: new Animated.Value(height)
+      });
+    }
+  };
+
+  getContentHeight = event => {
+    const newHeight = event.nativeEvent.layout.height;
     if (!this.contentInit) {
-      // Do not use maxHeight as it messes with the whole usability of the app
-      // Using maxHeight creates a collapse as a scroll container causing the app to now have
-      // multiple scroll containers in terms of multiple collapse containers
+      // Do not use maxHeight as it messes with the whole usability of the app Using
+      // maxHeight creates a collapse as a scroll container causing the app to now
+      // have multiple scroll containers in terms of multiple collapse containers
       // Simply make the collapse container as big as the content itself
 
       this.contentHeight = event.nativeEvent.layout.height;
       this.contentInit = true;
       this.forceUpdate();
     }
-  }
+  };
 
-  handleHeight() {
-    ``;
+  handleHeight = () => {
     if (this.props.collapse) {
       Animated.timing(this.state.height, {
         toValue: 0,
@@ -49,9 +56,14 @@ export default class Collapse extends Component {
         duration: this.props.duration
       }).start();
     }
-  }
+  };
+
   render() {
-    const styles = this.styles;
+    const styles = {
+      ...defaultStyles,
+      ...this.props.styles
+    };
+
     if (this.contentInit) {
       this.handleHeight();
     }
@@ -60,7 +72,9 @@ export default class Collapse extends Component {
         style={[
           styles.collapse_container,
           this.props.collapse && styles.collapse_item,
-          this.contentInit && { height: this.state.height },
+          this.contentInit && {
+            height: this.state.height
+          },
           this.props.backgroundColor && {
             backgroundColor: this.props.backgroundColor
           }

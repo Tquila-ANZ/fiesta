@@ -4,15 +4,22 @@ import { StyleSheet, View, TouchableHighlight } from "react-native";
 import Collapse from "./Collapse";
 
 export default class Accordion extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeItem: undefined
-    };
-    this.styles = {
-      ...defaultStyles,
-      ...props.styles
-    };
+  state = {
+    activeItem: null
+  };
+
+  componentDidMount() {
+    const { activeIndex = null } = this.props;
+
+    this._toggle(activeIndex);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { activeIndex = null } = nextProps;
+
+    if (this.props.activeIndex !== activeIndex) {
+      this._toggle(activeIndex);
+    }
   }
 
   _toggle(index) {
@@ -33,7 +40,10 @@ export default class Accordion extends Component {
       duration,
       backgroundColor
     } = this.props;
-    const styles = this.styles;
+    const styles = {
+      ...defaultStyles,
+      ...this.props.styles
+    };
 
     return (
       <View style={styles.accordion_container}>

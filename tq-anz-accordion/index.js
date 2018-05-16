@@ -4,15 +4,11 @@ import Accordion from "./Accordion";
 import FontAwesome, { Icons } from "react-native-fontawesome";
 
 class TqanzAccordion extends Component {
-  constructor(props) {
-    super(props);
-    this.styles = {
-      ...defaultStyles,
-      ...props.styles
-    };
-  }
-
   renderHeader = (headerName, up = false) => {
+    const styles = {
+      ...defaultStyles,
+      ...this.props.styles
+    };
     const {
       showArrow = true,
       iconUp = "angleUp",
@@ -20,11 +16,11 @@ class TqanzAccordion extends Component {
     } = this.props;
 
     return (
-      <View style={this.styles.tq_accordion_header}>
-        <Text style={this.styles.tq_accordion_header_text}>{headerName}</Text>
+      <View style={styles.tq_accordion_header}>
+        <Text style={styles.tq_accordion_header_text}>{headerName}</Text>
         {showArrow ? (
           <View>
-            <FontAwesome style={this.styles.tq_accordion_header_arrow_icon}>
+            <FontAwesome style={styles.tq_accordion_header_arrow_icon}>
               {up ? Icons[iconUp] : Icons[iconDown]}
             </FontAwesome>
           </View>
@@ -34,18 +30,24 @@ class TqanzAccordion extends Component {
   };
 
   render() {
-    const styles = this.styles;
+    const styles = {
+      ...defaultStyles,
+      ...this.props.styles
+    };
+
     const {
       headerName = "name",
       contentName = "description",
       duration = 200,
-      backgroundColor = "#fff"
+      backgroundColor = "#fff",
+      activeIndex = null
     } = this.props;
 
     return (
       <View style={styles.tq_accordion_container}>
         <Accordion
           styles={styles}
+          activeIndex={activeIndex}
           items={this.props.items}
           headerRender={this.renderHeader}
           contentRender={this.renderContent}
