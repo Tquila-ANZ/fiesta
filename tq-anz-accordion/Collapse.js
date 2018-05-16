@@ -21,11 +21,15 @@ export default class Collapse extends Component {
   }
 
   init = (props = {}) => {
-    const { height } = props;
+    const { collapse } = props;
 
-    if (height !== this.state.height) {
+    if (collapse) {
+      /**
+       * If you reset the height to zero when the item is collapsed
+       * it'd take the scroll straight up
+       */
       this.setState({
-        height: new Animated.Value(height)
+        height: new Animated.Value(0)
       });
     }
   };
