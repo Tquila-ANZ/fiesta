@@ -48,6 +48,7 @@ export default class GalleryModal extends PureComponent {
       transparent = false,
       onRequestClose = () => {},
       closeButtonText = "Done",
+      selectedImages = [],
 
       album = "",
       minimumInteritemSpacing = 5,
@@ -58,7 +59,14 @@ export default class GalleryModal extends PureComponent {
       selection = {
         selectedImage: require("./images/selected.png"),
         imagePosition: "bottom-right"
-      }
+      },
+      supportedOrientations = [
+        "portrait",
+        "portrait-upside-down",
+        "landscape",
+        "landscape-left",
+        "landscape-right"
+      ]
     } = this.props;
 
     const styles = {
@@ -72,6 +80,7 @@ export default class GalleryModal extends PureComponent {
         transparent={transparent}
         visible={modalVisible}
         onRequestClose={onRequestClose}
+        supportedOrientations={supportedOrientations}
       >
         <View style={styles.container}>
           <CameraKitGalleryView
@@ -81,6 +90,7 @@ export default class GalleryModal extends PureComponent {
             minimumLineSpacing={minimumLineSpacing}
             columnCount={columnCount}
             selection={selection}
+            selectedImages={selectedImages}
             onTapImage={this.onTapImage}
             remoteDownloadIndicatorType={remoteDownloadIndicatorType}
             remoteDownloadIndicatorColor={remoteDownloadIndicatorColor}
