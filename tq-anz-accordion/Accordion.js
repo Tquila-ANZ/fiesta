@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View, TouchableHighlight } from "react-native";
+import { StyleSheet, ScrollView, View, TouchableHighlight } from "react-native";
 
 import Collapse from "./Collapse";
 
@@ -38,15 +38,17 @@ export default class Accordion extends Component {
       headerName,
       contentName,
       duration,
-      backgroundColor
+      backgroundColor,
+      onScroll = () => {}
     } = this.props;
+
     const styles = {
       ...defaultStyles,
       ...this.props.styles
     };
 
     return (
-      <View style={styles.accordion_container}>
+      <ScrollView style={styles.accordion_container} onScroll={onScroll}>
         {items.map((item, index) => {
           return (
             <View key={item.key} style={styles.accordion_content_container}>
@@ -75,7 +77,7 @@ export default class Accordion extends Component {
             </View>
           );
         })}
-      </View>
+      </ScrollView>
     );
   }
 }

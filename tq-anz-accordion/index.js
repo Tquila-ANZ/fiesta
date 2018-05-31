@@ -40,7 +40,8 @@ class TqanzAccordion extends Component {
       contentName = "description",
       duration = 200,
       backgroundColor = "#fff",
-      activeIndex = null
+      activeIndex = null,
+      onScroll = () => {}
     } = this.props;
 
     return (
@@ -49,6 +50,7 @@ class TqanzAccordion extends Component {
           styles={styles}
           activeIndex={activeIndex}
           items={this.props.items}
+          onScroll={onScroll}
           headerRender={this.renderHeader}
           contentRender={this.renderContent}
           headerName={headerName}
