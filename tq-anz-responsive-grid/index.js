@@ -1,11 +1,5 @@
 import React, { PureComponent } from "react";
-import {
-  Dimensions,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 
 class TqanzResponsiveGrid extends PureComponent {
   state = {
@@ -27,32 +21,34 @@ class TqanzResponsiveGrid extends PureComponent {
       data,
       gridViewStyle,
       itemInsideStyle,
-      itemOnPress,
       itemOutsideStyle,
       itemTextStyle,
-      scrollViewStyle,
+      itemOnPress,
+      renderItem,
       spacing,
     } = this.props;
     const { itemSize } = this.state;
     return (
-      <ScrollView style={[styles.scrollViewContainer, scrollViewStyle]}>
-        <View
-          style={[styles.gridViewContainer, gridViewStyle]}
-          onLayout={this._handleOnLayout}
-        >
-          {itemSize
-            ? data.map((item, index) => (
-                <View
-                  key={`item_${index}`}
-                  style={[
-                    styles.itemContainerOutside,
-                    itemOutsideStyle,
-                    itemSize ? { height: itemSize, width: itemSize } : null,
-                  ]}
-                >
+      <View
+        style={[styles.gridViewContainer, gridViewStyle]}
+        onLayout={this._handleOnLayout}
+      >
+        {itemSize
+          ? data.map((item, index) => (
+              <View
+                key={`item_${index}`}
+                style={[
+                  styles.itemContainerOutside,
+                  itemOutsideStyle,
+                  itemSize ? { height: itemSize, width: itemSize } : null,
+                ]}
+              >
+                {renderItem ? (
+                  renderItem(item, index)
+                ) : (
                   <TouchableOpacity
                     style={[styles.itemContainerInside, itemInsideStyle]}
-                    onPress={itemOnPress ? () => itemOnPress(item) : () => null}
+                    onPress={itemOnPress(item)}
                   >
                     <Text
                       style={[styles.itemText, itemTextStyle, item.textStyle]}
@@ -60,28 +56,27 @@ class TqanzResponsiveGrid extends PureComponent {
                       {item.name}
                     </Text>
                   </TouchableOpacity>
-                </View>
-              ))
-            : null}
-        </View>
-      </ScrollView>
+                )}
+              </View>
+            ))
+          : null}
+      </View>
     );
   }
 }
 
 TqanzResponsiveGrid.defaultProps = {
+  data: [],
   itemsPerRow: 2,
   gridViewStyle: null,
   itemOutsideStyle: null,
   itemInsideStyle: null,
-  itemOnPress: null,
+  itemOnPress: () => {},
+  renderItem: null,
   spacing: 0,
 };
 
 const styles = {
-  scrollViewContainer: {
-    flex: 1,
-  },
   gridViewContainer: {
     flex: 1,
     flexDirection: "row",
