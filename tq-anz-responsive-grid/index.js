@@ -1,82 +1,54 @@
 import React, { PureComponent } from "react";
 import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 
+const { height, width } = Dimensions.get("window");
+const aspectRatio = height / width;
+
 class TqanzResponsiveGrid extends PureComponent {
   state = {
     itemSize: null
   };
 
-  _handleOnLayout = (e) => {
-    const {
-      nativeEvent: {
-        layout: { width }
-      }
-    } = e;
+  _handleOnLayout = e => {
+    const { nativeEvent: { layout: { width } } } = e;
     const { itemsPerRow } = this.props;
-    this.setState({ itemSize: Math.floor(width / itemsPerRow) });
+    this.setState({
+      itemSize: Math.floor(width / itemsPerRow)
+    });
   };
 
   render() {
-    const {
-      data,
-      gridViewStyle,
-      gridLineColor,
-      gridLineWidth,
-      itemInsideStyle,
-      itemOutsideStyle,
-      itemTextStyle,
-      itemOnPress,
-      itemsPerRow,
-      renderItem,
-      showGrid,
-      spacing
-    } = this.props;
+    const styles = {
+      ...defaultStyles,
+      ...this.props.styles
+    };
     const { itemSize } = this.state;
+
+    const { data, onPress, renderItem, itemsPerRow, showGrid } = this.props;
     let blanks = 0;
     if (data.length % itemsPerRow > 0) {
-      blanks = itemsPerRow - (data.length % itemsPerRow);
+      blanks = itemsPerRow - data.length % itemsPerRow;
     }
+
     return (
-      <View
-        style={[styles.gridViewContainer, gridViewStyle]}
-        onLayout={this._handleOnLayout}
-      >
+      <View style={styles.container} onLayout={this._handleOnLayout}>
         {itemSize
           ? data.concat(new Array(blanks).fill("blank")).map((item, index) => (
               <View
                 key={`item_${index}`}
                 style={[
                   styles.itemContainerOutside,
-                  itemOutsideStyle,
-                  itemSize ? { height: itemSize, width: itemSize } : null,
+                  {
+                    height: itemSize,
+                    width: itemSize
+                  },
                   showGrid && index % itemsPerRow !== 0
-                    ? {
-                        borderLeftWidth: gridLineWidth,
-                        borderColor: gridLineColor
-                      }
+                    ? styles.gridLineLeft
                     : null,
-                  showGrid && index >= itemsPerRow
-                    ? {
-                        borderTopWidth: gridLineWidth,
-                        borderColor: gridLineColor
-                      }
-                    : null
+                  showGrid && index >= itemsPerRow ? styles.gridLineTop : null
                 ]}
               >
-                {item === "blank" ? null : renderItem ? (
-                  renderItem(item, index)
-                ) : (
-                  <TouchableOpacity
-                    style={[styles.itemContainerInside, itemInsideStyle]}
-                    onPress={itemOnPress(item)}
-                  >
-                    <Text
-                      style={[styles.itemText, itemTextStyle, item.textStyle]}
-                    >
-                      {item.name}
-                    </Text>
-                  </TouchableOpacity>
-                )}
+                {item === "blank" ? null : renderItem(item, index)}
               </View>
             ))
           : null}
@@ -87,26 +59,24 @@ class TqanzResponsiveGrid extends PureComponent {
 
 TqanzResponsiveGrid.defaultProps = {
   data: [],
+  styles: {},
   itemsPerRow: 2,
-  gridLineWidth: 1,
-  gridLineColor: "#b7bec3",
-  gridViewStyle: null,
-  itemOutsideStyle: null,
-  itemInsideStyle: null,
-  itemOnPress: () => {},
+  onPress: () => {},
+
   renderItem: null,
-  showGrid: false,
-  spacing: 0
+  showGrid: false
 };
 
-const styles = {
-  gridViewContainer: {
+const defaultStyles = {
+  container: {
     flex: 1,
     flexDirection: "row",
     alignSelf: "stretch",
     flexWrap: "wrap"
   },
-  itemContainerOutside: {},
+  itemContainerOutside: {
+    padding: aspectRatio > 1.6 ? 10 : 40
+  },
   itemContainerInside: {
     flex: 1,
     justifyContent: "center",
@@ -119,6 +89,14 @@ const styles = {
     fontSize: 16,
     color: "#fff",
     fontWeight: "600"
+  },
+  gridLineLeft: {
+    borderLeftWidth: 1,
+    borderColor: "#b7bec3"
+  },
+  gridLineTop: {
+    borderTopWidth: 1,
+    borderColor: "#b7bec3"
   }
 };
 
