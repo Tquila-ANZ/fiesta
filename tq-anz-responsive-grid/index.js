@@ -3,14 +3,14 @@ import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 
 class TqanzResponsiveGrid extends PureComponent {
   state = {
-    itemSize: null,
+    itemSize: null
   };
 
   _handleOnLayout = (e) => {
     const {
       nativeEvent: {
-        layout: { width },
-      },
+        layout: { width }
+      }
     } = e;
     const { itemsPerRow } = this.props;
     this.setState({ itemSize: Math.floor(width / itemsPerRow) });
@@ -20,30 +20,50 @@ class TqanzResponsiveGrid extends PureComponent {
     const {
       data,
       gridViewStyle,
+      gridLineColor,
+      gridLineWidth,
       itemInsideStyle,
       itemOutsideStyle,
       itemTextStyle,
       itemOnPress,
+      itemsPerRow,
       renderItem,
-      spacing,
+      showGrid,
+      spacing
     } = this.props;
     const { itemSize } = this.state;
+    let blanks = 0;
+    if (data.length % itemsPerRow > 0) {
+      blanks = itemsPerRow - (data.length % itemsPerRow);
+    }
     return (
       <View
         style={[styles.gridViewContainer, gridViewStyle]}
         onLayout={this._handleOnLayout}
       >
         {itemSize
-          ? data.map((item, index) => (
+          ? data.concat(new Array(blanks).fill("blank")).map((item, index) => (
               <View
                 key={`item_${index}`}
                 style={[
                   styles.itemContainerOutside,
                   itemOutsideStyle,
                   itemSize ? { height: itemSize, width: itemSize } : null,
+                  showGrid && index % itemsPerRow !== 0
+                    ? {
+                        borderLeftWidth: gridLineWidth,
+                        borderColor: gridLineColor
+                      }
+                    : null,
+                  showGrid && index >= itemsPerRow
+                    ? {
+                        borderTopWidth: gridLineWidth,
+                        borderColor: gridLineColor
+                      }
+                    : null
                 ]}
               >
-                {renderItem ? (
+                {item === "blank" ? null : renderItem ? (
                   renderItem(item, index)
                 ) : (
                   <TouchableOpacity
@@ -68,12 +88,15 @@ class TqanzResponsiveGrid extends PureComponent {
 TqanzResponsiveGrid.defaultProps = {
   data: [],
   itemsPerRow: 2,
+  gridLineWidth: 1,
+  gridLineColor: "#b7bec3",
   gridViewStyle: null,
   itemOutsideStyle: null,
   itemInsideStyle: null,
   itemOnPress: () => {},
   renderItem: null,
-  spacing: 0,
+  showGrid: false,
+  spacing: 0
 };
 
 const styles = {
@@ -81,7 +104,7 @@ const styles = {
     flex: 1,
     flexDirection: "row",
     alignSelf: "stretch",
-    flexWrap: "wrap",
+    flexWrap: "wrap"
   },
   itemContainerOutside: {},
   itemContainerInside: {
@@ -90,13 +113,13 @@ const styles = {
     alignItems: "center",
     backgroundColor: "#f9521f",
     borderRadius: 5,
-    padding: 10,
+    padding: 10
   },
   itemText: {
     fontSize: 16,
     color: "#fff",
-    fontWeight: "600",
-  },
+    fontWeight: "600"
+  }
 };
 
 export default TqanzResponsiveGrid;
