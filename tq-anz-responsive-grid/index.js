@@ -32,45 +32,53 @@ class TqanzResponsiveGrid extends PureComponent {
       spacing
     } = this.props;
     const { itemSize } = this.state;
+    let blanks = 0;
+    if (data.length % itemsPerRow > 0) {
+      blanks = itemsPerRow - (data.length % itemsPerRow);
+    }
     return (
       <View
         style={[styles.gridViewContainer, gridViewStyle]}
         onLayout={this._handleOnLayout}
       >
         {itemSize
-          ? data
-              .concat(new Array((data.length % itemsPerRow) + 1).fill("blank"))
-              .map((item, index) => (
-                <View
-                  key={`item_${index}`}
-                  style={[
-                    styles.itemContainerOutside,
-                    itemOutsideStyle,
-                    itemSize ? { height: itemSize, width: itemSize } : null,
-                    showGrid && index % itemsPerRow !== 0
-                      ? { borderLeftWidth: gridLineWidth, borderColor: gridLineColor }
-                      : null,
-                    showGrid && index >= itemsPerRow
-                      ? { borderTopWidth: gridLineWidth, borderColor: gridLineColor }
-                      : null
-                  ]}
-                >
-                  {item === "blank" ? null : renderItem ? (
-                    renderItem(item, index)
-                  ) : (
-                    <TouchableOpacity
-                      style={[styles.itemContainerInside, itemInsideStyle]}
-                      onPress={itemOnPress(item)}
+          ? data.concat(new Array(blanks).fill("blank")).map((item, index) => (
+              <View
+                key={`item_${index}`}
+                style={[
+                  styles.itemContainerOutside,
+                  itemOutsideStyle,
+                  itemSize ? { height: itemSize, width: itemSize } : null,
+                  showGrid && index % itemsPerRow !== 0
+                    ? {
+                        borderLeftWidth: gridLineWidth,
+                        borderColor: gridLineColor
+                      }
+                    : null,
+                  showGrid && index >= itemsPerRow
+                    ? {
+                        borderTopWidth: gridLineWidth,
+                        borderColor: gridLineColor
+                      }
+                    : null
+                ]}
+              >
+                {item === "blank" ? null : renderItem ? (
+                  renderItem(item, index)
+                ) : (
+                  <TouchableOpacity
+                    style={[styles.itemContainerInside, itemInsideStyle]}
+                    onPress={itemOnPress(item)}
+                  >
+                    <Text
+                      style={[styles.itemText, itemTextStyle, item.textStyle]}
                     >
-                      <Text
-                        style={[styles.itemText, itemTextStyle, item.textStyle]}
-                      >
-                        {item.name}
-                      </Text>
-                    </TouchableOpacity>
-                  )}
-                </View>
-              ))
+                      {item.name}
+                    </Text>
+                  </TouchableOpacity>
+                )}
+              </View>
+            ))
           : null}
       </View>
     );
