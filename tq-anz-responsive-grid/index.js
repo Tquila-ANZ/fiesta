@@ -3,14 +3,14 @@ import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 
 class TqanzResponsiveGrid extends PureComponent {
   state = {
-    itemSize: null,
+    itemSize: null
   };
 
   _handleOnLayout = (e) => {
     const {
       nativeEvent: {
-        layout: { width },
-      },
+        layout: { width }
+      }
     } = e;
     const { itemsPerRow } = this.props;
     this.setState({ itemSize: Math.floor(width / itemsPerRow) });
@@ -20,12 +20,16 @@ class TqanzResponsiveGrid extends PureComponent {
     const {
       data,
       gridViewStyle,
+      gridLineColor,
+      gridLineWidth,
       itemInsideStyle,
       itemOutsideStyle,
       itemTextStyle,
       itemOnPress,
+      itemsPerRow,
       renderItem,
-      spacing,
+      showGrid,
+      spacing
     } = this.props;
     const { itemSize } = this.state;
     return (
@@ -34,31 +38,39 @@ class TqanzResponsiveGrid extends PureComponent {
         onLayout={this._handleOnLayout}
       >
         {itemSize
-          ? data.map((item, index) => (
-              <View
-                key={`item_${index}`}
-                style={[
-                  styles.itemContainerOutside,
-                  itemOutsideStyle,
-                  itemSize ? { height: itemSize, width: itemSize } : null,
-                ]}
-              >
-                {renderItem ? (
-                  renderItem(item, index)
-                ) : (
-                  <TouchableOpacity
-                    style={[styles.itemContainerInside, itemInsideStyle]}
-                    onPress={itemOnPress(item)}
-                  >
-                    <Text
-                      style={[styles.itemText, itemTextStyle, item.textStyle]}
+          ? data
+              .concat(new Array((data.length % itemsPerRow) + 1).fill("blank"))
+              .map((item, index) => (
+                <View
+                  key={`item_${index}`}
+                  style={[
+                    styles.itemContainerOutside,
+                    itemOutsideStyle,
+                    itemSize ? { height: itemSize, width: itemSize } : null,
+                    showGrid && index % itemsPerRow !== 0
+                      ? { borderLeftWidth: gridLineWidth, borderColor: gridLineColor }
+                      : null,
+                    showGrid && index >= itemsPerRow
+                      ? { borderTopWidth: gridLineWidth, borderColor: gridLineColor }
+                      : null
+                  ]}
+                >
+                  {item === "blank" ? null : renderItem ? (
+                    renderItem(item, index)
+                  ) : (
+                    <TouchableOpacity
+                      style={[styles.itemContainerInside, itemInsideStyle]}
+                      onPress={itemOnPress(item)}
                     >
-                      {item.name}
-                    </Text>
-                  </TouchableOpacity>
-                )}
-              </View>
-            ))
+                      <Text
+                        style={[styles.itemText, itemTextStyle, item.textStyle]}
+                      >
+                        {item.name}
+                      </Text>
+                    </TouchableOpacity>
+                  )}
+                </View>
+              ))
           : null}
       </View>
     );
@@ -68,12 +80,15 @@ class TqanzResponsiveGrid extends PureComponent {
 TqanzResponsiveGrid.defaultProps = {
   data: [],
   itemsPerRow: 2,
+  gridLineWidth: 1,
+  gridLineColor: "#b7bec3",
   gridViewStyle: null,
   itemOutsideStyle: null,
   itemInsideStyle: null,
   itemOnPress: () => {},
   renderItem: null,
-  spacing: 0,
+  showGrid: false,
+  spacing: 0
 };
 
 const styles = {
@@ -81,7 +96,7 @@ const styles = {
     flex: 1,
     flexDirection: "row",
     alignSelf: "stretch",
-    flexWrap: "wrap",
+    flexWrap: "wrap"
   },
   itemContainerOutside: {},
   itemContainerInside: {
@@ -90,13 +105,13 @@ const styles = {
     alignItems: "center",
     backgroundColor: "#f9521f",
     borderRadius: 5,
-    padding: 10,
+    padding: 10
   },
   itemText: {
     fontSize: 16,
     color: "#fff",
-    fontWeight: "600",
-  },
+    fontWeight: "600"
+  }
 };
 
 export default TqanzResponsiveGrid;
