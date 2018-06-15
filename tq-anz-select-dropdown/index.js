@@ -27,7 +27,11 @@ export default class Dropdown extends PureComponent {
 
   render() {
     let props = this.props;
-    const { cancelButtonIcon = "timesCircleO", cancelButtonStyle = {} } = props;
+    const {
+      cancelButtonIcon = "timesCircleO",
+      cancelButtonStyle = {},
+      showCancelButton = true
+    } = props;
 
     if (props && !props.defaultValue) {
       props = {
@@ -38,15 +42,17 @@ export default class Dropdown extends PureComponent {
 
     return (
       <View>
-        <ModalDropdown ref="dropdown" {...props} />
-        <TouchableOpacity
-          style={cancelButtonStyle.container}
-          onPress={this.resetValue}
-        >
-          <FontAwesome style={cancelButtonStyle.icon}>
-            {Icons[cancelButtonIcon]}
-          </FontAwesome>
-        </TouchableOpacity>
+        <ModalDropdown ref="dropdown" {...props} />{" "}
+        {showCancelButton ? (
+          <TouchableOpacity
+            style={cancelButtonStyle.container}
+            onPress={this.resetValue}
+          >
+            <FontAwesome style={cancelButtonStyle.icon}>
+              {Icons[cancelButtonIcon]}
+            </FontAwesome>
+          </TouchableOpacity>
+        ) : null}
       </View>
     );
   }
