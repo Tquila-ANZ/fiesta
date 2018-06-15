@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
-import { View } from "react-native";
+import { View, TouchableOpacity, StyleSheet } from "react-native";
 import ModalDropdown from "react-native-modal-dropdown";
+import FontAwesome, { Icons } from "react-native-fontawesome";
 
 export default class Dropdown extends PureComponent {
   /**
@@ -18,8 +19,16 @@ export default class Dropdown extends PureComponent {
     }
   }
 
+  resetValue = () => {
+    const { onSelect = () => {}, defaultValue = {} } = this.props;
+
+    onSelect(null, defaultValue);
+  };
+
   render() {
     let props = this.props;
+    const { cancelButtonIcon = "timesCircleO", cancelButtonStyle = {} } = props;
+
     if (props && !props.defaultValue) {
       props = {
         ...props,
@@ -27,6 +36,52 @@ export default class Dropdown extends PureComponent {
       };
     }
 
-    return <ModalDropdown ref="dropdown" {...props} />;
+    return (
+      <View>
+        <ModalDropdown ref="dropdown" {...props} />
+        <TouchableOpacity
+          style={cancelButtonStyle.container}
+          onPress={this.resetValue}
+        >
+          <FontAwesome style={cancelButtonStyle.icon}>
+            {Icons[cancelButtonIcon]}
+          </FontAwesome>
+        </TouchableOpacity>
+      </View>
+    );
   }
 }
+
+const defaultStyles = {
+  dropdownStyle: {
+    minWidth: "90%",
+    borderWidth: 1,
+    flex: 1,
+    borderColor: "blue",
+    backgroundColor: "grey"
+  },
+  container: {
+    marginTop: 5,
+    marginBottom: 5,
+    borderWidth: 1,
+    borderColor: "blue"
+  },
+  row: {
+    container: {
+      borderWidth: 0,
+      borderBottomWidth: StyleSheet.hairlineWidth,
+      borderBottomColor: "white"
+    },
+    selectedText: {
+      padding: 5,
+      backgroundColor: "blue",
+      color: "white",
+      borderWidth: 0
+    },
+    text: {
+      color: "black",
+      padding: 10,
+      backgroundColor: "grey"
+    }
+  }
+};
