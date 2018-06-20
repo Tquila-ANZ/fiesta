@@ -42,7 +42,7 @@ export default class Dropdown extends PureComponent {
 
     return (
       <View>
-        <ModalDropdown ref="dropdown" {...props} />{" "}
+        <ModalDropdown ref="dropdown" {...props} />
         {showCancelButton ? (
           <TouchableOpacity
             style={cancelButtonStyle.container}
