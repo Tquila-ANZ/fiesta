@@ -55,7 +55,7 @@ export default class GalleryModal extends PureComponent {
       animationType = "slide",
       transparent = false,
       onRequestClose = () => {},
-      showCancelButton = false,
+      showCancelButton = true,
       cancelButtonText = "Cancel",
       closeButtonText = "Done",
       selectedImages = [],
@@ -106,17 +106,7 @@ export default class GalleryModal extends PureComponent {
             remoteDownloadIndicatorColor={remoteDownloadIndicatorColor}
           />
 
-          <View
-            style={[
-              styles.buttonsContainer,
-              showCancelButton
-                ? {
-                    flexDirection: "row",
-                    justifyContent: "space-around"
-                  }
-                : null
-            ]}
-          >
+          <View style={styles.buttonsContainer}>
             {showCancelButton ? (
               <TouchableOpacity
                 onPress={this.onCancel}
@@ -143,7 +133,10 @@ const defaultStyles = {
   },
   galleryContainer: {},
   gallery: { flex: 1, margin: 0, marginTop: 50 },
-  buttonsContainer: {},
+  buttonsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around"
+  },
   cancelButton: {
     minHeight: 40,
     justifyContent: "center",
