@@ -32,6 +32,14 @@ export default class GalleryModal extends PureComponent {
     onTapImage(image);
   };
 
+  onCancel = () => {
+    const { onClose = () => {} } = this.props;
+    this.setState({
+      selectedImages: []
+    });
+    onClose();
+  };
+
   onClose = () => {
     const { onClose = () => {} } = this.props;
     const { selectedImages } = this.state;
@@ -47,6 +55,8 @@ export default class GalleryModal extends PureComponent {
       animationType = "slide",
       transparent = false,
       onRequestClose = () => {},
+      showCancelButton = false,
+      cancelButtonText = "Cancel",
       closeButtonText = "Done",
       selectedImages = [],
 
@@ -96,9 +106,30 @@ export default class GalleryModal extends PureComponent {
             remoteDownloadIndicatorColor={remoteDownloadIndicatorColor}
           />
 
-          <TouchableOpacity onPress={this.onClose} style={styles.closeButton}>
-            <Text style={styles.buttonText}>{closeButtonText}</Text>
-          </TouchableOpacity>
+          <View
+            style={[
+              styles.buttonsContainer,
+              showCancelButton
+                ? {
+                    flexDirection: "row",
+                    justifyContent: "space-around"
+                  }
+                : null
+            ]}
+          >
+            {showCancelButton ? (
+              <TouchableOpacity
+                onPress={this.onCancel}
+                style={styles.cancelButton}
+              >
+                <Text style={styles.buttonText}>{cancelButtonText}</Text>
+              </TouchableOpacity>
+            ) : null}
+
+            <TouchableOpacity onPress={this.onClose} style={styles.closeButton}>
+              <Text style={styles.buttonText}>{closeButtonText}</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </Modal>
     );
@@ -112,6 +143,13 @@ const defaultStyles = {
   },
   galleryContainer: {},
   gallery: { flex: 1, margin: 0, marginTop: 50 },
+  buttonsContainer: {},
+  cancelButton: {
+    minHeight: 40,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "red"
+  },
   closeButton: {
     minHeight: 40,
     justifyContent: "center",
