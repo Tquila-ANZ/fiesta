@@ -1,9 +1,13 @@
 import React, { PureComponent } from "react";
-import { View, TouchableOpacity, StyleSheet } from "react-native";
+import { Dimensions, View, TouchableOpacity, StyleSheet } from "react-native";
 import ModalDropdown from "react-native-modal-dropdown";
 import FontAwesome, { Icons } from "react-native-fontawesome";
 
 export default class Dropdown extends PureComponent {
+  state = {
+    y: null
+  };
+
   /**
    * When the modal dropdown component receives defaultValue as null
    * you'd need to call select(-1) to make the dropdown go back to the default state
@@ -25,11 +29,22 @@ export default class Dropdown extends PureComponent {
     onSelect(null, defaultValue);
   };
 
+  onLayout = ({ nativeEvent }) => {
+    if (this.view) {
+      this.view.measure((x, y, width, height, pageX, pageY) => {
+        this.setState({
+          y: pageY
+        });
+      });
+    }
+  };
+
   render() {
     let props = this.props;
     const {
       cancelButtonIcon = "timesCircleO",
       cancelButtonStyle = {},
+      options = [],
       showCancelButton = true
     } = props;
 
@@ -40,8 +55,22 @@ export default class Dropdown extends PureComponent {
       };
     }
 
+    if (this.state.y) {
+      const optionsHeight = (40 + StyleSheet.hairlineWidth) * options.length;
+      const windowHeight = Dimensions.get("window").height - this.state.y - 40;
+      const dropdownHeight = Math.min(optionsHeight, windowHeight);
+
+      props = {
+        ...props,
+        dropdownStyle: {
+          height: dropdownHeight,
+          ...props.dropdownStyle
+        }
+      };
+    }
+
     return (
-      <View>
+      <View ref={component => (this.view = component)} onLayout={this.onLayout}>
         <ModalDropdown ref="dropdown" {...props} />
         {showCancelButton ? (
           <TouchableOpacity
