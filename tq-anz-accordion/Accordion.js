@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { StyleSheet, ScrollView, View, TouchableHighlight } from "react-native";
+import { View, TouchableHighlight } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 import Collapse from "./Collapse";
 
@@ -48,36 +49,38 @@ export default class Accordion extends Component {
     };
 
     return (
-      <ScrollView style={styles.accordion_container} onScroll={onScroll}>
-        {items.map((item, index) => {
-          return (
-            <View key={item.key} style={styles.accordion_content_container}>
-              <TouchableHighlight
-                underlayColor={"rgba(0,0,0,0.2)"}
-                style={[
-                  styles.accordion_header,
-                  index === items.length - 1 && styles.accordion_header_border
-                ]}
-                onPress={() => {
-                  this._toggle(index);
-                }}
-              >
-                {headerRender(
-                  item[headerName],
-                  this.state.activeItem !== index
-                )}
-              </TouchableHighlight>
-              <Collapse
-                styles={styles}
-                collapse={this.state.activeItem !== index}
-                content={item[contentName]}
-                duration={duration}
-                backgroundColor={backgroundColor}
-              />
-            </View>
-          );
-        })}
-      </ScrollView>
+      <View style={styles.accordion_container}>
+        <KeyboardAwareScrollView onScroll={onScroll}>
+          {items.map((item, index) => {
+            return (
+              <View key={item.key} style={styles.accordion_content_container}>
+                <TouchableHighlight
+                  underlayColor={"rgba(0,0,0,0.2)"}
+                  style={[
+                    styles.accordion_header,
+                    index === items.length - 1 && styles.accordion_header_border
+                  ]}
+                  onPress={() => {
+                    this._toggle(index);
+                  }}
+                >
+                  {headerRender(
+                    item[headerName],
+                    this.state.activeItem !== index
+                  )}
+                </TouchableHighlight>
+                <Collapse
+                  styles={styles}
+                  collapse={this.state.activeItem !== index}
+                  content={item[contentName]}
+                  duration={duration}
+                  backgroundColor={backgroundColor}
+                />
+              </View>
+            );
+          })}
+        </KeyboardAwareScrollView>
+      </View>
     );
   }
 }
