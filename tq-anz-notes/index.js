@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { View, TextInput } from "react-native";
+import { TextInput } from "react-native";
 
 class TqanzNotes extends PureComponent {
   render() {
@@ -11,7 +11,13 @@ class TqanzNotes extends PureComponent {
     // No need for styles in the props anymore
     delete props["styles"];
 
-    return <TextInput {...props} style={styles.textInput} />;
+    return (
+      <TextInput
+        ref={c => (this._textInput = c)}
+        {...props}
+        style={styles.textInput}
+      />
+    );
   }
 }
 
