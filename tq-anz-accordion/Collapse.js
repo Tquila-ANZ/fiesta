@@ -34,8 +34,7 @@ export default class Collapse extends Component {
     }
   };
 
-  getContentHeight = event => {
-    const newHeight = event.nativeEvent.layout.height;
+  onLayout = event => {
     if (!this.contentInit) {
       // Do not use maxHeight as it messes with the whole usability of the app Using
       // maxHeight creates a collapse as a scroll container causing the app to now
@@ -46,6 +45,11 @@ export default class Collapse extends Component {
       this.contentInit = true;
       this.forceUpdate();
     }
+  };
+
+  onContentSizeChange = (width, height) => {
+    this.contentHeight = height;
+    this.handleHeight();
   };
 
   handleHeight = () => {
@@ -85,9 +89,8 @@ export default class Collapse extends Component {
         ]}
       >
         <ScrollView
-          onLayout={event => {
-            this.getContentHeight(event);
-          }}
+          onLayout={this.onLayout}
+          onContentSizeChange={this.onContentSizeChange}
           style={styles.collapse_view}
         >
           {this.props.content}
