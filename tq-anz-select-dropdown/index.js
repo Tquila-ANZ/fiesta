@@ -29,6 +29,20 @@ export default class Dropdown extends PureComponent {
     onSelect(null, defaultValue);
   };
 
+  onCancel = () => {
+    const { onCancel } = this.props;
+    const { dropdown = null } = this.refs;
+
+    if (onCancel) {
+      if (dropdown) {
+        dropdown.select(-1);
+      }
+      onCancel();
+    } else {
+      this.resetValue();
+    }
+  };
+
   onLayout = ({ nativeEvent }) => {
     if (this.view) {
       this.view.measure((x, y, width, height, pageX, pageY) => {
@@ -73,14 +87,16 @@ export default class Dropdown extends PureComponent {
       <View ref={component => (this.view = component)} onLayout={this.onLayout}>
         <ModalDropdown ref="dropdown" {...props} />
         {showCancelButton ? (
-          <TouchableOpacity
-            style={cancelButtonStyle.container}
-            onPress={this.resetValue}
-          >
-            <FontAwesome style={cancelButtonStyle.icon}>
-              {Icons[cancelButtonIcon]}
-            </FontAwesome>
-          </TouchableOpacity>
+          <View style={cancelButtonStyle.container}>
+            <TouchableOpacity
+              style={cancelButtonStyle.touchable}
+              onPress={this.onCancel}
+            >
+              <FontAwesome style={cancelButtonStyle.icon}>
+                {Icons[cancelButtonIcon]}
+              </FontAwesome>
+            </TouchableOpacity>
+          </View>
         ) : null}
       </View>
     );
