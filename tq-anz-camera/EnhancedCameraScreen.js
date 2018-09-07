@@ -159,10 +159,16 @@ class Slider extends PureComponent {
   };
 
   render() {
+    const { styles: stylesProp = {} } = this.props;
     const { position } = this.state;
     const [translateX, translateY] = [position.x, position.y];
-    const panStyle = {
+    const zoomControlThumbStyle = {
       transform: [{ translateX }, { translateY }]
+    };
+
+    const styles = {
+      ...defaultStyles,
+      ...stylesProp
     };
 
     return (
@@ -177,7 +183,7 @@ class Slider extends PureComponent {
           <View style={styles.zoomControlTrack} onLayout={this.measureTrack} />
           <Animated.View
             onLayout={this.measureThumb}
-            style={[panStyle, styles.zoomControlThumb]}
+            style={[zoomControlThumbStyle, styles.zoomControlThumb]}
           >
             <View
               {...this._panResponder.panHandlers}
@@ -234,11 +240,10 @@ class EnhancedCameraScreen extends PureComponent {
   };
 
   takePicture = async () => {
-    const { onTakePicture = () => {} } = this.props;
+    const { onTakePicture = () => {}, pictureOptions = {} } = this.props;
 
     if (this._camera) {
-      const options = { quality: 0.5, base64: true };
-      const data = await this._camera.takePictureAsync(options);
+      const data = await this._camera.takePictureAsync(pictureOptions);
       onTakePicture(data);
     }
   };
@@ -249,23 +254,34 @@ class EnhancedCameraScreen extends PureComponent {
 
   render() {
     const {
+      autoFocus,
+      captureAudio,
       flashImages = {
         [RNCamera.Constants.FlashMode.on]: require("./images/flashOn.png"),
         [RNCamera.Constants.FlashMode.off]: require("./images/flashOff.png"),
         [RNCamera.Constants.FlashMode.auto]: require("./images/flashAuto.png")
       },
+      focusDepth,
+      maximumZoom,
+      minimumZoom,
       otherImages = {
         flip: require("./images/cameraFlipIcon.png"),
         button: require("./images/cameraButton.png")
       },
-      minimumZoom = 0,
-      maximumZoom = 1.0
+      styles: stylesProp = {},
+      videoStabilizationMode,
+      whiteBalance
     } = this.props;
     const { flashMode, isLandscape, type, zoom } = this.state;
-    const controlContainerStyles = {
-      ...styles.controlContainer,
-      marginHorizontal: Platform.isPad || isLandscape ? 0 : 20,
-      marginVertical: Platform.isPad || isLandscape ? 40 : 0
+
+    const styles = {
+      ...defaultStyles,
+      controlContainer: {
+        ...defaultStyles.controlContainer,
+        marginHorizontal: Platform.isPad || isLandscape ? 0 : 20,
+        marginVertical: Platform.isPad || isLandscape ? 40 : 0
+      },
+      ...stylesProp
     };
 
     return (
@@ -275,17 +291,19 @@ class EnhancedCameraScreen extends PureComponent {
           ref={ref => {
             this._camera = ref;
           }}
+          autoFocus={autoFocus}
+          captureAudio={captureAudio}
+          flashMode={flashMode}
+          focusDepth={focusDepth}
           style={styles.preview}
           type={type}
-          flashMode={flashMode}
-          permissionDialogTitle={"Permission to use camera"}
-          permissionDialogMessage={
-            "We need your permission to use your camera phone"
-          }
+          videoStabilizationMode={videoStabilizationMode}
+          whiteBalance={whiteBalance}
           zoom={zoom}
         />
         <View style={styles.zoomControlContainerLandscape}>
           <Slider
+            styles={stylesProp}
             onChange={this.zoomControlOnChange}
             startValue={zoom}
             minimumValue={minimumZoom}
@@ -301,7 +319,7 @@ class EnhancedCameraScreen extends PureComponent {
         >
           <TouchableOpacity
             onPress={this.changeFlashMode}
-            style={controlContainerStyles}
+            style={styles.controlContainer}
           >
             <Image
               style={styles.flashModeImage}
@@ -313,7 +331,7 @@ class EnhancedCameraScreen extends PureComponent {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={this.changeType}
-            style={controlContainerStyles}
+            style={styles.controlContainer}
           >
             <Image style={styles.flipCameraImage} source={otherImages.flip} />
           </TouchableOpacity>
@@ -323,7 +341,7 @@ class EnhancedCameraScreen extends PureComponent {
   }
 }
 
-const styles = {
+const defaultStyles = {
   container: {
     flex: 1,
     flexDirection: "column",
