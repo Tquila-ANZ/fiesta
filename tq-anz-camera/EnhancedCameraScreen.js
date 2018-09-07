@@ -209,6 +209,7 @@ class EnhancedCameraScreen extends PureComponent {
     this.state = {
       isLandscape: !isPortrait(),
       flashMode: flashMode,
+      shutterOpacity: new Animated.Value(0),
       type: type,
       zoom: defaultZoom
     };
@@ -239,12 +240,22 @@ class EnhancedCameraScreen extends PureComponent {
     }
   };
 
-  takePicture = async () => {
+  takePicture = () => {
     const { onTakePicture = () => {}, pictureOptions = {} } = this.props;
 
     if (this._camera) {
-      const data = await this._camera.takePictureAsync(pictureOptions);
-      onTakePicture(data);
+      Animated.sequence([
+        Animated.timing(this.state.shutterOpacity, {
+          toValue: 1,
+          duration: 100,
+          useNativeDriver: true
+        }),
+        Animated.delay(200)
+      ]).start(async () => {
+        this.state.shutterOpacity.setValue(0);
+        const data = await this._camera.takePictureAsync(pictureOptions);
+        onTakePicture(data);
+      });
     }
   };
 
@@ -272,7 +283,7 @@ class EnhancedCameraScreen extends PureComponent {
       videoStabilizationMode,
       whiteBalance
     } = this.props;
-    const { flashMode, isLandscape, type, zoom } = this.state;
+    const { flashMode, isLandscape, shutterOpacity, type, zoom } = this.state;
 
     const styles = {
       ...defaultStyles,
@@ -300,6 +311,9 @@ class EnhancedCameraScreen extends PureComponent {
           videoStabilizationMode={videoStabilizationMode}
           whiteBalance={whiteBalance}
           zoom={zoom}
+        />
+        <Animated.View
+          style={{ ...styles.shutterOverlay, opacity: shutterOpacity }}
         />
         <View style={styles.zoomControlContainerLandscape}>
           <Slider
@@ -436,6 +450,14 @@ const defaultStyles = {
     resizeMode: "contain",
     width: 70,
     height: 70
+  },
+  shutterOverlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "black"
   }
 };
 
