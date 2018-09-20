@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { View, Text } from "react-native";
 import Accordion from "./Accordion";
 import FontAwesome, { Icons } from "react-native-fontawesome";
 
@@ -30,6 +30,7 @@ class TqanzAccordion extends Component {
   };
 
   render() {
+    const { renderHeader = this.renderHeader } = this.props;
     const styles = {
       ...defaultStyles,
       ...this.props.styles
@@ -51,7 +52,7 @@ class TqanzAccordion extends Component {
           activeIndex={activeIndex}
           items={this.props.items}
           onScroll={onScroll}
-          headerRender={this.renderHeader}
+          headerRender={renderHeader}
           contentRender={this.renderContent}
           headerName={headerName}
           contentName={contentName}
