@@ -7,6 +7,7 @@ import CameraScreen from "./CameraScreen";
 import GalleryScreen from "./GalleryScreen";
 
 export { default as CameraScreen } from "./CameraScreen.js";
+export { default as EnhancedCameraScreen } from "./EnhancedCameraScreen.js";
 export { default as GalleryScreen } from "./GalleryScreen.js";
 export { default as GalleryModal } from "./GalleryModal.js";
 

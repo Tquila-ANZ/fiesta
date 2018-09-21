@@ -27,6 +27,7 @@
   "dependencies": {
     "firebase": "^4.9.0",
     "jest-react-native": "^18.0.0",
+    "react-native-camera": "^1.2.0",
     "react-native-camera-kit": "^5.3.26",
     "react-native-check-box": "^2.1.0",
     "react-native-dropdown": "0.0.6",

@@ -169,7 +169,9 @@ import FiestaTqCamera from "fiesta/tq-anz-camera";
 
 https://github.com/wix/react-native-camera-kit
 
-#### Dependencies: React Native, React Native Camera Kit
+https://github.com/react-native-community/react-native-camera
+
+#### Dependencies: React Native, React Native Camera, React Native Camera Kit
 
 ---
 
