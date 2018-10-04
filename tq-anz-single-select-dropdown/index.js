@@ -1,45 +1,45 @@
 import React, { PureComponent } from "react";
-import { View } from "react-native";
-import { Icon } from "react-native-elements";
 import Dropdown from "./dropdown";
 
 class SingleSelectDropdown extends PureComponent {
-  state = {
-    selectedItem: null
-  };
-
-  _multiSelect = {};
-
-  clear = () => {
-    const { onClearItems = () => {} } = this.props;
-    this._multiSelect._removeAllItems();
-    onClearItems();
-  };
-
   selectNewItems = selectedItems => {
     const selectedItem = selectedItems[0];
-    this.setState({ selectedItem });
     this.props.onSelectedItemsChange(selectedItem);
   };
 
+  getItems = props => {
+    const { items = [], displayKey, uniqueKey } = props;
+
+    const haveAddedNullKey = items.reduce((exists, item) => {
+      if (item[uniqueKey] === null) {
+        return true;
+      } else {
+        return exists;
+      }
+    }, false);
+
+    if (haveAddedNullKey) {
+      return items;
+    } else {
+      const newItems = [
+        {
+          [uniqueKey]: null,
+          [displayKey]: "None"
+        },
+        ...items
+      ];
+      return newItems;
+    }
+  };
+
   render() {
-    const { selectedItem } = this.state;
     return (
-      <View>
-        <Dropdown
-          ref={component => {
-            this._multiSelect = component;
-          }}
-          {...this.props}
-          single={true}
-          onSelectedItemsChange={this.selectNewItems}
-        />
-        {selectedItem && !this.props.disabled ? (
-          <View style={styles.iconContainer}>
-            <Icon name="close" {...styles.closeButton} onPress={this.clear} />
-          </View>
-        ) : null}
-      </View>
+      <Dropdown
+        {...this.props}
+        items={this.getItems(this.props)}
+        single={true}
+        onSelectedItemsChange={this.selectNewItems}
+      />
     );
   }
 }
