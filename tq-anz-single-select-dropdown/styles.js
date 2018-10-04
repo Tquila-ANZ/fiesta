@@ -62,18 +62,10 @@ export default {
   },
   buttonText: {
     color: colorPack.light,
-    fontSize: 14
+    fontSize: 12
   },
-  selectorView: fixedHeight => {
-    const style = {
-      flexDirection: "column",
-      marginBottom: 10,
-      elevation: 2
-    };
-    if (fixedHeight) {
-      style.height = 250;
-    }
-    return style;
+  selectorView: {
+    flexDirection: "column"
   },
   inputGroup: {
     flexDirection: "row",

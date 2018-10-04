@@ -405,6 +405,7 @@ export default class Dropdown extends PureComponent {
     if (renderItems.length) {
       itemList = (
         <FlatList
+          style={{ maxHeight: 250 }}
           data={renderItems}
           extraData={selectedItems}
           keyExtractor={item => item[uniqueKey]}
@@ -472,7 +473,7 @@ export default class Dropdown extends PureComponent {
         }}
       >
         {selector ? (
-          <View style={styles.selectorView(fixedHeight)}>
+          <View style={styles.selectorView}>
             <View style={styles.inputGroup}>
               <Icon
                 name="magnify"
