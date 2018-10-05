@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { View } from "react-native";
-import GoogleStaticMap from "react-native-google-static-map";
+import GoogleStaticMap from "./GoogleStaticMap";
 
 // https://developers.google.com/maps/documentation/static-maps/intro
 // props.attributes = {

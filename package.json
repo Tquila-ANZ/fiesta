@@ -37,7 +37,6 @@
     "react-native-force":
       "git+https://github.com/forcedotcom/SalesforceMobileSDK-ReactNative.git#v5.3.0",
     "react-native-gifted-messenger": "^0.1.4",
-    "react-native-google-static-map": "^0.1.11",
     "react-native-image-picker": "^0.26.7",
     "react-native-invertible-scroll-view": "^1.1.0",
     "react-native-keyboard-aware-scroll-view": "^0.7.0",
