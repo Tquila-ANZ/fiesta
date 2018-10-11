@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { View, TouchableHighlight } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { View, ScrollView, TouchableHighlight } from "react-native";
 
 import Collapse from "./Collapse";
 
@@ -50,7 +49,7 @@ export default class Accordion extends Component {
 
     return (
       <View style={styles.accordion_container}>
-        <KeyboardAwareScrollView onScroll={onScroll}>
+        <ScrollView onScroll={onScroll}>
           {items.map((item, index) => {
             return (
               <View key={item.key} style={styles.accordion_content_container}>
@@ -79,7 +78,7 @@ export default class Accordion extends Component {
               </View>
             );
           })}
-        </KeyboardAwareScrollView>
+        </ScrollView>
       </View>
     );
   }
