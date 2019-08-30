@@ -94,13 +94,6 @@ export default class LightboxOverlay extends Component {
       pan: new Animated.Value(0),
       openVal: new Animated.Value(0)
     };
-
-    Dimensions.addEventListener("change", () => {
-      this.setState({
-        windowHeight: Dimensions.get("window").height,
-        windowWidth: Dimensions.get("window").width
-      });
-    });
   }
 
   componentWillMount() {
@@ -145,10 +138,22 @@ export default class LightboxOverlay extends Component {
   }
 
   componentDidMount() {
+    Dimensions.addEventListener("change", this.onChange);
+
     if (this.props.isOpen) {
       this.open();
     }
   }
+
+  componentWillUnmount() {
+    Dimensions.removeEventListener("change", this.onChange);
+  }
+
+  onChange = () =>
+    this.setState({
+      windowHeight: Dimensions.get("window").height,
+      windowWidth: Dimensions.get("window").width
+    });
 
   open = () => {
     if (isIOS) {
