@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { View, Text, Image } from "react-native";
-import FontAwesome, { SolidIcons } from "react-native-fontawesome";
+import FontAwesome, { Icons } from "react-native-fontawesome";
 
 class TqanzAvatar extends PureComponent {
   render() {
@@ -12,7 +12,7 @@ class TqanzAvatar extends PureComponent {
 
     let image = (
       <FontAwesome style={styles.placeholderImg}>
-        {SolidIcons.addressCard}
+        {Icons.addressCard}
       </FontAwesome>
     );
 

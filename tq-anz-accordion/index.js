@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
 import Accordion from "./Accordion";
-import FontAwesome, { SolidIcons } from "react-native-fontawesome";
+import FontAwesome, { Icons } from "react-native-fontawesome";
 
 class TqanzAccordion extends Component {
   renderHeader = (headerName, up = false) => {
@@ -21,7 +21,7 @@ class TqanzAccordion extends Component {
         {showArrow ? (
           <View>
             <FontAwesome style={styles.tq_accordion_header_arrow_icon}>
-              {up ? SolidIcons[iconUp] : SolidIcons[iconDown]}
+              {up ? Icons[iconUp] : Icons[iconDown]}
             </FontAwesome>
           </View>
         ) : null}

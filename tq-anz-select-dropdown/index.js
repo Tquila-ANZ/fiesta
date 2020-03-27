@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { Dimensions, View, TouchableOpacity, StyleSheet } from "react-native";
 import ModalDropdown from "react-native-modal-dropdown";
-import FontAwesome, { SolidIcons } from "react-native-fontawesome";
+import FontAwesome, { Icons } from "react-native-fontawesome";
 
 export default class Dropdown extends PureComponent {
   state = {
@@ -56,7 +56,7 @@ export default class Dropdown extends PureComponent {
   render() {
     let props = this.props;
     const {
-      cancelButtonIcon = "timesCircle",
+      cancelButtonIcon = "timesCircleO",
       cancelButtonStyle = {},
       options = [],
       showCancelButton = true
@@ -93,7 +93,7 @@ export default class Dropdown extends PureComponent {
               onPress={this.onCancel}
             >
               <FontAwesome style={cancelButtonStyle.icon}>
-                {SolidIcons[cancelButtonIcon]}
+                {Icons[cancelButtonIcon]}
               </FontAwesome>
             </TouchableOpacity>
           </View>
