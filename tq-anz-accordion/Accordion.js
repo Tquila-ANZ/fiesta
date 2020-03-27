@@ -14,7 +14,7 @@ export default class Accordion extends Component {
     this._toggle(activeIndex);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { activeIndex = null } = nextProps;
 
     if (this.props.activeIndex !== activeIndex) {

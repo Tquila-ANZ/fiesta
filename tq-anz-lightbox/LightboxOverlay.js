@@ -96,7 +96,7 @@ export default class LightboxOverlay extends Component {
     };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this._panResponder = PanResponder.create({
       // Ask to be the responder:
       onStartShouldSetPanResponder: (evt, gestureState) =>
@@ -193,7 +193,7 @@ export default class LightboxOverlay extends Component {
     });
   };
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     if (this.props.isOpen != props.isOpen && props.isOpen) {
       this.open();
     }

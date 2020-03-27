@@ -120,7 +120,7 @@ class Row extends Component {
         };
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (this.props.active !== nextProps.active) {
             Animated.timing(this._active, {
                 duration: 300,

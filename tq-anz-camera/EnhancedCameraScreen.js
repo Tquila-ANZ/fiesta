@@ -25,7 +25,7 @@ class Slider extends PureComponent {
     trackSize: { height: 0, width: 0 }
   };
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: (e, gesture) => true,
       onPanResponderGrant: (e, gestureState) => {

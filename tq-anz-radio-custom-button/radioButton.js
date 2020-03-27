@@ -7,7 +7,7 @@ export default class RadioButton extends Component {
     super(props, context);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({ selectedIndex: nextProps.selectedIndex });
   }
 

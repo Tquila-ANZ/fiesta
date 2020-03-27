@@ -13,7 +13,7 @@ export default class Dropdown extends PureComponent {
    * you'd need to call select(-1) to make the dropdown go back to the default state
    * and clear out the previous selection.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { defaultValue = null } = nextProps;
 
     const { dropdown = null } = this.refs;

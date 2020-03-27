@@ -19,7 +19,7 @@ export default class RadioGroup extends Component {
     this.onSelect = this.onSelect.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.selectedIndex != this.prevSelected) {
       this.prevSelected = nextProps.selectedIndex;
       this.setState({ selectedIndex: nextProps.selectedIndex });

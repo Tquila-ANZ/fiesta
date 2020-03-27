@@ -12,7 +12,7 @@ export default class Collapse extends Component {
     height: new Animated.Value(0)
   };
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.init(nextProps);
   }
 
