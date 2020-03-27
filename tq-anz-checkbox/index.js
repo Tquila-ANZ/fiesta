@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { View, TextInput } from "react-native";
-import FontAwesome, { Icons } from "react-native-fontawesome";
+import FontAwesome, { SolidIcons } from "react-native-fontawesome";
 import CheckBox from "react-native-check-box";
 
 class TqanzCheckbox extends PureComponent {
@@ -35,8 +35,8 @@ class TqanzCheckbox extends PureComponent {
     );
   }
 }
-const defaultUnCheckedImage = <FontAwesome>{Icons.checkCircleO}</FontAwesome>;
-const defaultCheckedImage = <FontAwesome>{Icons.checkCircle}</FontAwesome>;
+const defaultUnCheckedImage = <FontAwesome>{SolidIcons.circle}</FontAwesome>;
+const defaultCheckedImage = <FontAwesome>{SolidIcons.checkCircle}</FontAwesome>;
 
 const defaultStyles = {
   container: { alignItems: "center", justifyContent: "center" },

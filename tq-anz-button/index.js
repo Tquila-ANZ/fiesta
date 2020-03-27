@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { View, TouchableOpacity, Text } from "react-native";
-import FontAwesome, { Icons } from "react-native-fontawesome";
+import FontAwesome, { SolidIcons } from "react-native-fontawesome";
 
 class TqanzButton extends PureComponent {
   render() {
@@ -29,7 +29,7 @@ class TqanzButton extends PureComponent {
           disabled={disabled}
         >
           {icon ? (
-            <FontAwesome style={styles.icon}>{Icons[icon]}</FontAwesome>
+            <FontAwesome style={styles.icon}>{SolidIcons[icon]}</FontAwesome>
           ) : null}
           <Text style={styles.text}>{title}</Text>
         </TouchableOpacity>

@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import FontAwesome, { Icons } from "react-native-fontawesome";
+import FontAwesome, { SolidIcons } from "react-native-fontawesome";
 
 /**
  * Props expected
@@ -78,8 +78,8 @@ export default class SelectMultiple extends PureComponent {
   render() {
     const { selectedItemsMap, items, idField, valueField } = this.state;
     const {
-      iconChecked = Icons.checkSquare,
-      iconUnchecked = Icons.squareO
+      iconChecked = SolidIcons.checkSquare,
+      iconUnchecked = SolidIcons.square
     } = this.props;
 
     const styles = {
